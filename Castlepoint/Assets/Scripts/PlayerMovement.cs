@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb;
-    private Vector2 change;
+    private Vector3 change;
 
 
     // Start is called before the first frame update
@@ -19,8 +19,17 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         change = Vector2.zero;
-        change.x = Input.GetAxis("Horizontal");
-        change.y = Input.GetAxis("Vertical");
-        Debug.Log("change");
+        change.x = Input.GetAxisRaw("Horizontal"); //getaxisraw normalizes the movement when moving diagonal so that both vectors aren't added 
+        change.y = Input.GetAxisRaw("Vertical");
+        if (change != Vector3.zero)
+        {
+            MoveCharacter();    //Joel: left off at part 2
+        }
     }
+
+    void MoveCharacter() //function that moves player
+    {
+        rb.MovePosition(transform.position + change * speed * Time.deltaTime);
+    }
+
 }
