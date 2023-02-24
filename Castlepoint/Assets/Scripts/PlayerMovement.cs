@@ -16,10 +16,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate() //changed Update to FixedUpdate to fix jitter bug
     {
-        change = Vector2.zero;
-        change.x = Input.GetAxisRaw("Horizontal"); //getaxisraw normalizes the movement when moving diagonal so that both vectors aren't added 
+        change = Vector3.zero;
+        change.x = Input.GetAxisRaw("Horizontal"); //GetAxisRaw normalizes the movement so that with each digital press the speed goes to the correct value
         change.y = Input.GetAxisRaw("Vertical");
         if (change != Vector3.zero)
         {
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCharacter() //function that moves player
     {
-        rb.MovePosition(transform.position + change * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime); //making change to change.normalized normalized the speed when moving the player diagonally
     }
 
 }
