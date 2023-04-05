@@ -4,22 +4,22 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8245079591198882276
-    second: char_attack_down_anim_strip_6_0
+    second: player_attack_down_1
   - first:
       213: -8119474151413318053
-    second: char_attack_down_anim_strip_6_1
+    second: player_attack_down_2
   - first:
       213: -5790974741774388942
-    second: char_attack_down_anim_strip_6_2
+    second: player_attack_down_3
   - first:
       213: -1439046782043700569
-    second: char_attack_down_anim_strip_6_3
+    second: player_attack_down_4
   - first:
       213: 1191254125758377437
-    second: char_attack_down_anim_strip_6_4
+    second: player_attack_down_5
   - first:
       213: 3217771319552940147
-    second: char_attack_down_anim_strip_6_5
+    second: player_attack_down_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -157,15 +157,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: char_attack_down_anim_strip_6_0
+      name: player_attack_down_1
       rect:
         serializedVersion: 2
-        x: 19
-        y: 16
-        width: 12
-        height: 16
+        x: 10
+        y: 9
+        width: 29
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,15 +178,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_attack_down_anim_strip_6_1
+      name: player_attack_down_2
       rect:
         serializedVersion: 2
-        x: 66
-        y: 16
-        width: 21
-        height: 16
+        x: 58
+        y: 9
+        width: 29
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,15 +199,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_attack_down_anim_strip_6_2
+      name: player_attack_down_3
       rect:
         serializedVersion: 2
-        x: 114
+        x: 106
         y: 9
-        width: 21
-        height: 22
+        width: 29
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,15 +220,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_attack_down_anim_strip_6_3
+      name: player_attack_down_4
       rect:
         serializedVersion: 2
-        x: 156
+        x: 154
         y: 9
-        width: 27
-        height: 22
+        width: 29
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,15 +241,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_attack_down_anim_strip_6_4
+      name: player_attack_down_5
       rect:
         serializedVersion: 2
         x: 201
         y: 9
-        width: 23
-        height: 22
+        width: 31
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,15 +262,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_attack_down_anim_strip_6_5
+      name: player_attack_down_6
       rect:
         serializedVersion: 2
         x: 249
-        y: 16
-        width: 23
-        height: 16
+        y: 9
+        width: 31
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
