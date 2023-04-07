@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState
+public enum PlayerState //the state machine for the player
 {
     attack,
     walk,
@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
         currentState= PlayerState.walk;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        animator.SetFloat("moveX", 0);
+        animator.SetFloat("moveY", -1);
     }
     void Update()
     {
