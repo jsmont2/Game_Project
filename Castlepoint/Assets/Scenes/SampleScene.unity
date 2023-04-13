@@ -13671,7 +13671,7 @@ MonoBehaviour:
   target: {fileID: 2079349809}
   smoothing: 0.5
   maxPosition: {x: 67.7502, y: 58.78999}
-  minPosition: {x: -0.6473525, y: 0.1740197}
+  minPosition: {x: -5, y: 0.1740197}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -22634,7 +22634,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996269306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.92, y: 1.06, z: 0}
+  m_LocalPosition: {x: 5.89, y: 3.23, z: 0}
   m_LocalScale: {x: 4.942, y: 4.7504306, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -76020,6 +76020,14 @@ PrefabInstance:
     - target: {fileID: 8017841518016718524, guid: 98422956b76b30d44bc607d0a24240f1, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017841518016718524, guid: 98422956b76b30d44bc607d0a24240f1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8017841518016718524, guid: 98422956b76b30d44bc607d0a24240f1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 626508775
       objectReference: {fileID: 0}
     - target: {fileID: 8017841518016718524, guid: 98422956b76b30d44bc607d0a24240f1, type: 3}
       propertyPath: m_WasSpriteAssigned
