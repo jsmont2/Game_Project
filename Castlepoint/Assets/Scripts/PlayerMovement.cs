@@ -6,7 +6,9 @@ public enum PlayerState //the state machine for the player
 {
     attack,
     walk,
-    interact
+    interact,
+    stagger,
+    idel
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -29,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack && currentState!= PlayerState.stagger)
                 {
                     StartCoroutine(AttackCo());
                 }
@@ -77,4 +79,19 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime); //making change to change.normalized normalized the speed when moving the player diagonally
     }
 
+    public void Knock(float knockTime)
+    {
+        StartCoroutine(KnockCo(knockTime));
+    }
+
+    private IEnumerator KnockCo(float knockTime)
+    {
+        if(rb != null)
+        {
+            yield return new WaitForSeconds(knockTime);
+            rb.velocity = Vector2.zero;
+            currentState= PlayerState.idel;
+            rb.velocity =Vector2.zero;
+        }
+    }
 }
