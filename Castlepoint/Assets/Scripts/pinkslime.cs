@@ -51,8 +51,8 @@ public class pinkslime : Enemy // inherates everything from enemy script includi
 
     public void Hit()
     {
-        anim.SetBool("hit", true);
-        StartCoroutine(pinkslimeCo());
+       anim.SetBool("hit", true);
+       StartCoroutine(pinkslimeCo());
     }
 
    IEnumerator pinkslimeCo()
