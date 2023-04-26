@@ -7,13 +7,14 @@ public class Knockback : MonoBehaviour
     public float thrust;
     public float knockTime;
     public float damage;
+    public Animator anim;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         /*if(other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<pinkslime>().Hit();
-        }*/
+        }*/ 
 
         if (other.gameObject.CompareTag("enemy"))
         {
@@ -29,6 +30,7 @@ public class Knockback : MonoBehaviour
                 {
                      hit.GetComponent<Enemy>().currentState = EnemyState.stagger;
                      other.GetComponent<Enemy>().Knock(hit,knockTime,damage);
+                     anim.SetTrigger("hit");
                 }
                 if (other.gameObject.CompareTag("Player"))
                 {
