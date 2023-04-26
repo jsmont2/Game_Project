@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum EnemyState{
-    idel,
+    idle, 
     walk,
     attack,
     stagger
@@ -38,13 +38,13 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
+    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime) 
     {
         if(myRigidbody != null)
         {
             yield return new WaitForSeconds(knockTime);
             myRigidbody.velocity = Vector2.zero;
-            myRigidbody.GetComponent<Enemy>().currentState= EnemyState.idel;
+            myRigidbody.GetComponent<Enemy>().currentState= EnemyState.idle;
             myRigidbody.velocity = Vector2.zero;
         }
     }

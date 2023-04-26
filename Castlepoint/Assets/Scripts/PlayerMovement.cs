@@ -8,7 +8,7 @@ public enum PlayerState //the state machine for the player
     walk,
     interact,
     stagger,
-    idel
+    idle
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack && currentState!= PlayerState.stagger)
+        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
                 {
                     StartCoroutine(AttackCo());
                 }
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             yield return new WaitForSeconds(knockTime);
             rb.velocity = Vector2.zero;
-            currentState= PlayerState.idel;
+            currentState= PlayerState.idle;
             rb.velocity =Vector2.zero;
         }
     }

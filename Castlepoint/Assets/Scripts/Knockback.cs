@@ -10,10 +10,10 @@ public class Knockback : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Player"))
+        /*if(other.gameObject.CompareTag("enemy") || other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<pinkslime>().Hit();
-        }
+        }*/
 
         if (other.gameObject.CompareTag("enemy"))
         {
