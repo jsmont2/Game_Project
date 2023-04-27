@@ -17,7 +17,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         currentState = EnemyState.idle;
         myRigidbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindWithTag("Player").transform;    //allows the enemy to find the player and chase him
         
     }
 
@@ -29,7 +29,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
 
     void CheckDistance()
     {
-        if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius)// this check the distance between enemy and player to dictate what the enemy will do.
+        if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
         {
             if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger )
             {
@@ -47,13 +47,13 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
             }
     }
 
-    private void SetAnimFloat(Vector2 setVector)
+    private void SetAnimFloat(Vector2 setVector)    
     {
         anim.SetFloat("moveX", setVector.x);
         anim.SetFloat("moveY", setVector.y);
     }
 
-    private void changeAnim(Vector2 direction)
+    private void changeAnim(Vector2 direction)      //sets the animations for the enemy when it chases the player whether up and down or left or right
     {
         if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
@@ -85,17 +85,5 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
             currentState = newState;
 
         }
-    }
-
-    public void Hit()
-    {
-       anim.SetBool("hit", true);
-       //StartCoroutine(pinkslimeCo());
-    }
-
-    IEnumerator pinkslimeCo()
-    {
-        yield return new WaitForSeconds(.3f);
-        this.gameObject.SetActive(false);
     }
 }

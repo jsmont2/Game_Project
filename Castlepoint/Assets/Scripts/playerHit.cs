@@ -16,11 +16,11 @@ public class playerHit : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("enemy"))
         {
             other.GetComponent<pinkslime>().Hit();
         }
-    }
+    }*/
 }
