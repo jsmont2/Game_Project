@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.26f1 (7298b473bc1a) revision 7510196'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 11  (10.0.22000) 64bit Core' Language: 'en' Physical Memory: 7916 MB
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'en' Physical Memory: 16310 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
@@ -11,113 +11,113 @@ C:\Program Files\Unity\Hub\Editor\2020.3.26f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/paezo/OneDrive/Documents/GitHub/Game_Project/Castlepoint
+C:/Users/Omar A Paez-Ramirez/Desktop/Game_Project/Castlepoint
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50606
-Successfully changed project path to: C:/Users/paezo/OneDrive/Documents/GitHub/Game_Project/Castlepoint
-C:/Users/paezo/OneDrive/Documents/GitHub/Game_Project/Castlepoint
+49390
+Successfully changed project path to: C:/Users/Omar A Paez-Ramirez/Desktop/Game_Project/Castlepoint
+C:/Users/Omar A Paez-Ramirez/Desktop/Game_Project/Castlepoint
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 33.65 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 48.62 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.26f1 (7298b473bc1a)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/paezo/OneDrive/Documents/GitHub/Game_Project/Castlepoint/Assets
+[Subsystems] Discovering subsystems at path C:/Users/Omar A Paez-Ramirez/Desktop/Game_Project/Castlepoint/Assets
 GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Intel(R) UHD Graphics (ID=0x46b3)
+    Renderer: Radeon RX 580 Series (ID=0x67df)
     Vendor:   
-    VRAM:     3958 MB
-    Driver:   31.0.101.3251
+    VRAM:     8171 MB
+    Driver:   30.0.13023.4001
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56648
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56404
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.000807 seconds.
+Registered in 0.007058 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 36.42 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 48.68 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.384 seconds
+- Completed reload, in  0.529 seconds
 Domain Reload Profiling:
-	ReloadAssembly (385ms)
-		BeginReloadAssembly (33ms)
+	ReloadAssembly (529ms)
+		BeginReloadAssembly (47ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (306ms)
-			LoadAssemblies (31ms)
+		EndReloadAssembly (405ms)
+			LoadAssemblies (45ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (95ms)
+			SetupTypeCache (139ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (19ms)
-			SetupLoadedEditorAssemblies (125ms)
+			RebuildScriptCaches (25ms)
+			SetupLoadedEditorAssemblies (158ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
+				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (36ms)
-				BeforeProcessingInitializeOnLoad (8ms)
-				ProcessInitializeOnLoadAttributes (57ms)
-				ProcessInitializeOnLoadMethodAttributes (19ms)
+				RefreshPlugins (49ms)
+				BeforeProcessingInitializeOnLoad (7ms)
+				ProcessInitializeOnLoadAttributes (72ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.003032 seconds.
+Registered in 0.005666 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 35.86 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 59.70 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.756 seconds
+- Completed reload, in  1.121 seconds
 Domain Reload Profiling:
-	ReloadAssembly (757ms)
-		BeginReloadAssembly (94ms)
+	ReloadAssembly (1123ms)
+		BeginReloadAssembly (170ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (3ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (13ms)
-		EndReloadAssembly (623ms)
-			LoadAssemblies (63ms)
+			CreateAndSetChildDomain (28ms)
+		EndReloadAssembly (884ms)
+			LoadAssemblies (107ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (198ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (31ms)
-			SetupLoadedEditorAssemblies (243ms)
+			SetupTypeCache (309ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (44ms)
+			SetupLoadedEditorAssemblies (331ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (3ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (36ms)
-				BeforeProcessingInitializeOnLoad (47ms)
-				ProcessInitializeOnLoadAttributes (142ms)
-				ProcessInitializeOnLoadMethodAttributes (12ms)
-				AfterProcessingInitializeOnLoad (3ms)
+				RefreshPlugins (60ms)
+				BeforeProcessingInitializeOnLoad (65ms)
+				ProcessInitializeOnLoadAttributes (180ms)
+				ProcessInitializeOnLoadMethodAttributes (16ms)
+				AfterProcessingInitializeOnLoad (7ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (4ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.34 ms, found 3 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2209 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 115.8 MB.
-System memory in use after: 115.9 MB.
+Unloading 2213 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.9 MB.
+System memory in use after: 116.0 MB.
 
-Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2664.
-Total: 2.159800 ms (FindLiveObjects: 0.118900 ms CreateObjectMapping: 0.039900 ms MarkObjects: 1.932700 ms  DeleteObjects: 0.067400 ms)
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 2668.
+Total: 3.138700 ms (FindLiveObjects: 0.228000 ms CreateObjectMapping: 0.059200 ms MarkObjects: 2.774400 ms  DeleteObjects: 0.076000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -126,503 +126,446 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes
-  artifactKey: Guid(57aba59272474ac419755002fdd55b73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes using Guid(57aba59272474ac419755002fdd55b73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cc8eef2a07fea94a218b5aed5e89bcf') in 0.010874 seconds 
-  Import took 0.015390 seconds .
+  path: Assets/GameOverScreen.cs
+  artifactKey: Guid(2eedd53c87d6d874db69e7247401b328) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameOverScreen.cs using Guid(2eedd53c87d6d874db69e7247401b328) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e089887a4411636f5e55a88483c8b5fe') in 0.040286 seconds 
+  Import took 0.043680 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004508 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.856 seconds
+Domain Reload Profiling:
+	ReloadAssembly (856ms)
+		BeginReloadAssembly (102ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (33ms)
+		EndReloadAssembly (698ms)
+			LoadAssemblies (77ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (246ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (246ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (57ms)
+				ProcessInitializeOnLoadAttributes (168ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2202 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.2 MB.
+System memory in use after: 115.4 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2670.
+Total: 3.327100 ms (FindLiveObjects: 0.207500 ms CreateObjectMapping: 0.057600 ms MarkObjects: 3.039200 ms  DeleteObjects: 0.021400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 184.424297 seconds.
+  path: Assets/Scripts/Health.cs
+  artifactKey: Guid(d5a0d9fa9c4eac14f93182912e728fe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Health.cs using Guid(d5a0d9fa9c4eac14f93182912e728fe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '696fd44783a4bd69e4ca32793d5141fa') in 0.010370 seconds 
+  Import took 0.013897 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 30.462784 seconds.
-  path: Assets/Scenes/dungeon.unity
-  artifactKey: Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/dungeon.unity using Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bff7bfe4cc54c32cf602a1877f1d1074') in 0.015284 seconds 
-  Import took 0.020903 seconds .
+  Time since last request: 165.360145 seconds.
+  path: Assets/GameOverScreen.cs
+  artifactKey: Guid(a1ee3d62dfff2d148b16b64411563dd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GameOverScreen.cs using Guid(a1ee3d62dfff2d148b16b64411563dd8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11e017bd18c301d141b69ff25acbe999') in 0.002309 seconds 
+  Import took 0.005238 seconds .
 
 ========================================================================
-Received Import Request.
-  Time since last request: 19.909752 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/sprite_atlas.spriteatlas
-  artifactKey: Guid(e0456c310db62f24d945ee8cb8d08f9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/sprite_atlas.spriteatlas using Guid(e0456c310db62f24d945ee8cb8d08f9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3543e513e155b31429034277d8118b3') in 0.079957 seconds 
-  Import took 0.092217 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004249 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.816 seconds
+Domain Reload Profiling:
+	ReloadAssembly (816ms)
+		BeginReloadAssembly (100ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (663ms)
+			LoadAssemblies (72ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (235ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (238ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (53ms)
+				ProcessInitializeOnLoadAttributes (164ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2202 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.4 MB.
 
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2672.
+Total: 3.299600 ms (FindLiveObjects: 0.202600 ms CreateObjectMapping: 0.057000 ms MarkObjects: 3.018300 ms  DeleteObjects: 0.020500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007126 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.65 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.880 seconds
+Domain Reload Profiling:
+	ReloadAssembly (880ms)
+		BeginReloadAssembly (103ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (721ms)
+			LoadAssemblies (81ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (261ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (251ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (58ms)
+				ProcessInitializeOnLoadAttributes (173ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.62 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2202 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.4 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2674.
+Total: 3.111600 ms (FindLiveObjects: 0.239600 ms CreateObjectMapping: 0.063600 ms MarkObjects: 2.785100 ms  DeleteObjects: 0.022400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 41.210673 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png
-  artifactKey: Guid(5734db4e847703749b8423c7ad0cef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png using Guid(5734db4e847703749b8423c7ad0cef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af7e7fd532d25074c65c3ecee660a588') in 0.057369 seconds 
-  Import took 0.064323 seconds .
+  Time since last request: 139.029049 seconds.
+  path: Assets/Scripts/PlayerMovement.cs
+  artifactKey: Guid(f1074d9264479c448809b30dcfffd6f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerMovement.cs using Guid(f1074d9264479c448809b30dcfffd6f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38a89faff69aed3075da01f3e712baee') in 0.014538 seconds 
+  Import took 0.018651 seconds .
 
 ========================================================================
-Received Import Request.
-  Time since last request: 16.091973 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png
-  artifactKey: Guid(5734db4e847703749b8423c7ad0cef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png using Guid(5734db4e847703749b8423c7ad0cef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '998ad464a869cccc426a759b95c085ca') in 0.011986 seconds 
-  Import took 0.016766 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005240 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.840 seconds
+Domain Reload Profiling:
+	ReloadAssembly (841ms)
+		BeginReloadAssembly (109ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (31ms)
+		EndReloadAssembly (677ms)
+			LoadAssemblies (76ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (240ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (239ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (55ms)
+				ProcessInitializeOnLoadAttributes (164ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2202 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.4 MB.
 
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2676.
+Total: 3.319600 ms (FindLiveObjects: 0.212700 ms CreateObjectMapping: 0.061300 ms MarkObjects: 3.021500 ms  DeleteObjects: 0.022900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004341 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.847 seconds
+Domain Reload Profiling:
+	ReloadAssembly (848ms)
+		BeginReloadAssembly (102ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (33ms)
+		EndReloadAssembly (691ms)
+			LoadAssemblies (75ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (239ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (252ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (57ms)
+				ProcessInitializeOnLoadAttributes (175ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.69 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2202 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.4 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2678.
+Total: 3.359400 ms (FindLiveObjects: 0.234100 ms CreateObjectMapping: 0.057900 ms MarkObjects: 3.044700 ms  DeleteObjects: 0.021400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 38.051831 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png
-  artifactKey: Guid(5734db4e847703749b8423c7ad0cef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png using Guid(5734db4e847703749b8423c7ad0cef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9e7b26badd73b6214f386b6b7a5d5cc') in 0.286421 seconds 
-  Import took 0.292249 seconds .
+  Time since last request: 326.350912 seconds.
+  path: Assets/Scripts/GameOverScreen.cs
+  artifactKey: Guid(2eedd53c87d6d874db69e7247401b328) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/GameOverScreen.cs using Guid(2eedd53c87d6d874db69e7247401b328) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df19e25531a7ea73482638bbb7d3b113') in 0.005592 seconds 
+  Import took 0.009107 seconds .
 
 ========================================================================
-Received Import Request.
-  Time since last request: 91.586185 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)
-  artifactKey: Guid(0ec7feda792eff34fa0b3a783ec92e0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated) using Guid(0ec7feda792eff34fa0b3a783ec92e0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b41a9d0d553ccb1034897d76d68327af') in 0.012265 seconds 
-  Import took 0.022004 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004472 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.847 seconds
+Domain Reload Profiling:
+	ReloadAssembly (848ms)
+		BeginReloadAssembly (102ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (29ms)
+		EndReloadAssembly (691ms)
+			LoadAssemblies (77ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (235ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (37ms)
+			SetupLoadedEditorAssemblies (254ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (60ms)
+				ProcessInitializeOnLoadAttributes (172ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2202 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.4 MB.
 
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2680.
+Total: 2.940100 ms (FindLiveObjects: 0.204000 ms CreateObjectMapping: 0.076900 ms MarkObjects: 2.643700 ms  DeleteObjects: 0.014600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
-Received Import Request.
-  Time since last request: 1.797760 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld
-  artifactKey: Guid(09f6b91c18445d941a56988177757830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld using Guid(09f6b91c18445d941a56988177757830) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e6f482078f8bdf323e3f9938939f07b') in 0.009748 seconds 
-  Import took 0.013369 seconds .
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004221 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.825 seconds
+Domain Reload Profiling:
+	ReloadAssembly (825ms)
+		BeginReloadAssembly (104ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (30ms)
+		EndReloadAssembly (667ms)
+			LoadAssemblies (76ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (233ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (35ms)
+			SetupLoadedEditorAssemblies (238ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (54ms)
+				ProcessInitializeOnLoadAttributes (163ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2202 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 115.3 MB.
+System memory in use after: 115.5 MB.
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.093399 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/edge_water_tile_anim.gif
-  artifactKey: Guid(19276cd0d4a18964caba3ccb34f533f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/edge_water_tile_anim.gif using Guid(19276cd0d4a18964caba3ccb34f533f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ae0319f142c6e13fa0e94ba92ce1bfe') in 0.026066 seconds 
-  Import took 0.030848 seconds .
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 2682.
+Total: 3.554300 ms (FindLiveObjects: 0.202600 ms CreateObjectMapping: 0.085000 ms MarkObjects: 3.242100 ms  DeleteObjects: 0.023300 ms)
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000226 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/regia_waterplant_tile_anim_strip_8.png
-  artifactKey: Guid(c98a7bf3f1ee1754fbe73f09a8addd00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/regia_waterplant_tile_anim_strip_8.png using Guid(c98a7bf3f1ee1754fbe73f09a8addd00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07f8d06f676270f374db0ab6e673edfa') in 0.019638 seconds 
-  Import took 0.023572 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000177 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/waterplant_tile_anim.gif
-  artifactKey: Guid(15911d4d610185c4a9adb467dd7c08ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/waterplant_tile_anim.gif using Guid(15911d4d610185c4a9adb467dd7c08ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c565c45be1a6a650aed49a2816ce08d') in 0.020157 seconds 
-  Import took 0.023832 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000280 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/waterplant_tile_anim_strip_8.png
-  artifactKey: Guid(473ec7a4d3f0ff1418ad99a766117ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/waterplant_tile_anim_strip_8.png using Guid(473ec7a4d3f0ff1418ad99a766117ecb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc0f4cbb73fa00c314d5985a7afbdcf7') in 0.020368 seconds 
-  Import took 0.024305 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000201 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/edge_water_tile_anim_strip_8.png
-  artifactKey: Guid(ccbdadfca464fb44b9c2b8d70ab695d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/edge_water_tile_anim_strip_8.png using Guid(ccbdadfca464fb44b9c2b8d70ab695d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e89ab37af088e35992340f66ced02f77') in 0.018981 seconds 
-  Import took 0.022994 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000192 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/water_tile_anim.gif
-  artifactKey: Guid(bd860bb99967e464a8211b811b6c7ef8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/water_tile_anim.gif using Guid(bd860bb99967e464a8211b811b6c7ef8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ce49d4acf16e153f5b045cc89516777') in 0.017921 seconds 
-  Import took 0.021660 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000230 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/regia_waterplant_tile_anim.gif
-  artifactKey: Guid(dd9799a5f2755414b848b8e73ca39533) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/regia_waterplant_tile_anim.gif using Guid(dd9799a5f2755414b848b8e73ca39533) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5967d3c3970007ef4945bba538eaecd5') in 0.018752 seconds 
-  Import took 0.022675 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000238 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/water_tile_anim_strip_8.png
-  artifactKey: Guid(f65c6b45e02ffe74cb4e093f813f1ee8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Tiles_(animated)/Overworld/water_tile_anim_strip_8.png using Guid(f65c6b45e02ffe74cb4e093f813f1ee8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eeed0592e94fb67b357722ad6565d304') in 0.019633 seconds 
-  Import took 0.023661 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.771675 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui
-  artifactKey: Guid(b38bf9bdbb772ab41ad8c67035c2ccc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui using Guid(b38bf9bdbb772ab41ad8c67035c2ccc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea28bac50505aa1dbb9404124878f7af') in 0.013659 seconds 
-  Import took 0.022687 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.063675 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/health_bar_hud.png
-  artifactKey: Guid(38d7d1379be91c248b084f27b6301b7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/health_bar_hud.png using Guid(38d7d1379be91c248b084f27b6301b7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '345905ad0ffb66f0f2ba8b5974c3b5e7') in 0.037141 seconds 
-  Import took 0.047969 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000418 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/item_box_hud.png
-  artifactKey: Guid(f68216df41cef0d4aad4a1c077da503b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/item_box_hud.png using Guid(f68216df41cef0d4aad4a1c077da503b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '108bb6d419ef5a3a51714a306be01204') in 0.031696 seconds 
-  Import took 0.035689 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000283 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/health_hud.png
-  artifactKey: Guid(5f262153db0fa8944a345ea93aed3494) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/health_hud.png using Guid(5f262153db0fa8944a345ea93aed3494) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2818316721319d68cd7bf2e5fb377407') in 0.022543 seconds 
-  Import took 0.026921 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/select_icon_ui.png
-  artifactKey: Guid(22ee8ef92e894fd46b44d8c3f3da6357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Hud_Ui/select_icon_ui.png using Guid(22ee8ef92e894fd46b44d8c3f3da6357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f944de77f737cc3fae65c70d2cd469e') in 0.019707 seconds 
-  Import took 0.024126 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 34.733406 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/SampleScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24fdcda29e8ad4a3eb383c4be04a6e3c') in 0.018486 seconds 
-  Import took 0.028113 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 78.895189 seconds.
-  path: Assets/Scenes/dungeon.unity
-  artifactKey: Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/dungeon.unity using Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8921aa1c1317bbe2f38eed05ed469b5e') in 0.002905 seconds 
-  Import took 0.007689 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 233.536967 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_0.asset
-  artifactKey: Guid(040d56122dbe43b42bd25e9178887e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_0.asset using Guid(040d56122dbe43b42bd25e9178887e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3c3a91f6f9b708f587f3485d2c16add') in 0.037004 seconds 
-  Import took 0.041238 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000523 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_13.asset
-  artifactKey: Guid(2814584f65fbf164fa016a5cd9076993) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_13.asset using Guid(2814584f65fbf164fa016a5cd9076993) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91d2fe53db203bf9bab92289bbf5ed27') in 0.018114 seconds 
-  Import took 0.024127 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000356 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_15.asset
-  artifactKey: Guid(80580952192166541bf59fd875275e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_15.asset using Guid(80580952192166541bf59fd875275e93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3eb095398c48ee00a66127e6608dedc1') in 0.011525 seconds 
-  Import took 0.016140 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000248 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_3.asset
-  artifactKey: Guid(6543df53bec6d834ea6fd6bec78e015a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_3.asset using Guid(6543df53bec6d834ea6fd6bec78e015a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a466a319f62c06c719f297afdf277209') in 0.011884 seconds 
-  Import took 0.015755 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000280 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_11.asset
-  artifactKey: Guid(30340d025ea74454ab62dea435013d48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_11.asset using Guid(30340d025ea74454ab62dea435013d48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '936e3caf22c80693844d4b2fa7b4381e') in 0.010879 seconds 
-  Import took 0.015277 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000225 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_28.asset
-  artifactKey: Guid(9d25368be456bf340b25828eec45a42c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_28.asset using Guid(9d25368be456bf340b25828eec45a42c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4a5734f2d41500eff99205a5a431293') in 0.011497 seconds 
-  Import took 0.015111 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_5.asset
-  artifactKey: Guid(f14ea4c23cfcfa6459efe30d66ce8e8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_5.asset using Guid(f14ea4c23cfcfa6459efe30d66ce8e8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd561649a223feae3235f06db62fb492d') in 0.011447 seconds 
-  Import took 0.016483 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000198 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_4.asset
-  artifactKey: Guid(77fbfdbc5fe047d44935cfa30e1019fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_4.asset using Guid(77fbfdbc5fe047d44935cfa30e1019fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd5dfb7b7057b19609bc11f1f1fea661') in 0.010922 seconds 
-  Import took 0.015272 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000209 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_7.asset
-  artifactKey: Guid(6cede61dab8cddc40a044626fcdd5e29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_7.asset using Guid(6cede61dab8cddc40a044626fcdd5e29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b45012387097bf089967124b5bb9ea83') in 0.014657 seconds 
-  Import took 0.019152 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000224 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_22.asset
-  artifactKey: Guid(4e9746a440b713e46bc147835720665b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_22.asset using Guid(4e9746a440b713e46bc147835720665b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ac58af1c8303b79daf86b204aeeb18c') in 0.012391 seconds 
-  Import took 0.016964 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000505 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_10.asset
-  artifactKey: Guid(725d9e736ae474640b26feed0de25382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_10.asset using Guid(725d9e736ae474640b26feed0de25382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b9d51dd7b968f79a35de2f47aed8a2c') in 0.011684 seconds 
-  Import took 0.015238 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000192 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_27.asset
-  artifactKey: Guid(e4d682f974a6cd0478ccf28bf1e2b82c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_27.asset using Guid(e4d682f974a6cd0478ccf28bf1e2b82c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e22e053b26a3be0d5ef67dc6968d6c9') in 0.009755 seconds 
-  Import took 0.013809 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000187 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_14.asset
-  artifactKey: Guid(0d338b56d1335cc48ab50f3af63d30b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_14.asset using Guid(0d338b56d1335cc48ab50f3af63d30b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '201f0f9a9dc4d2d8c2f9a54073042528') in 0.011554 seconds 
-  Import took 0.015456 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000181 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_25.asset
-  artifactKey: Guid(8328124e232546448b3833269c35fd80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_25.asset using Guid(8328124e232546448b3833269c35fd80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7286cef7bcd349703592bc1062f2e23') in 0.012944 seconds 
-  Import took 0.017001 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_30.asset
-  artifactKey: Guid(09b1850acfb5e754eb1f4446783bd627) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_30.asset using Guid(09b1850acfb5e754eb1f4446783bd627) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '983febbe4408a60bded466508a756f59') in 0.011739 seconds 
-  Import took 0.015445 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_33.asset
-  artifactKey: Guid(d4747e9c9552a534daf53c406cdd6977) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_33.asset using Guid(d4747e9c9552a534daf53c406cdd6977) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c6b2db7da9bdf578a26257bf88c4779') in 0.012656 seconds 
-  Import took 0.016507 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000204 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_32.asset
-  artifactKey: Guid(c7ac2a8fa6d06c84aaab21f5e0d62850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_32.asset using Guid(c7ac2a8fa6d06c84aaab21f5e0d62850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6014601983d154f1d06c3ac7d51c94c') in 0.012255 seconds 
-  Import took 0.015881 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_2.asset
-  artifactKey: Guid(7777cb884a7498f428ca55b905ab3341) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_2.asset using Guid(7777cb884a7498f428ca55b905ab3341) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0243b8476f6548402216b44bf2237ce8') in 0.012958 seconds 
-  Import took 0.016477 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000205 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_18.asset
-  artifactKey: Guid(a5c8be26e03b58e469a8015a30b9278b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_18.asset using Guid(a5c8be26e03b58e469a8015a30b9278b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f87ee042427eb8bc207d31e25974e274') in 0.011470 seconds 
-  Import took 0.015596 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000189 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_16.asset
-  artifactKey: Guid(ce59b3e164e8ba443a3ff7b572cf94a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_16.asset using Guid(ce59b3e164e8ba443a3ff7b572cf94a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5eda2c01a0c9f74609438d4f8b48aad') in 0.010929 seconds 
-  Import took 0.013818 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000188 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_21.asset
-  artifactKey: Guid(3a90e7cdfa5e2414cb6cace5e212219b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_21.asset using Guid(3a90e7cdfa5e2414cb6cace5e212219b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db6460c8aa697825b85c1f79d2b8594d') in 0.012432 seconds 
-  Import took 0.016062 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000184 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_8.asset
-  artifactKey: Guid(d6d244278deeeb042adcc2348d66dbd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_8.asset using Guid(d6d244278deeeb042adcc2348d66dbd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b340dd45a37102be4fb7de4508bccac8') in 0.012356 seconds 
-  Import took 0.015656 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000211 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_20.asset
-  artifactKey: Guid(379f00696e447774bb6f2e08938c8c92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_20.asset using Guid(379f00696e447774bb6f2e08938c8c92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6749980aa381d6a37adebb5a1e7887cd') in 0.012394 seconds 
-  Import took 0.015806 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_19.asset
-  artifactKey: Guid(37fade88ae997884a941c22d4f014f72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_19.asset using Guid(37fade88ae997884a941c22d4f014f72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4de9305b752b91782d404610338ceb5') in 0.013112 seconds 
-  Import took 0.016383 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000157 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_24.asset
-  artifactKey: Guid(79e791c5afe80cc4fb53c2097b3a6d1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_24.asset using Guid(79e791c5afe80cc4fb53c2097b3a6d1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99fbc94ea869eea25d98c84cd96e9d6c') in 0.013432 seconds 
-  Import took 0.016661 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000199 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_31.asset
-  artifactKey: Guid(94e64c4e10bdfc2478b971f471d4d5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_31.asset using Guid(94e64c4e10bdfc2478b971f471d4d5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f2e44212782210cd7b0d2dac96b9bdd') in 0.012184 seconds 
-  Import took 0.015708 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000201 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_26.asset
-  artifactKey: Guid(8483657bb59c4314c848aff071ca0143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_26.asset using Guid(8483657bb59c4314c848aff071ca0143) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1622a682b8a04b797d413d58d9d12a09') in 0.013363 seconds 
-  Import took 0.017587 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000205 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_23.asset
-  artifactKey: Guid(200930a97f53b2b42bbfac3ad7bb1bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_23.asset using Guid(200930a97f53b2b42bbfac3ad7bb1bb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8dc8e65207679f8bb050d425cbd68c3e') in 0.012126 seconds 
-  Import took 0.015385 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_1.asset
-  artifactKey: Guid(86d07499686619b4e8442021f98e8b31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_1.asset using Guid(86d07499686619b4e8442021f98e8b31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ef2ea5cf6c505d8dbdf71b75b2274c4') in 0.012012 seconds 
-  Import took 0.014741 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000158 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_9.asset
-  artifactKey: Guid(be0bc87d65978ee409ec0a813ed78665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_9.asset using Guid(be0bc87d65978ee409ec0a813ed78665) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca22abf60654fa8fc441d6d96424f4e8') in 0.010958 seconds 
-  Import took 0.014309 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000180 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_6.asset
-  artifactKey: Guid(cfbd4b8772ae94842b7990ceb6a5c970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_6.asset using Guid(cfbd4b8772ae94842b7990ceb6a5c970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6aeffe689358d122670e2fc26d3a3497') in 0.011794 seconds 
-  Import took 0.015865 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000180 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_29.asset
-  artifactKey: Guid(4873d4f6c3dcac44cacd2b062f6d4864) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_29.asset using Guid(4873d4f6c3dcac44cacd2b062f6d4864) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb29d33a665bb872a0681b05fdb6f7bb') in 0.011450 seconds 
-  Import took 0.015374 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000170 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_36.asset
-  artifactKey: Guid(1b2e01c1bb9659742acdd949dcf8668d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_36.asset using Guid(1b2e01c1bb9659742acdd949dcf8668d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df284b80361053ad5bd5553bb46f81aa') in 0.012125 seconds 
-  Import took 0.016290 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_34.asset
-  artifactKey: Guid(a38cdc968e0b8e747b8cd9a048c4a3b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_34.asset using Guid(a38cdc968e0b8e747b8cd9a048c4a3b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d4eb4d97f2ac7230e5348d637818d84') in 0.010841 seconds 
-  Import took 0.015061 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000222 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_17.asset
-  artifactKey: Guid(ef1b867dd175d574c88150a40219bdd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_17.asset using Guid(ef1b867dd175d574c88150a40219bdd7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ae41650a92726f799e9e37ebf2f0408') in 0.011623 seconds 
-  Import took 0.015725 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_35.asset
-  artifactKey: Guid(424caa8573e4bf740b0d99d807c7460c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_35.asset using Guid(424caa8573e4bf740b0d99d807c7460c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64780a218152f20b7f3f8ccfe68e26f0') in 0.011939 seconds 
-  Import took 0.015336 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000204 seconds.
-  path: Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_12.asset
-  artifactKey: Guid(30306f8233bfaa84e85888b4fdc646fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Art/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset_12.asset using Guid(30306f8233bfaa84e85888b4fdc646fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42ac4fb13902bd8441e7435c36508aba') in 0.011180 seconds 
-  Import took 0.013979 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 337.093323 seconds.
-  path: Assets/Scenes/dungeon.unity
-  artifactKey: Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/dungeon.unity using Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2f965e1f28e1ccac3c38d75a9cd0454') in 0.004809 seconds 
-  Import took 0.012863 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 845.681985 seconds.
-  path: Assets/Scenes/dungeon.unity
-  artifactKey: Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/dungeon.unity using Guid(d86c082ab3c567e4088d463a5dea6da1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '071453868bf96d646b53fa1ca8bf55d7') in 0.006974 seconds 
-  Import took 0.015025 seconds .
-
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: e54d7ab0439102e2317fc1e4b246158d -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

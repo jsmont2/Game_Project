@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     public int health;
     public int numOfHearts;
+
+    public GameObject background;
+    public Text go;
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -39,7 +43,24 @@ public class Health : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
+
+        if (health != 0)
+        {
+            background.SetActive(false);
+        }
+        else
+        {
+            background.SetActive(true);
+            
+            
+        }
     }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene("overworld");
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
