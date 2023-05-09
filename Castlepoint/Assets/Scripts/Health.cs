@@ -18,14 +18,14 @@ public class Health : MonoBehaviour
 
     void Update()
     {
-        if(health > numOfHearts)
+        if (health > numOfHearts)
         {
             health = numOfHearts;
         }
 
         for (int i = 0; i < hearts.Length; i++)
         {
-            if(i < health)
+            if (i < health)
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
                 hearts[i].sprite = emptyHeart;
             }
 
-            if(i < numOfHearts)
+            if (i < numOfHearts)
             {
                 hearts[i].enabled = true;
             }
@@ -51,8 +51,8 @@ public class Health : MonoBehaviour
         else
         {
             background.SetActive(true);
-            
-            
+
+
         }
     }
 
@@ -64,18 +64,18 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag=="enemy")
+        if (collision.collider.tag == "enemy")
         {
-            health-=1;
+            health -= 1;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag=="heartUp")
+        if (other.tag == "heartUp")
         {
             other.gameObject.SetActive(false);
-            health+=1;
+            health += 1;
         }
     }
 }
