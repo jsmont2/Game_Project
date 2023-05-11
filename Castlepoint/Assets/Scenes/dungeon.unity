@@ -11368,8 +11368,8 @@ MonoBehaviour:
   baseAttack: 0
   moveSpeed: 2
   target: {fileID: 0}
-  chaseRadius: 2
-  attackRadius: 3
+  chaseRadius: 3
+  attackRadius: 0.2
   homePosition: {fileID: 0}
   anim: {fileID: 0}
 --- !u!50 &1131443996
@@ -11387,7 +11387,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -11630,16 +11630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a0d9fa9c4eac14f93182912e728fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  numOfHearts: 5
-  hearts:
-  - {fileID: 2112492231}
-  - {fileID: 394927529}
-  - {fileID: 1725269055}
-  - {fileID: 1293504806}
-  - {fileID: 1816200344}
-  fullHeart: {fileID: 4606908045521496030, guid: c2a4a2e5fcec50d4ebb5ea111259822a, type: 3}
-  emptyHeart: {fileID: -4195582761621981391, guid: c2a4a2e5fcec50d4ebb5ea111259822a, type: 3}
 --- !u!1 &1725269053
 GameObject:
   m_ObjectHideFlags: 0
