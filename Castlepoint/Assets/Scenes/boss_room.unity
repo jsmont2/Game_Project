@@ -10149,9 +10149,9 @@ GameObject:
   - component: {fileID: 727739186}
   - component: {fileID: 727739187}
   - component: {fileID: 727739189}
+  - component: {fileID: 727739188}
   - component: {fileID: 727739190}
   - component: {fileID: 727739191}
-  - component: {fileID: 727739188}
   m_Layer: 0
   m_Name: Golem
   m_TagString: enemy
@@ -10273,20 +10273,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 727739183}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b58b5f28a15eb74989ccea37578e608, type: 3}
+  m_Script: {fileID: 11500000, guid: 3774a80238c66b74098eb183c03933e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
   maxHealth: {fileID: 11400000, guid: 1bace0ee69a5fdd4b9680968dca6d626, type: 2}
-  health: 0
-  enemyName: geo
-  baseAttack: 0
-  moveSpeed: 2
-  target: {fileID: 0}
-  chaseRadius: 3
-  attackRadius: 0.7
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
+  health: 10
+  enemyName: Golem
+  baseAttack: 2
+  moveSpeed: 3
 --- !u!61 &727739189
 BoxCollider2D:
   m_ObjectHideFlags: 0
