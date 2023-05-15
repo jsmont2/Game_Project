@@ -10278,12 +10278,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   maxHealth: {fileID: 11400000, guid: 1bace0ee69a5fdd4b9680968dca6d626, type: 2}
-  health: 0
+  health: 10
   enemyName: geo
-  baseAttack: 0
+  baseAttack: 1
   moveSpeed: 2
   target: {fileID: 0}
-  chaseRadius: 3
+  chaseRadius: 5
   attackRadius: 0.7
   homePosition: {fileID: 0}
   anim: {fileID: 0}
@@ -10453,8 +10453,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1594300320}
   smoothing: 0.5
-  maxPosition: {x: 53.8428, y: 35.98708}
-  minPosition: {x: 39.12877, y: 26.00922}
+  maxPosition: {x: 50.27573, y: 35.98708}
+  minPosition: {x: 42.76123, y: 26.00922}
 --- !u!1001 &1594300319
 PrefabInstance:
   m_ObjectHideFlags: 0
