@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
             else
             {
                 hearts[i].sprite = emptyHeart;
+                
             }
 
             if (i < numOfHearts)
@@ -41,6 +42,7 @@ public class Health : MonoBehaviour
             else
             {
                 hearts[i].enabled = false;
+                
             }
         }
 
@@ -51,7 +53,7 @@ public class Health : MonoBehaviour
         else
         {
             background.SetActive(true);
-
+            SceneManager.LoadScene("game_over"); // loads game over
 
         }
     }
