@@ -10472,7 +10472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727739183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.94, y: 34.14, z: 0}
+  m_LocalPosition: {x: 49.34, y: 33.68, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10580,7 +10580,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2198971, y: 0.14437582}
+  m_Offset: {x: -0.23974831, y: 0.0021078587}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 1, y: 0.5}
@@ -10591,7 +10591,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1291115, y: 0.17124835}
+  m_Size: {x: 0.473201, y: 0.45578426}
   m_EdgeRadius: 0
 --- !u!114 &727739191
 MonoBehaviour:
@@ -10606,7 +10606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thrust: 1.5
-  knockTime: 0.2
+  knockTime: 3
   damage: 0
   anim: {fileID: 0}
 --- !u!1 &871673656
@@ -10913,6 +10913,22 @@ PrefabInstance:
     - target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764689201614554578, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
+      propertyPath: thrust
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764689201738901901, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
+      propertyPath: thrust
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764689202045151338, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
+      propertyPath: thrust
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4764689202121169541, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
+      propertyPath: thrust
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
