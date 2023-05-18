@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class golem_2 : boss // inherits everything from enemy script including mono behavior
+public class golem_2 : Enemy // inherits everything from enemy script including mono behavior
+                       //side note: I had to get the flashred function from Enemy so that's why I inherited from Enemy this time
 {
     private Rigidbody2D myRigidbody;
     public Transform target;

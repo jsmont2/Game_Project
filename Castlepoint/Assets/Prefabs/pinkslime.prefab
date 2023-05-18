@@ -172,9 +172,10 @@ MonoBehaviour:
   enemyName: Sui
   baseAttack: 1
   moveSpeed: 1.5
-  target: {fileID: 0}
+  sprite: {fileID: 1887091792688218625}
+  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 3.5
-  attackRadius: 0.7
+  attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
 --- !u!61 &1887091792688219135

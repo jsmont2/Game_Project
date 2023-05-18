@@ -10,6 +10,8 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     public float attackRadius;
     public Transform homePosition;
     public Animator anim;
+    
+   
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         CheckDistance();
     }
 
+    //Code of the enemy ai. triggers once the player is in range and then follows him, then stops if out of chase radius
     void CheckDistance()
     {
         if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
@@ -52,7 +55,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         anim.SetFloat("moveX", setVector.x);
         anim.SetFloat("moveY", setVector.y);
     }
-
+    //enemy animation movement depending on which direction it's moving relative to the player
     private void changeAnim(Vector2 direction)      //sets the animations for the enemy when it chases the player whether up and down or left or right
     {
         if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))

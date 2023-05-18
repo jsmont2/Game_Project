@@ -167,12 +167,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  maxHealth: {fileID: 11400000, guid: 96763e7892e611b4fa051eeebfc0b93d, type: 2}
-  health: 0
+  maxHealth: {fileID: 11400000, guid: 59f19ac08532dfe4bb302c175d758b9b, type: 2}
+  health: 4
   enemyName: Danny
-  baseAttack: 0
+  baseAttack: 2
   moveSpeed: 2
-  target: {fileID: 0}
+  sprite: {fileID: 7707476371563539818}
+  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 3
   attackRadius: 0.7
   homePosition: {fileID: 0}
