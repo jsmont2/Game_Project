@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    public int health;
-    public int numOfHearts;
+    public int health; // the current number of full hearts the player has
+    public int numOfHearts; //sets the max number of hearts the player should have
 
     public GameObject background;
     public Text go;
@@ -69,6 +69,8 @@ public class Health : MonoBehaviour
         if (collision.collider.tag == "enemy")
         {
             health -= 1;
+            /*new WaitForSeconds(0.5f);
+            health -= 1;            */                // trying to make the badguy hit him constantly
         }
     }
 

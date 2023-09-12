@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4764689201361685468}
   - component: {fileID: 4764689201361685469}
   - component: {fileID: 4764689201361685470}
+  - component: {fileID: -8167172753639860222}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -103,7 +104,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -197,6 +198,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50565815, y: 0.6558126}
   m_EdgeRadius: 0
+--- !u!114 &-8167172753639860222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764689201361685447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78de70199d5d074d95c97f1c0ea855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  numOfHearts: 3
+  background: {fileID: 0}
+  go: {fileID: 0}
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 4606908045521496030, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
+  emptyHeart: {fileID: -4195582761621981391, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
 --- !u!1 &4764689201614554591
 GameObject:
   m_ObjectHideFlags: 0
