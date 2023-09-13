@@ -80,6 +80,7 @@ public class Health : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             health += 1;
+
         }
     }
 }
