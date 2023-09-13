@@ -82,15 +82,21 @@ public class Health : MonoBehaviour
             /*new WaitForSeconds(0.5f);
             health -= 1;            */                // trying to make the badguy hit him constantly
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "heartUp")
+        if (collision.collider.tag == "heartUp")
         {
-            other.gameObject.SetActive(false);
+            collision.gameObject.SetActive(false);
             health += 1;
             heartSound.Play();
         }
     }
+
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.tag == "heartUp")
+    //    {
+    //        other.gameObject.SetActive(false);
+    //        health += 1;
+    //        heartSound.Play();
+    //    }
+    //}
 }
