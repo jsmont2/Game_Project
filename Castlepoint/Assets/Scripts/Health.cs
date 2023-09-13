@@ -16,6 +16,16 @@ public class Health : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    // For sound FX's
+    public AudioClip collisionSound;
+    private AudioSource heartSound;
+
+    private void Start()
+    {
+        heartSound = GetComponent<AudioSource>();
+        heartSound.clip = collisionSound;
+    }
+
     void Update()
     {
         if (health > numOfHearts)
@@ -80,7 +90,7 @@ public class Health : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             health += 1;
-
+            heartSound.Play();
         }
     }
 }
