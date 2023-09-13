@@ -1,21 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState //the state machine for the player
+/*public enum PlayerState //the state machine for the player
 {
     attack,
     walk,
     interact,
     stagger,
     idle
-}
+}*/
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : character
 {
-    public PlayerState currentState;
-    public float speed;
-    private Rigidbody2D rb;
+    //public PlayerState currentState;
+    //public float speed;
+    //private Rigidbody2D rb;
     private Vector3 change;
     private Animator animator;
 
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentState= PlayerState.walk;
+        currentState= characterState.walk;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX", 0);
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack && currentState != PlayerState.stagger)
+        if (Input.GetButtonDown("attack") && currentState != characterState.attack && currentState != characterState.stagger)
                 {
                     StartCoroutine(AttackCo());
                 }
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal"); //GetAxisRaw normalizes the movement so that with each digital press the speed goes to the correct value
         change.y = Input.GetAxisRaw("Vertical");
-        if (currentState == PlayerState.walk) 
+        if (currentState == characterState.walk) 
         {
             UpdateAnimationAndMove();
         }
@@ -53,11 +54,11 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator AttackCo()
     {
         animator.SetBool("attacking", true);
-        currentState = PlayerState.attack;
+        currentState = characterState.attack;
         yield return null;
         animator.SetBool("attacking", false);
         yield return new WaitForSeconds(.15f);
-        currentState = PlayerState.walk;
+        currentState = characterState.walk;
     }
     void UpdateAnimationAndMove() // Omar: Left off at part 3
     {
@@ -79,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime); //making change to change.normalized normalized the speed when moving the player diagonally
     }
 
-    public void Knock(float knockTime)
+    public void Knock(float knockTime)      // Knockback
     {
         StartCoroutine(KnockCo(knockTime));
     }
@@ -90,8 +91,8 @@ public class PlayerMovement : MonoBehaviour
         {
             yield return new WaitForSeconds(knockTime);
             rb.velocity = Vector2.zero;
-            currentState= PlayerState.idle;
-            rb.velocity =Vector2.zero;
+            currentState = characterState.idle;
+            rb.velocity = Vector2.zero;
         }
     }
 }

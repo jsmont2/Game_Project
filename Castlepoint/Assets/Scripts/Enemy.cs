@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyState{
+/*public enum characterState {
     idle, 
     walk,
     attack,
     stagger
-}
-public class Enemy : MonoBehaviour
+}*/
+public class Enemy : character
 {
-    public EnemyState currentState;
+    //public characterState currentState;
     public FloatValue maxHealth;
     public float health;
     public string enemyName;
@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    public void Knock(Rigidbody2D myRigidbody, float knockTime, float damage)
+    public void Knock(Rigidbody2D myRigidbody, float knockTime, float damage) // Knockback
     {
         StartCoroutine(KnockCo(myRigidbody,knockTime));
         TakeDamage(damage);
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(knockTime);
             myRigidbody.velocity = Vector2.zero;
-            myRigidbody.GetComponent<Enemy>().currentState= EnemyState.idle;
+            myRigidbody.GetComponent<Enemy>().currentState= characterState.idle;
             myRigidbody.velocity = Vector2.zero;
         }
     }

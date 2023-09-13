@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class phantom : Enemy // inherits everything from enemy script including mono behavior
 {
-    private Rigidbody2D myRigidbody;
+    //private Rigidbody2D myRigidbody;
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
@@ -14,8 +14,8 @@ public class phantom : Enemy // inherits everything from enemy script including 
     // Start is called before the first frame update
     void Start()
     {
-        currentState = EnemyState.idle;
-        myRigidbody = GetComponent<Rigidbody2D>();
+        currentState = characterState.idle;
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;    //allows the enemy to find the player and chase him
         
@@ -31,14 +31,14 @@ public class phantom : Enemy // inherits everything from enemy script including 
     {
         if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
         {
-            if (currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger )
+            if (currentState == characterState.idle || currentState == characterState.walk && currentState != characterState.stagger )
             {
             Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
              changeAnim(temp - transform.position);
-             myRigidbody.MovePosition(temp);
+             rb.MovePosition(temp);
 
-            ChangeState(EnemyState.walk);
+            ChangeState(characterState.walk);
                 anim.SetBool("wakeUp", true);
             }
         }   else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
@@ -78,7 +78,7 @@ public class phantom : Enemy // inherits everything from enemy script including 
         }
     }
 
-    private void ChangeState(EnemyState newState)
+    private void ChangeState(characterState newState)
     {
         if(currentState != newState)
         {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum enemystate
+/*public enum characterState
 {
     idle,
     walk,
     attack,
     stagger
-}
-public class boss : MonoBehaviour
+}*/
+public class boss : character
 {
-    public EnemyState currentState;
+    //public characterState currentState;
     public FloatValue maxHealth;
     public float health;
     public string enemyName;
@@ -47,7 +47,7 @@ public class boss : MonoBehaviour
         {
             yield return new WaitForSeconds(knockTime);
             myRigidbody.velocity = Vector2.zero;
-            myRigidbody.GetComponent<Enemy>().currentState = EnemyState.idle;
+            myRigidbody.GetComponent<Enemy>().currentState = characterState.idle;
             myRigidbody.velocity = Vector2.zero;
         }
     }
