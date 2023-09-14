@@ -11,14 +11,15 @@ using UnityEngine;
 public class Enemy : character
 {
     //public characterState currentState;
-    public FloatValue maxHealth;
-    public float health;
-    public string enemyName;
-    public int baseAttack;
-    public float moveSpeed;
-    public SpriteRenderer sprite;
-    //public Animator hitAnim; //tried to set the animation for when the enemy gets hit
-    private float knockTime = 0.5f;
+    //public FloatValue maxHealth;
+    //public float health;
+    //public string enemyName;
+    //public int baseAttack;
+    //public float moveSpeed;
+    //public SpriteRenderer sprite;
+    ////public Animator hitAnim; //tried to set the animation for when the enemy gets hit
+    //private float knockTime = 0.5f;
+    
 
     //code that makes the enemies flash red when hit
     public IEnumerator FlashRed()
@@ -30,7 +31,7 @@ public class Enemy : character
 
     void OnCollisionEnter2D(Collision2D collision)  // Knockback
     {
-        if (collision.gameObject.CompareTag("hurtBox"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerMovement>().Knock(knockTime);
         }
@@ -40,49 +41,25 @@ public class Enemy : character
     {
         if (other.gameObject.tag == "sword")
         {
+            Debug.Log("hit");
             StartCoroutine(FlashRed());
+            Knock(other.transform);
             //hitAnim = GetComponent<Animator>();
             //hitAnim.SetBool("hit", true); // tried to set the animation for when the enemy gets hit
             //hitAnim.SetBool("hit", false);
         }
-
     }
 
 
     private void Awake()
     {
-        health = maxHealth.initialValue;
+        
+
+        objType = objectType.character;
+       
     }
     
-    private void TakeDamage(float damage)
-    {
-        health -= damage;
-        if (health > 0)
-        {
-            
-        }
-        if (health <= 0)
-        {
-            
-            this.gameObject.SetActive(false);
-        }
-    }
     
-    public void Knock(Rigidbody2D myRigidbody, float knockTime, float damage) // Knockback
-    {
-        StartCoroutine(KnockCo(myRigidbody,knockTime));
-        TakeDamage(damage);
-    }
-
-
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime) 
-    {
-        if (myRigidbody != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
-            myRigidbody.GetComponent<Enemy>().currentState= characterState.idle;
-            myRigidbody.velocity = Vector2.zero;
-        }
-    }
+    
+    
 }

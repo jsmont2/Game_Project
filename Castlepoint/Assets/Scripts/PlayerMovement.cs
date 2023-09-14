@@ -19,6 +19,7 @@ public class PlayerMovement : character
     //private Rigidbody2D rb;
     private Vector3 change;
     private Animator animator;
+    
 
 
     // Start is called before the first frame update
@@ -41,13 +42,36 @@ public class PlayerMovement : character
     // Update is called once per frame
     void FixedUpdate() //changed Update to FixedUpdate to fix jitter bug
     {
-        change = Vector3.zero;
-        change.x = Input.GetAxisRaw("Horizontal"); //GetAxisRaw normalizes the movement so that with each digital press the speed goes to the correct value
-        change.y = Input.GetAxisRaw("Vertical");
-        if (currentState == characterState.walk) 
+       
+            change = Vector3.zero;
+            change.x = Input.GetAxisRaw("Horizontal"); //GetAxisRaw normalizes the movement so that with each digital press the speed goes to the correct value
+            change.y = Input.GetAxisRaw("Vertical");
+            if (currentState == characterState.walk) 
+            {
+                UpdateAnimationAndMove();
+            }
+
+         
+
+    }
+    void UpdateAnimationAndMove() 
+    {
+        if (change != Vector3.zero)
         {
-            UpdateAnimationAndMove();
-        }
+            MoveCharacter();    
+            animator.SetFloat("moveX", change.x);
+            animator.SetFloat("moveY", change.y);
+            animator.SetBool("moving",true);
+
+        }else
+        {
+            animator.SetBool("moving",false);
+        }        
+    }
+    void MoveCharacter() //function that moves player
+    {
+        //making change to change.normalized normalized the speed when moving the player diagonally
+        rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime); 
     }
    
 
@@ -60,32 +84,14 @@ public class PlayerMovement : character
         yield return new WaitForSeconds(.15f);
         currentState = characterState.walk;
     }
-    void UpdateAnimationAndMove() // Omar: Left off at part 3
-    {
-        if (change != Vector3.zero)
-        {
-            MoveCharacter();    //Joel: left off at part 2
-            animator.SetFloat("moveX", change.x);
-            animator.SetFloat("moveY", change.y);
-            animator.SetBool("moving",true);
 
-        }else
-        {
-            animator.SetBool("moving",false);
-        }        
-    }
-
-    void MoveCharacter() //function that moves player
-    {
-        rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime); //making change to change.normalized normalized the speed when moving the player diagonally
-    }
 
     public void Knock(float knockTime)      // Knockback
     {
         StartCoroutine(KnockCo(knockTime));
     }
 
-    private IEnumerator KnockCo(float knockTime)
+    public IEnumerator KnockCo(float knockTime)
     {
         if(rb != null)
         {

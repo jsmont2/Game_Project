@@ -78,9 +78,9 @@ public class Health : MonoBehaviour
     {
         if (collision.collider.tag == "enemy")
         {
+            // lose 1 heart if colliding with enemy
             health -= 1;
-            /*new WaitForSeconds(0.5f);
-            health -= 1;            */                // trying to make the badguy hit him constantly
+            
         }
         if (collision.collider.tag == "heartUp")
         {
@@ -90,7 +90,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D other)
+    //private void OnTriggerEnter2D(Collider2D other) // Moved the heartUp to the OnCollisionEnter2D above
     //{
     //    if (other.tag == "heartUp")
     //    {
