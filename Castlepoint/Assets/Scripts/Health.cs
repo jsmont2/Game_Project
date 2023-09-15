@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Health : MonoBehaviour
+public class Health : character
 {
-    public int health; // the current number of full hearts the player has
+    //public int health; // the current number of full hearts the player has
+    // health already in character script
     public int numOfHearts; //sets the max number of hearts the player should have
 
     public GameObject background;
@@ -79,24 +80,25 @@ public class Health : MonoBehaviour
         if (collision.collider.tag == "enemy")
         {
             // lose 1 heart if colliding with enemy
+            Debug.Log("Took dmg");
             health -= 1;
+            this.Knock(collision.transform, collision.gameObject.GetComponent<character>().getThrust(), collision.gameObject.GetComponent<character>().getknockTime());
             
         }
-        if (collision.collider.tag == "heartUp")
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
+    {
+        Debug.Log("A trigger happened");
+        if (other.tag == "heartUp" && health != maxHealth)
         {
-            collision.gameObject.SetActive(false);
+            Debug.Log("Picked up heart");
+            other.gameObject.SetActive(false);
             health += 1;
             heartSound.Play();
         }
-    }
 
-    //private void OnTriggerEnter2D(Collider2D other) // Moved the heartUp to the OnCollisionEnter2D above
-    //{
-    //    if (other.tag == "heartUp")
-    //    {
-    //        other.gameObject.SetActive(false);
-    //        health += 1;
-    //        heartSound.Play();
-    //    }
-    //}
+
+    }
 }

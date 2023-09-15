@@ -33,55 +33,51 @@ public class character : MonoBehaviour
     public float moveSpeed;
     public SpriteRenderer sprite;
     //public Animator hitAnim; //tried to set the animation for when the enemy gets hit
-    protected float knockTime = 0.5f;
+    public float knockTime;
     public float thrust;
     public float damage;
     public GameObject thisObject;
 
-    public void Knock(Transform other) // Knockback
+    public void Knock(Transform other, float force, float kt) // Knockback
     {
             Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
             Vector2 difference = hit.transform.position - other.position;
-            difference = difference.normalized * thrust;
+            difference = difference.normalized * force;
             hit.AddForce(difference, ForceMode2D.Impulse);
 
             if (hit != null)
             {
-                if (this.gameObject.CompareTag("enemy"))
-                {
+                
+                
 
-                    hit.GetComponent<character>().currentState = characterState.stagger;
-                    this.GetComponent<character>().KnockCo(hit, knockTime);
+                    StartCoroutine(KnockCo(hit, kt));
+                    
                     //anim.SetTrigger("hit");
-                }
-                if (this.gameObject.CompareTag("Player"))
-                {
-
-                    hit.GetComponent<PlayerMovement>().currentState = characterState.stagger;
-                    this.GetComponent<PlayerMovement>().Knock(knockTime);
-                }
+                
+                
             }
+            
 
-            StartCoroutine(KnockCo(hit, knockTime));
-            TakeDamage(damage);
+            
      
     }
 
 
-    private IEnumerator KnockCo(Rigidbody2D myRigidbody, float knockTime)
+    private IEnumerator KnockCo(Rigidbody2D rb, float kt)
     {
-        if (myRigidbody != null)
+        if (rb != null)
         {
-            yield return new WaitForSeconds(knockTime);
-            myRigidbody.velocity = Vector2.zero;
-            myRigidbody.GetComponent<Enemy>().currentState = characterState.idle;
-            myRigidbody.velocity = Vector2.zero;
+            rb.GetComponent<character>().currentState = characterState.stagger;
+            yield return new WaitForSeconds(kt);
+            rb.velocity = Vector2.zero;
+            rb.GetComponent<character>().currentState = characterState.idle;
+            rb.velocity = Vector2.zero;
         }
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float dmg)
     {
-        health -= damage;
+        health -= dmg;
         if (health > 0)
         {
 
@@ -93,6 +89,15 @@ public class character : MonoBehaviour
         }
     }
 
+    public float getDmg()
+    {
+        return damage;
+    }
+
+    public float getThrust()
+    {
+        return thrust;
+    }
 
 
     // Start is called before the first frame update
@@ -112,5 +117,9 @@ public class character : MonoBehaviour
         return objType;
     }
 
+    public float getknockTime()
+    {
+        return knockTime;
+    }
 
 }

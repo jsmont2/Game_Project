@@ -20,12 +20,12 @@ public class PlayerMovement : character
     private Vector3 change;
     private Animator animator;
     
-
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState= characterState.walk;
+        currentState= characterState.idle;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX", 0);
@@ -42,16 +42,17 @@ public class PlayerMovement : character
     // Update is called once per frame
     void FixedUpdate() //changed Update to FixedUpdate to fix jitter bug
     {
-       
+        if (currentState != characterState.stagger)
+        {
             change = Vector3.zero;
             change.x = Input.GetAxisRaw("Horizontal"); //GetAxisRaw normalizes the movement so that with each digital press the speed goes to the correct value
             change.y = Input.GetAxisRaw("Vertical");
-            if (currentState == characterState.walk) 
+            if (currentState == characterState.idle || currentState == characterState.walk)
             {
                 UpdateAnimationAndMove();
             }
 
-         
+        }  
 
     }
     void UpdateAnimationAndMove() 
@@ -85,20 +86,22 @@ public class PlayerMovement : character
         currentState = characterState.walk;
     }
 
+    
 
-    public void Knock(float knockTime)      // Knockback
-    {
-        StartCoroutine(KnockCo(knockTime));
-    }
 
-    public IEnumerator KnockCo(float knockTime)
-    {
-        if(rb != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            rb.velocity = Vector2.zero;
-            currentState = characterState.idle;
-            rb.velocity = Vector2.zero;
-        }
-    }
+    //public void Knock(float knockTime)      // Knockback
+    //{
+    //    StartCoroutine(KnockCo(knockTime));
+    //}
+
+    //public IEnumerator KnockCo(float knockTime)
+    //{
+    //    if(rb != null)
+    //    {
+    //        yield return new WaitForSeconds(knockTime);
+    //        rb.velocity = Vector2.zero;
+    //        currentState = characterState.idle;
+    //        rb.velocity = Vector2.zero;
+    //    }
+    //}
 }

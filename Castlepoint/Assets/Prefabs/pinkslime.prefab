@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1887091792688218627}
   - component: {fileID: 1887091792688219132}
   - component: {fileID: 1887091792688218626}
-  - component: {fileID: 1887091792688219135}
   - component: {fileID: 1887091792688219134}
   m_Layer: 0
   m_Name: pinkslime
@@ -176,40 +175,15 @@ MonoBehaviour:
   baseAttack: 1
   moveSpeed: 1.5
   sprite: {fileID: 1887091792688218625}
-  thrust: 0
-  damage: 0
+  knockTime: 0
+  thrust: 1.5
+  damage: 1
   thisObject: {fileID: 1887091792688218631}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 3.5
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
---- !u!61 &1887091792688219135
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887091792688218631}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00085815974, y: -0.0029283687}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.14, y: 0.13}
-    newSize: {x: 0.14, y: 0.13}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12169893, y: 0.12414326}
-  m_EdgeRadius: 0
 --- !u!114 &1887091792688219134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +206,7 @@ MonoBehaviour:
   baseAttack: 0
   moveSpeed: 0
   sprite: {fileID: 0}
+  knockTime: 0
   thrust: 1
   damage: 0
-  thisObject: {fileID: 0}
+  thisObject: {fileID: 1887091792688218631}
