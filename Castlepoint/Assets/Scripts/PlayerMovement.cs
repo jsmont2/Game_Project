@@ -18,7 +18,6 @@ public class PlayerMovement : character
     //public float speed;
     //private Rigidbody2D rb;
     private Vector3 change;
-    private Animator animator;
     
     
 

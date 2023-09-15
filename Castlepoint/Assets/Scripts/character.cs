@@ -10,22 +10,22 @@ public class character : MonoBehaviour
     {
         idle,
         walk,
-        attack, 
+        attack,
         stagger,
         interact
     }
 
-    public enum objectType
+    public enum characterType
     {
-        character,
-        chest
+        player,
+        enemy
     }
 
-
+    public GameObject heartForEnemy;
     public characterState currentState;
     public float speed;
     public Rigidbody2D rb;
-    public objectType objType;
+    public characterType charType;
     public float maxHealth;
     public float health;
     public string enemyName;
@@ -37,29 +37,18 @@ public class character : MonoBehaviour
     public float thrust;
     public float damage;
     public GameObject thisObject;
+	public Animator animator;
 
-    public void Knock(Transform other, float force, float kt) // Knockback
+	public void Knock(Transform other, float force, float kt) // Knockback
     {
-            Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
-            Vector2 difference = hit.transform.position - other.position;
-            difference = difference.normalized * force;
-            hit.AddForce(difference, ForceMode2D.Impulse);
-
-            if (hit != null)
-            {
-                
-                
-
-                    StartCoroutine(KnockCo(hit, kt));
-                    
-                    //anim.SetTrigger("hit");
-                
-                
-            }
-            
-
-            
-     
+        Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
+        Vector2 difference = hit.transform.position - other.position;
+        difference = difference.normalized * force;
+        hit.AddForce(difference, ForceMode2D.Impulse);
+        if (hit != null)
+        {
+            StartCoroutine(KnockCo(hit, kt));
+        }
     }
 
 
@@ -68,8 +57,10 @@ public class character : MonoBehaviour
         if (rb != null)
         {
             rb.GetComponent<character>().currentState = characterState.stagger;
+            animator.SetBool("hit", true);
             yield return new WaitForSeconds(kt);
-            rb.velocity = Vector2.zero;
+			animator.SetBool("hit", false);
+			rb.velocity = Vector2.zero;
             rb.GetComponent<character>().currentState = characterState.idle;
             rb.velocity = Vector2.zero;
         }
@@ -78,13 +69,16 @@ public class character : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         health -= dmg;
-        if (health > 0)
-        {
-
-        }
         if (health <= 0)
         {
-
+            if(this.charType == characterType.enemy)
+            {
+                int newRand = Random.Range(1, 11);
+                if (newRand == 2)
+                {
+                    Instantiate(heartForEnemy, transform.position, Quaternion.identity);
+                }
+            }
             this.gameObject.SetActive(false);
         }
     }
@@ -103,20 +97,14 @@ public class character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
-    public objectType GetType()
-    {
-        return objType;
     }
-
     public float getknockTime()
     {
         return knockTime;

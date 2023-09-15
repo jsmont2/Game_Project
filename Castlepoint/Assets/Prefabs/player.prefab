@@ -518,7 +518,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4764689201614554576}
   - component: {fileID: 4764689201614554577}
-  - component: {fileID: 4764689201614554578}
   - component: {fileID: 914593309}
   m_Layer: 0
   m_Name: 'left hit box   '
@@ -577,32 +576,6 @@ PolygonCollider2D:
       - {x: 0.41883847, y: -0.93572736}
       - {x: 0.062088788, y: -0.3800942}
       - {x: 0.092243314, y: 0.62227285}
---- !u!114 &4764689201614554578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4764689201614554591}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d7a94fbf942244ebdd542ee451f1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  speed: 0
-  rb: {fileID: 0}
-  objType: 0
-  maxHealth: 0
-  health: 0
-  enemyName: 
-  baseAttack: 0
-  moveSpeed: 0
-  sprite: {fileID: 0}
-  knockTime: 0.4
-  thrust: 1.5
-  damage: 1
-  thisObject: {fileID: 0}
 --- !u!82 &914593309
 AudioSource:
   m_ObjectHideFlags: 0
@@ -709,7 +682,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4764689201738901899}
   - component: {fileID: 4764689201738901900}
-  - component: {fileID: 4764689201738901901}
   - component: {fileID: 860091161}
   m_Layer: 0
   m_Name: 'up hit box  '
@@ -768,32 +740,6 @@ PolygonCollider2D:
       - {x: 0.3836412, y: -0.073394}
       - {x: 0.97369814, y: -0.11611459}
       - {x: 0.82434654, y: 0.5272403}
---- !u!114 &4764689201738901901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4764689201738901898}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d7a94fbf942244ebdd542ee451f1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  speed: 0
-  rb: {fileID: 0}
-  objType: 0
-  maxHealth: 0
-  health: 0
-  enemyName: 
-  baseAttack: 0
-  moveSpeed: 0
-  sprite: {fileID: 0}
-  knockTime: 0.4
-  thrust: 1.5
-  damage: 1
-  thisObject: {fileID: 0}
 --- !u!82 &860091161
 AudioSource:
   m_ObjectHideFlags: 0
@@ -900,7 +846,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4764689202045151336}
   - component: {fileID: 4764689202045151337}
-  - component: {fileID: 4764689202045151338}
   - component: {fileID: 579522193}
   m_Layer: 0
   m_Name: 'right hit box '
@@ -956,32 +901,6 @@ PolygonCollider2D:
       - {x: 0.58074594, y: -0.67526734}
       - {x: 0.62876487, y: -0.2745024}
       - {x: 0.6378008, y: 0.31253684}
---- !u!114 &4764689202045151338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4764689202045151383}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d7a94fbf942244ebdd542ee451f1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  speed: 0
-  rb: {fileID: 0}
-  objType: 0
-  maxHealth: 0
-  health: 0
-  enemyName: 
-  baseAttack: 0
-  moveSpeed: 0
-  sprite: {fileID: 0}
-  knockTime: 0.4
-  thrust: 1.5
-  damage: 1
-  thisObject: {fileID: 0}
 --- !u!82 &579522193
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1088,7 +1007,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4764689202121169539}
   - component: {fileID: 4764689202121169540}
-  - component: {fileID: 4764689202121169541}
   - component: {fileID: 407476347}
   m_Layer: 0
   m_Name: down hit box
@@ -1143,32 +1061,6 @@ PolygonCollider2D:
       - {x: 0.58074594, y: -0.67526734}
       - {x: 0.88922465, y: -0.29210097}
       - {x: 0.9510565, y: 0.30901712}
---- !u!114 &4764689202121169541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4764689202121169538}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0d7a94fbf942244ebdd542ee451f1ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  speed: 0
-  rb: {fileID: 0}
-  objType: 0
-  maxHealth: 0
-  health: 0
-  enemyName: 
-  baseAttack: 0
-  moveSpeed: 0
-  sprite: {fileID: 0}
-  knockTime: 0.4
-  thrust: 1.5
-  damage: 1
-  thisObject: {fileID: 0}
 --- !u!82 &407476347
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,7 +1,19 @@
 fileFormatVersion: 2
 guid: b91095b8a8e34714b946ff850ebaff52
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 6036434327447702199
+    second: phantom_hit_anim_right_strip_4_0
+  - first:
+      213: -8691399243506413679
+    second: phantom_hit_anim_right_strip_4_1
+  - first:
+      213: -6104648301579745338
+    second: phantom_hit_anim_right_strip_4_2
+  - first:
+      213: 1387682208460951808
+    second: phantom_hit_anim_right_strip_4_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -101,7 +113,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: phantom_hit_anim_right_strip_4_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ba8e75d909b5c350800000000000000
+      internalID: 6036434327447702199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phantom_hit_anim_right_strip_4_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f83b1ef62f16780800000000000000
+      internalID: -8691399243506413679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phantom_hit_anim_right_strip_4_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c7c5a9a6bee74ba0800000000000000
+      internalID: -6104648301579745338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: phantom_hit_anim_right_strip_4_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 001d178cd99024310800000000000000
+      internalID: 1387682208460951808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

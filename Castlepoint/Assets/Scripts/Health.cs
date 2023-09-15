@@ -25,7 +25,8 @@ public class Health : character
     {
         heartSound = GetComponent<AudioSource>();
         heartSound.clip = collisionSound;
-    }
+		animator = GetComponent<Animator>();
+	}
 
     void Update()
     {
@@ -81,7 +82,7 @@ public class Health : character
         {
             // lose 1 heart if colliding with enemy
             Debug.Log("Took dmg");
-            health -= 1;
+            TakeDamage(collision.gameObject.GetComponent<character>().getDmg());
             this.Knock(collision.transform, collision.gameObject.GetComponent<character>().getThrust(), collision.gameObject.GetComponent<character>().getknockTime());
             
         }

@@ -46,7 +46,10 @@ public class phantom : Enemy // inherits everything from enemy script including 
             anim.SetBool("wakeUp", false);
             }
     }
+    private void Staggared()
+    {
 
+    }
     private void SetAnimFloat(Vector2 setVector)    
     {
         anim.SetFloat("moveX", setVector.x);
