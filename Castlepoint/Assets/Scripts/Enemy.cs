@@ -35,7 +35,7 @@ public class Enemy : character
         {
             Debug.Log("knock");
             GameObject temp = collision.gameObject;
-            //temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());
+            temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());
             
         }
     }

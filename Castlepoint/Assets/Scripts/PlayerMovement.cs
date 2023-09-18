@@ -1,8 +1,15 @@
+using System.Collections.Specialized;
+//using System.Runtime.Intrinsics; 
+using System.Numerics;
+//using System.Threading.Tasks.Dataflow;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Vector3 = UnityEngine.Vector3;
+using Vector2 = UnityEngine.Vector2;
+using Quaternion = UnityEngine.Quaternion;
 /*public enum PlayerState //the state machine for the player
 {
     attack,
@@ -19,7 +26,7 @@ public class PlayerMovement : character
     //private Rigidbody2D rb;
     private Vector3 change;
     private Animator animator;
-    
+    public GameObject projectile;
     
 
     // Start is called before the first frame update
@@ -37,6 +44,8 @@ public class PlayerMovement : character
                 {
                     StartCoroutine(AttackCo());
                 }
+                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)
+                {StartCoroutine(SecondAttackCo());}
     }
 
     // Update is called once per frame
@@ -85,9 +94,31 @@ public class PlayerMovement : character
         yield return new WaitForSeconds(.15f);
         currentState = characterState.walk;
     }
-
+   
     
+    private IEnumerator SecondAttackCo()
+    {
+        animator.SetBool("attacking", true);
+        currentState = characterState.attack;
+        yield return null;
+        MakeArrow();
+        animator.SetBool("attacking", false);
+        yield return new WaitForSeconds(.15f);
+        currentState = characterState.walk;
+    }
 
+    private void MakeArrow()
+    {
+        Vector2 temp = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        Arrow arrow = Instantiate(projectile, transform.position,Quaternion.identity).GetComponent<Arrow>();
+        arrow.Setup(temp, ChooseArrowDirection());
+    }
+
+    Vector3 ChooseArrowDirection()
+    {
+        float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX"))* Mathf.Rad2Deg;
+        return new Vector3(0, 0, temp);
+    }
 
     //public void Knock(float knockTime)      // Knockback
     //{
