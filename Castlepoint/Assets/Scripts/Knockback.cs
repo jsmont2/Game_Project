@@ -34,8 +34,8 @@ public class Knockback : character
         //        if (other.gameObject.CompareTag("Player"))
         //        {
 
-        //            hit.GetComponent<PlayerMovement>().currentState = characterState.stagger;
-        //            other.GetComponent<PlayerMovement>().Knock(knockTime);
+        //            hit.GetComponent<PlayerController>().currentState = characterState.stagger;
+        //            other.GetComponent<PlayerController>().Knock(knockTime);
         //        }
         //    }
         //}

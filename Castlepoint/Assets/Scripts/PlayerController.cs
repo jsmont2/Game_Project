@@ -19,12 +19,12 @@ using Quaternion = UnityEngine.Quaternion;
     idle
 }*/
 
-public class PlayerMovement : character
+public class PlayerController : character
 {
     //public PlayerState currentState;
     //public float speed;
     //private Rigidbody2D rb;
-    private Vector3 change;
+    private Vector3 move;
     private Animator animator;
     public GameObject projectile;
     
@@ -44,8 +44,11 @@ public class PlayerMovement : character
                 {
                     StartCoroutine(AttackCo());
                 }
+
                 else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)
-                {StartCoroutine(SecondAttackCo());}
+                {
+                    StartCoroutine(SecondAttackCo());
+                }
     }
 
     // Update is called once per frame
@@ -53,9 +56,9 @@ public class PlayerMovement : character
     {
         if (currentState != characterState.stagger)
         {
-            change = Vector3.zero;
-            change.x = Input.GetAxisRaw("Horizontal"); //GetAxisRaw normalizes the movement so that with each digital press the speed goes to the correct value
-            change.y = Input.GetAxisRaw("Vertical");
+            move = Vector3.zero;
+            move.x = Input.GetAxisRaw("Horizontal"); //GetAxisRaw normalizes the movement so that with each digital press the speed goes to the correct value
+            move.y = Input.GetAxisRaw("Vertical");
             if (currentState == characterState.idle || currentState == characterState.walk)
             {
                 UpdateAnimationAndMove();
@@ -66,22 +69,23 @@ public class PlayerMovement : character
     }
     void UpdateAnimationAndMove() 
     {
-        if (change != Vector3.zero)
+        if (move != Vector3.zero)
         {
             MoveCharacter();    
-            animator.SetFloat("moveX", change.x);
-            animator.SetFloat("moveY", change.y);
+            animator.SetFloat("moveX", move.x);
+            animator.SetFloat("moveY", move.y);
             animator.SetBool("moving",true);
 
         }else
         {
             animator.SetBool("moving",false);
+
         }        
     }
     void MoveCharacter() //function that moves player
     {
         //making change to change.normalized normalized the speed when moving the player diagonally
-        rb.MovePosition(transform.position + change.normalized * speed * Time.deltaTime); 
+        rb.MovePosition(transform.position + move.normalized * speed * Time.deltaTime); 
     }
    
 

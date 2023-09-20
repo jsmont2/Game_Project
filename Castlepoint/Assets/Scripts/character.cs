@@ -112,7 +112,7 @@ public class character : MonoBehaviour
         
     }
 
-    public objectType GetType()
+    public new objectType GetType()
     {
         return objType;
     }
