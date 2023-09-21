@@ -12,7 +12,7 @@ public class Room : MonoBehaviour
 	{
 		public class RoomConnection
 		{
-			public RoomConnection(){}
+			public RoomConnection() { }
 			public RoomConnection(Room origin, Room destination)//constructor
 			{
 				this.origin = origin;//sets origin = to variable passed in as origin
@@ -73,22 +73,65 @@ public class Room : MonoBehaviour
 		/// </summary>
 		/// <param name="room"></param>
 		public void SetRoomRight(Room room) { roomRight = room; }
-		public Room GetRoomAbove(){return roomAbove;}
-		public Room GetRoomBelow(){return roomBelow;}
-		public Room GetRoomLeft(){return roomLeft;}
-		public Room GetRoomRight(){return roomRight;}
+		public Room GetRoomAbove() { return roomAbove; }
+		public Room GetRoomBelow() { return roomBelow; }
+		public Room GetRoomLeft() { return roomLeft; }
+		public Room GetRoomRight() { return roomRight; }
 		public void SetConnectionAbove(Room origin, Room destination)
 		{ connectionAbove = new RoomConnection(origin, destination); }
 		public void SetConnectionBelow(Room origin, Room destination)
 		{ connectionBelow = new RoomConnection(origin, destination); }
 		public void SetConnectionLeft(Room origin, Room destination)
-		{connectionLeft = new RoomConnection(origin, destination); }
+		{ connectionLeft = new RoomConnection(origin, destination); }
 		public void SetConnectionRight(Room origin, Room destination)
-		{connectionRight = new RoomConnection(origin, destination); }
-		public RoomConnection GetConnectionAbove(){return connectionAbove;}
-		public RoomConnection GetConnectionBelow(){return connectionBelow;}
-		public RoomConnection GetConnectionLeft(){return connectionLeft;}
-		public RoomConnection GetConnectionRight(){return connectionRight;}
+		{ connectionRight = new RoomConnection(origin, destination); }
+		public RoomConnection GetConnectionAbove() { return connectionAbove; }
+		public RoomConnection GetConnectionBelow() { return connectionBelow; }
+		public RoomConnection GetConnectionLeft() { return connectionLeft; }
+		public RoomConnection GetConnectionRight() { return connectionRight; }
+		public void CopyRoomConnections(Room copyRoom, Room thisRoom)
+		{
+			if (copyRoom.adjacentRooms.GetRoomAbove() != null)
+			{
+				roomAbove = copyRoom.adjacentRooms.GetRoomAbove();//Reference room above into placeholder
+				roomAbove.adjacentRooms.SetRoomBelow(thisRoom);
+				if (copyRoom.adjacentRooms.GetConnectionAbove() != null)
+				{
+					thisRoom.adjacentRooms.SetConnectionAbove(thisRoom, roomAbove);
+					roomAbove.adjacentRooms.SetConnectionBelow(roomAbove, thisRoom);//adjust room connection for room above
+				}
+			}
+			if (copyRoom.adjacentRooms.GetRoomBelow() != null)
+			{
+				roomBelow = copyRoom.adjacentRooms.GetRoomBelow();//Reference room above into placeholder
+				roomBelow.adjacentRooms.SetRoomAbove(thisRoom);
+				if (copyRoom.adjacentRooms.GetConnectionBelow() != null)
+				{
+					thisRoom.adjacentRooms.SetConnectionBelow(thisRoom, roomBelow);
+					roomBelow.adjacentRooms.SetConnectionAbove(roomBelow, thisRoom);//adjust room connection for room below
+				}
+			}
+			if (copyRoom.adjacentRooms.GetRoomLeft() != null)
+			{
+				roomLeft = copyRoom.adjacentRooms.GetRoomLeft();//Reference room above into placeholder
+				roomLeft.adjacentRooms.SetRoomRight(thisRoom);
+				if (copyRoom.adjacentRooms.GetConnectionLeft() != null)
+				{
+					thisRoom.adjacentRooms.SetConnectionLeft(thisRoom, roomLeft);
+					roomLeft.adjacentRooms.SetConnectionRight(roomLeft, thisRoom);//adjust room connection for room left
+				}
+			}
+			if (copyRoom.adjacentRooms.GetRoomRight() != null)
+			{
+				roomRight = copyRoom.adjacentRooms.GetRoomRight();//Reference room above into placeholder
+				roomRight.adjacentRooms.SetRoomLeft(thisRoom);
+				if (copyRoom.adjacentRooms.GetConnectionRight() != null)
+				{
+					thisRoom.adjacentRooms.SetConnectionRight(thisRoom, roomRight);
+					roomRight.adjacentRooms.SetConnectionLeft(roomRight, thisRoom);//adjust room connection for room right
+				}
+			}
+		}
 	}
 
 	/// <summary>
@@ -112,30 +155,9 @@ public class Room : MonoBehaviour
 	[SerializeField]
 	private bool hasRightConnection;
 	/// <summary>
-	/// BOOL: Determines if the top connection of the room is satisfied
-	/// </summary>
-	private bool topIsConnected;
-	[SerializeField]
-	/// <summary>
-	/// BOOL: Determines if the bottom connection of the room is satisfied
-	/// </summary>
-	private bool bottomIsConnected;
-	/// <summary>
-	/// BOOL: Determines if the left connection of the room is satisfied
-	/// </summary>
-	private bool leftIsConnected;
-	/// <summary>
-	/// BOOL: Determines if the right connection of the room is satisfied
-	/// </summary>
-	private bool rightIsConnected;
-	/// <summary>
 	/// BOOLEAN: Determines if all the connections in the room have been satisfied
 	/// </summary>
 	private bool allConnected;
-	/// <summary>
-	/// BOOLEAN: Determines if the room is the origin
-	/// </summary>
-	private bool isOrigin;
 	/// <summary>
 	/// BOOLEAN: Determines if the room has stairs leading upwards
 	/// </summary>
@@ -149,7 +171,7 @@ public class Room : MonoBehaviour
 	/// </summary>
 	private int floorLevel;
 	private Vector3 roomPosition;
-	public AdjacentRooms adjacentRooms;
+	public AdjacentRooms adjacentRooms = new AdjacentRooms();
 
 
 
@@ -177,53 +199,11 @@ public class Room : MonoBehaviour
 	/// <returns>hasRightConnection</returns>
 	public bool HasRightCon() { return hasRightConnection; }
 	/// <summary>
-	/// Returns true if the top connection is satisfied
-	/// </summary>
-	/// <returns>topIsConnected</returns>
-	public bool TopIsCon() { return topIsConnected; }
-	/// <summary>
-	/// Returns true if the bottom connection is satisfied
-	/// </summary>
-	/// <returns>bottomIsConnected</returns>
-	public bool BottomIsCon() { return bottomIsConnected; }
-	/// <summary>
-	/// Returns true if the left connection is satisfied
-	/// </summary>
-	/// <returns>leftIsConnected</returns>
-	public bool LeftIsCon() { return leftIsConnected; }
-	/// <summary>
-	/// Returns true if the right connection is satisfied
-	/// </summary>
-	/// <returns>rightIsConnected</returns>
-	public bool RightIsCon() { return rightIsConnected; }
-	/// <summary>
-	/// Sets top connected boolean to true
-	/// </summary>
-	public void ConTop() { topIsConnected = true; }
-	/// <summary>
-	/// Sets bottom connected boolean to true
-	/// </summary>
-	public void ConBottom() { bottomIsConnected = true; }
-	/// <summary>
-	/// Sets left connected boolean to true
-	/// </summary>
-	public void ConLeft() { leftIsConnected = true; }
-	/// <summary>
-	/// Sets right connected boolean to true
-	/// </summary>
-	public void ConRight() { rightIsConnected = true; }
-	/// <summary>
 	/// Returns true if all the connections in the room are satisfied
 	/// </summary>
 	/// <returns>allConnected</returns>
 	public bool AllConnected() { return allConnected; }
 	public void SetAllConnected() { allConnected = true; }
-	/// <summary>
-	/// Returns true if the room is the origin
-	/// </summary>
-	/// <returns>hasRightConnection</returns>
-	public bool IsOrigin() { return isOrigin; }
-	public void MakeOrigin() { isOrigin = true; }
 	/// <summary>
 	/// Returns true if the room has stairs leading upwards
 	/// </summary>
