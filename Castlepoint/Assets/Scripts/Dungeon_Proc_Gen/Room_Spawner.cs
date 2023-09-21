@@ -53,7 +53,8 @@ public class Room_Spawner : MonoBehaviour
 		copy.MakeOrigin();
 		roomsCreated.Add(copy);//add room to created list, this will be used to check position of created rooms
 		currentSizeOfDungeon++;
-		FinishRoom(roomList, roomsCreated, copy);//Recurse spawning rooms until all connections are satisfied
+		FinishRoom(roomList, roomsCreated, copy);//Begins recursion, spawns rooms to close all connections
+		Debug.Log(roomsCreated.Count);
 		//CapRoomOpenings(roomsCreated);
 	}
 
@@ -80,8 +81,9 @@ public class Room_Spawner : MonoBehaviour
 		needsConnectionLeft = false;
 		Room copy = new Room();
 		Room temp = new Room();
-		temp.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-		CheckForRooms(dungeonRooms, temp);
+		Room checkCons = new Room();
+		checkCons.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
+		CheckForRooms(dungeonRooms, checkCons);
 		switch ((isRoomAbove, isRoomBelow, isRoomLeft, isRoomRight))//go through each case of a room existing around the room we want to make
 		{
 			case (true, false, false, false)://there is a room above
@@ -89,7 +91,7 @@ public class Room_Spawner : MonoBehaviour
 				{
 					while (temp == null || !temp.HasTopCon()) { temp = RandomizeRoom(roomList); }
 					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
+					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
 					copy.ConTop();
 					dungeonRooms.Add(copy);
 					currentSizeOfDungeon++;
@@ -101,7 +103,7 @@ public class Room_Spawner : MonoBehaviour
 				{
 					while (temp == null || !temp.HasBottomCon()) { temp = RandomizeRoom(roomList); }
 					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
+					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
 					copy.ConBottom();
 					dungeonRooms.Add(copy);
 					currentSizeOfDungeon++;
@@ -114,7 +116,7 @@ public class Room_Spawner : MonoBehaviour
 				{
 					while (temp == null || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
 					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
+					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
 					copy.ConLeft();
 					dungeonRooms.Add(copy);
 					currentSizeOfDungeon++;
@@ -126,7 +128,7 @@ public class Room_Spawner : MonoBehaviour
 				{
 					while (temp == null || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
 					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
+					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
 					copy.ConRight();
 					dungeonRooms.Add(copy);
 					currentSizeOfDungeon++;
@@ -806,72 +808,15 @@ public class Room_Spawner : MonoBehaviour
 		if (isRoomRight) { needsConnectionRight = CheckRightForRoomConnection(dungeonRooms, tempRoom); }
 	}
 
-	private bool CheckUpForRoomConnection(List<Room> roomList, Room room)
-	{
-		for (int i = 0; i < roomList.Count; i++)
-		{
-			if (room.GetRoomPosition() + upOffset == roomList[i].GetRoomPosition())//if there is a room
-			{
-				if (roomList[i].HasBottomCon() & !roomList[i].BottomIsCon())//if room needs a connection
-				{
-					roomList[i].ConBottom();//we connect the room here because we will make the room when funtion returns
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	private bool CheckDownForRoomConnection(List<Room> roomList, Room room)
-	{
-		for (int i = 0; i < roomList.Count; i++)
-		{
-			if (room.GetRoomPosition() + downOffset == roomList[i].GetRoomPosition())//if there is a room
-			{
-				if (roomList[i].HasTopCon() & !roomList[i].TopIsCon())//if room needs a connection
-				{
-					roomList[i].ConTop();
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	private bool CheckLeftForRoomConnection(List<Room> roomList, Room room)
-	{
-		for (int i = 0; i < roomList.Count; i++)
-		{
-			if (room.GetRoomPosition() + leftOffset == roomList[i].GetRoomPosition())//if there is a room
-			{
-				if (roomList[i].HasRightCon() & !roomList[i].RightIsCon())//if room needs a connection
-				{
-					roomList[i].ConRight();
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-	private bool CheckRightForRoomConnection(List<Room> roomList, Room room)
-	{
-		for (int i = 0; i < roomList.Count; i++)
-		{
-			if (room.GetRoomPosition() + rightOffset == roomList[i].GetRoomPosition())//if there is a room
-			{
-				if (roomList[i].HasLeftCon() & !roomList[i].LeftIsCon())//if room needs a connection
-				{
-					roomList[i].ConLeft();
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+	
 	private bool CheckUpForRoom(List<Room> roomList, Room room)
 	{
 		for (int i = 0; i < roomList.Count; i++)
 		{
 			if (room.GetRoomPosition() + upOffset == roomList[i].GetRoomPosition())//if there is a room
 			{
+				room.adjacentRooms.SetRoomAbove(roomList[i]);
+				roomList[i].adjacentRooms.SetRoomBelow(room);
 				return true;
 			}
 		}
@@ -883,6 +828,8 @@ public class Room_Spawner : MonoBehaviour
 		{
 			if (room.GetRoomPosition() + downOffset == roomList[i].GetRoomPosition())//if there is a room
 			{
+				room.adjacentRooms.SetRoomBelow(roomList[i]);
+				roomList[i].adjacentRooms.SetRoomAbove(room);
 				return true;
 			}
 		}
@@ -894,6 +841,8 @@ public class Room_Spawner : MonoBehaviour
 		{
 			if (room.GetRoomPosition() + leftOffset == roomList[i].GetRoomPosition())//if there is a room
 			{
+				room.adjacentRooms.SetRoomLeft(roomList[i]);
+				roomList[i].adjacentRooms.SetRoomRight(room);
 				return true;
 			}
 		}
@@ -905,11 +854,78 @@ public class Room_Spawner : MonoBehaviour
 		{
 			if (room.GetRoomPosition() + rightOffset == roomList[i].GetRoomPosition())//if there is a room
 			{
+				room.adjacentRooms.SetRoomRight(roomList[i]);
+				roomList[i].adjacentRooms.SetRoomLeft(room);
 				return true;
 			}
 		}
 		return false;
 	}
+private bool CheckUpForRoomConnection(List<Room> roomList, Room room)
+	{
+		for (int i = 0; i < roomList.Count; i++)
+		{
+			if (room.adjacentRooms.GetRoomAbove() == roomList[i])//if there is a room
+			{
+				if (roomList[i].HasBottomCon())//if room needs a connection
+				{
+					roomList[i].adjacentRooms.SetConnectionBelow(roomList[i], room) ;
+					room.adjacentRooms.SetConnectionAbove(room, roomList[i]);				
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	private bool CheckDownForRoomConnection(List<Room> roomList, Room room)
+	{
+		for (int i = 0; i < roomList.Count; i++)
+		{
+			if (room.adjacentRooms.GetRoomBelow() == roomList[i])//if there is a room
+			{
+				if (roomList[i].HasTopCon())//if room needs a connection
+				{
+					roomList[i].adjacentRooms.SetConnectionAbove(roomList[i], room);
+					room.adjacentRooms.SetConnectionBelow(room, roomList[i]);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	private bool CheckLeftForRoomConnection(List<Room> roomList, Room room)
+	{
+		for (int i = 0; i < roomList.Count; i++)
+		{
+			if (room.adjacentRooms.GetRoomLeft() == roomList[i])//if there is a room
+			{
+				if (roomList[i].HasRightCon())//if room needs a connection
+				{
+					roomList[i].adjacentRooms.SetConnectionRight(roomList[i], room);
+					room.adjacentRooms.SetConnectionLeft(room, roomList[i]);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	private bool CheckRightForRoomConnection(List<Room> roomList, Room room)
+	{
+		for (int i = 0; i < roomList.Count; i++)
+		{
+			if (room.adjacentRooms.GetRoomRight() == roomList[i])//if there is a room
+			{
+				if (roomList[i].HasLeftCon())//if room needs a connection
+				{
+					roomList[i].adjacentRooms.SetConnectionLeft(roomList[i], room);
+					room.adjacentRooms.SetConnectionRight(room, roomList[i]);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	private void CapRoomOpenings(List<Room> dungeonRoomList)
 	{
 		for (int i = 0; i < dungeonRoomList.Count; i++)
