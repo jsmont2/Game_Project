@@ -18,6 +18,7 @@ public class Room : MonoBehaviour
 				this.origin = origin;//sets origin = to variable passed in as origin
 				this.destination = destination;//sets destination = to variable passed in as destination
 			}
+			public Room returnDestination() { return destination; }
 			Room origin;//Room that is at the center
 			Room destination;//Room that is adjacent to the origin room
 		}
@@ -89,6 +90,7 @@ public class Room : MonoBehaviour
 		public RoomConnection GetConnectionBelow() { return connectionBelow; }
 		public RoomConnection GetConnectionLeft() { return connectionLeft; }
 		public RoomConnection GetConnectionRight() { return connectionRight; }
+
 		public void CopyRoomConnections(Room copyRoom, Room thisRoom)
 		{
 			if (copyRoom.adjacentRooms.GetRoomAbove() != null)
@@ -170,6 +172,8 @@ public class Room : MonoBehaviour
 	/// INT: Determines what floor the room is on;
 	/// </summary>
 	private int floorLevel;
+	[SerializeField]
+	private int distanceFromOrigin;
 	private Vector3 roomPosition;
 	public AdjacentRooms adjacentRooms = new AdjacentRooms();
 
@@ -225,6 +229,36 @@ public class Room : MonoBehaviour
 	/// </summary>
 	/// <returns>roomPosition</returns>
 	public Vector3 GetRoomPosition() { return roomPosition; }
-
-
+	public int ReturnDistanceFromOrigin()
+	{
+		return distanceFromOrigin;
+	}
+	public void SetOrigin()
+	{
+		distanceFromOrigin = 0;
+	}
+	public void FindDistanceFromOrigin()
+	{
+		if (this.adjacentRooms.GetConnectionAbove() != null)
+		{
+			if (this.adjacentRooms.GetConnectionAbove().returnDestination().ReturnDistanceFromOrigin() > distanceFromOrigin)
+			{ distanceFromOrigin = this.adjacentRooms.GetConnectionAbove().returnDestination().ReturnDistanceFromOrigin(); }
+		}
+		if (this.adjacentRooms.GetConnectionBelow() != null)
+		{
+			if (this.adjacentRooms.GetConnectionBelow().returnDestination().ReturnDistanceFromOrigin() > distanceFromOrigin)
+			{ distanceFromOrigin = this.adjacentRooms.GetConnectionBelow().returnDestination().ReturnDistanceFromOrigin(); }
+		}
+		if (this.adjacentRooms.GetConnectionLeft() != null)
+		{
+			if (this.adjacentRooms.GetConnectionLeft().returnDestination().ReturnDistanceFromOrigin() > distanceFromOrigin)
+			{ distanceFromOrigin = this.adjacentRooms.GetConnectionLeft().returnDestination().ReturnDistanceFromOrigin(); }
+		}
+		if (this.adjacentRooms.GetConnectionRight() != null)
+		{
+			if (this.adjacentRooms.GetConnectionRight().returnDestination().ReturnDistanceFromOrigin() > distanceFromOrigin)
+			{ distanceFromOrigin = this.adjacentRooms.GetConnectionRight().returnDestination().ReturnDistanceFromOrigin(); }
+		}
+		distanceFromOrigin = distanceFromOrigin + 1;
+	}
 }

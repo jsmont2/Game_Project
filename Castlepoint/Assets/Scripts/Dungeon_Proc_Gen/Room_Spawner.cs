@@ -43,23 +43,43 @@ public class Room_Spawner : MonoBehaviour
 		cappingRooms = false;
 		roomsCreated = new List<Room>();
 		tempRoom = new Room();
-		SpawnDungeon(rooms, originRooms);
+		SpawnDungeon(rooms, originRooms, roomsCreated);
 	}
-	private void SpawnDungeon(List<Room> roomList, List<Room> originList)
+	private void SpawnDungeon(List<Room> roomList, List<Room> originList, List<Room> dungeonRooms)
 	{
 		tempRoom = RandomizeRoom(originList);//Randomize which room is selected from origin list
 		originRoomPos = new Vector3(-8f, 0, 0);//This is the position of the origin room
 		Room copy = Instantiate(tempRoom, originRoomPos, Quaternion.identity);//create the room in game
 		copy.SetRoomPosition(originRoomPos);
-		roomsCreated.Add(copy);//add room to created list, this will be used to check position of created rooms
+		copy.SetOrigin();
+		dungeonRooms.Add(copy);//add room to created list, this will be used to check position of created rooms
 		currentSizeOfDungeon++;
-		FinishRoom(roomList, roomsCreated, copy);//Begins recursion, spawns rooms to close all connections
-		Debug.Log(roomsCreated.Count);
+		FinishRoom(roomList, dungeonRooms, copy);//Begins recursion, spawns rooms to close all connections
 		cappingRooms = true;
-		CapRoomOpenings(roomList, roomsCreated);
-		Debug.Log(roomsCreated.Count);
+		checkRoomsForDistanceFromOrigin(dungeonRooms);
+		CapRoomOpenings(roomList, dungeonRooms);
 	}
-
+	public Room checkRoomsForDistanceFromOrigin(List<Room> dungeonRooms)
+	{
+		int max = 0;
+		Room maxDistance = new Room();
+		for (int i = 1; i < dungeonRooms.Count; i++)
+		{
+			if (dungeonRooms[i].ReturnDistanceFromOrigin() > max)
+			{
+				max = dungeonRooms[i].ReturnDistanceFromOrigin();
+				maxDistance = dungeonRooms[i];
+			}	
+		}
+		return maxDistance;
+	}
+	public void FindMaxDistanceFromOrigin(List<Room> dungeonRooms)
+	{
+		for (int i = 1; i < dungeonRooms.Count; i++)
+		{
+			dungeonRooms[i].FindDistanceFromOrigin();
+		}
+	}
 	private Room RandomizeRoom(List<Room> roomList)
 	{
 		Room room = new Room();
@@ -82,7 +102,7 @@ public class Room_Spawner : MonoBehaviour
 		Room checkCons = new Room();
 		checkCons.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
 		CheckForRooms(dungeonRooms, checkCons);
-		if(cappingRooms)
+		if (cappingRooms)
 		{
 			isRoomAbove = true;
 			isRoomBelow = true;
@@ -743,24 +763,24 @@ public class Room_Spawner : MonoBehaviour
 						break;
 				}
 				break;
-
 		}
 	}
 	private void FinishRoom(List<Room> roomList, List<Room> dungeonRooms, Room thisRoom)
 	{
-		if (currentSizeOfDungeon >= sizeOfDungeon) { return; }
+		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasTopCon() && (thisRoom.adjacentRooms.GetConnectionAbove() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, upOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon) { return; }
+		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasBottomCon() && (thisRoom.adjacentRooms.GetConnectionBelow() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, downOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon) { return; }
+		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasLeftCon() && (thisRoom.adjacentRooms.GetConnectionLeft() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, leftOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon) { return; }
+		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasRightCon() && (thisRoom.adjacentRooms.GetConnectionRight() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, rightOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon) { return; }
+		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
 		else { thisRoom.SetAllConnected(); }
 	}
 	private void CheckForRooms(List<Room> dungeonRooms, Room tempRoom)
 	{
+		//check if a room exist in all directions
 		isRoomAbove = CheckUpForRoom(dungeonRooms, tempRoom);
 		isRoomBelow = CheckDownForRoom(dungeonRooms, tempRoom);
 		isRoomLeft = CheckLeftForRoom(dungeonRooms, tempRoom);
@@ -868,52 +888,50 @@ public class Room_Spawner : MonoBehaviour
 
 	private void CapRoomOpenings(List<Room> roomList, List<Room> dungeonRoomList)
 	{
-
+		bool bossRoomMade = false;
 		for (int i = 0; i < sizeOfDungeon; i++)
 		{
 			if (!dungeonRoomList[i].AllConnected())//if there is a room with open connections
 			{
 				if (dungeonRoomList[i].HasTopCon() && dungeonRoomList[i].adjacentRooms.GetConnectionAbove() == null)
 				{
-					SpawnRoom(roomList,dungeonRoomList,dungeonRoomList[i], upOffset);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], upOffset);
 				}
 				if (dungeonRoomList[i].HasBottomCon() && dungeonRoomList[i].adjacentRooms.GetConnectionBelow() == null)
 				{
-					SpawnRoom(roomList,dungeonRoomList,dungeonRoomList[i], downOffset);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], downOffset);
 				}
 				if (dungeonRoomList[i].HasLeftCon() && dungeonRoomList[i].adjacentRooms.GetConnectionLeft() == null)
 				{
-					SpawnRoom(roomList,dungeonRoomList,dungeonRoomList[i], leftOffset);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], leftOffset);
 				}
 				if (dungeonRoomList[i].HasRightCon() && dungeonRoomList[i].adjacentRooms.GetConnectionRight() == null)
 				{
-					SpawnRoom(roomList,dungeonRoomList,dungeonRoomList[i], rightOffset);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], rightOffset);
 				}
 			}
 		}
-		/*for (int i = 0; i < dungeonRoomList.Count; i++)
-		{	Room temp = new Room();
-			Room copy = new Room();
-			if (dungeonRoomList[i].HasTopCon() && dungeonRoomList[i].adjacentRooms.GetConnectionAbove() == null)
+		for (int i = 0; i < dungeonRoomList.Count; i++)
+		{
+			if (!dungeonRoomList[i].AllConnected())//if there is a room with open connections
+			{
+				if (dungeonRoomList[i].HasTopCon() && dungeonRoomList[i].adjacentRooms.GetConnectionAbove() == null)
 				{
-					while(!temp.HasBottomCon()){temp = RandomizeRoom(roomCaps);}
-					copy = Instantiate(temp, dungeonRoomList[i].GetRoomPosition() + upOffset, quaternion.identity);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], upOffset);
 				}
 				if (dungeonRoomList[i].HasBottomCon() && dungeonRoomList[i].adjacentRooms.GetConnectionBelow() == null)
 				{
-					while(!temp.HasTopCon()){temp = RandomizeRoom(roomCaps);}
-					copy = Instantiate(temp, dungeonRoomList[i].GetRoomPosition() + downOffset, quaternion.identity);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], downOffset);
 				}
 				if (dungeonRoomList[i].HasLeftCon() && dungeonRoomList[i].adjacentRooms.GetConnectionLeft() == null)
 				{
-					while(!temp.HasRightCon()){temp = RandomizeRoom(roomCaps);}
-					copy = Instantiate(temp, dungeonRoomList[i].GetRoomPosition() + leftOffset, quaternion.identity);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], leftOffset);
 				}
 				if (dungeonRoomList[i].HasRightCon() && dungeonRoomList[i].adjacentRooms.GetConnectionRight() == null)
 				{
-					while(!temp.HasLeftCon()){temp = RandomizeRoom(roomCaps);}
-					copy = Instantiate(temp, dungeonRoomList[i].GetRoomPosition() + rightOffset, quaternion.identity);
+					SpawnRoom(roomList, dungeonRoomList, dungeonRoomList[i], rightOffset);
 				}
-		}*/
+			}
+		}
 	}
 }

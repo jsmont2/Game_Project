@@ -281,7 +281,7 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 0
   hasRightConnection: 0
-  bottomIsConnected: 0
+  distanceFromOrigin: 0
 --- !u!1 &6752397043595571999
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,25 +369,25 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 0
-      e01: -1.5669838e+10
-      e02: 2.5511783e-29
-      e03: 0.0000000062371477
-      e10: 0
-      e11: 4.5904e-41
-      e12: 7.95e-43
-      e13: 7.92e-43
-      e20: -208670740
-      e21: -2.2042173e+23
-      e22: -2.2040516e+23
-      e23: -2.2040516e+23
-      e30: 4.5904e-41
-      e31: 2.17e-43
-      e32: 2.17e-43
-      e33: 2.17e-43
+      e00: 2.5244127e-29
+      e01: 3.6335214e+12
+      e02: -2.5598642e-29
+      e03: -9.025585e-10
+      e10: 8.88e-43
+      e11: 4.5905e-41
+      e12: 8.9e-43
+      e13: 8.87e-43
+      e20: 6e-45
+      e21: -250301570
+      e22: -250286850
+      e23: -250286850
+      e30: 0
+      e31: 2.86e-43
+      e32: 2.86e-43
+      e33: 2.86e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 2.5511783e-29, g: 2.5511783e-29, b: 2.5511783e-29, a: 2.5511783e-29}
+    m_Data: {r: -2.5598642e-29, g: -2.5598642e-29, b: -2.5598642e-29, a: -2.5598642e-29}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
