@@ -46,15 +46,8 @@ public class character : MonoBehaviour
             hit.AddForce(difference, ForceMode2D.Impulse);
 
             if (hit != null)
-            {
-                
-                
-
-                    StartCoroutine(KnockCo(hit, kt));
-                    
-                    //anim.SetTrigger("hit");
-                
-                
+            {               
+                 StartCoroutine(KnockCo(hit, kt));                 
             }
             
 
@@ -84,7 +77,6 @@ public class character : MonoBehaviour
         }
         if (health <= 0)
         {
-
             this.gameObject.SetActive(false);
         }
     }

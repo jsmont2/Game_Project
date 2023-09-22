@@ -31,12 +31,18 @@ public class Enemy : character
 
     void OnCollisionEnter2D(Collision2D collision)  // Knockback and damage
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("arrow"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("knock");
             GameObject temp = collision.gameObject;
-            temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());
-            
+            temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());            
+        }
+        else if(collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
+        {
+            Debug.Log("hit");
+            StartCoroutine(FlashRed());
+            Knock(collision.transform, GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getknockTime());
+            TakeDamage(GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getDmg());
         }
     }
 
@@ -52,13 +58,7 @@ public class Enemy : character
             //hitAnim.SetBool("hit", true); // tried to set the animation for when the enemy gets hit
             //hitAnim.SetBool("hit", false);
         }
-        else if(other.gameObject.tag == "arrow") // trying to get arrow to do damage 
-        {
-            Debug.Log("hit");
-            StartCoroutine(FlashRed());
-            Knock(other.transform, GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getknockTime());
-            TakeDamage(GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getDmg());
-        }
+        
     }
 
 
