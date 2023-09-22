@@ -31,7 +31,7 @@ public class Enemy : character
 
     void OnCollisionEnter2D(Collision2D collision)  // Knockback and damage
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("arrow"))
         {
             Debug.Log("knock");
             GameObject temp = collision.gameObject;
@@ -51,6 +51,13 @@ public class Enemy : character
             //hitAnim = GetComponent<Animator>();
             //hitAnim.SetBool("hit", true); // tried to set the animation for when the enemy gets hit
             //hitAnim.SetBool("hit", false);
+        }
+        else if(other.gameObject.tag == "arrow") // trying to get arrow to do damage 
+        {
+            Debug.Log("hit");
+            StartCoroutine(FlashRed());
+            Knock(other.transform, GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getknockTime());
+            TakeDamage(GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getDmg());
         }
     }
 

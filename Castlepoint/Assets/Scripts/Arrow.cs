@@ -13,26 +13,28 @@ public class Arrow : character
     // Start is called before the first frame update
     void Start()
     {
-       
+       lifetimeCounter = lifetime;
     }
 
-    private void Update()
+    private void Update()// destroys arrows that dont hit an enemy
     {
-
+        lifetimeCounter -= Time.deltaTime;
+        if(lifetimeCounter <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    public void Setup(Vector2 velocity, Vector3  direction)
+    public void Setup(Vector2 velocity, Vector3  direction) // changes arrow's direction 
     {
         myRigidbody.velocity = velocity.normalized * speed2;
         transform.rotation = Quaternion.Euler(direction);
     }
-    void OnCollisionEnter2D(Collision2D collision)  // Knockback and damage
+    void OnCollisionEnter2D(Collision2D collision)  
     {
         if (collision.gameObject.CompareTag("enemy"))
         {
-            Debug.Log("knock");
             GameObject temp = collision.gameObject;
-            temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());
             Destroy(this.gameObject);
             
         }

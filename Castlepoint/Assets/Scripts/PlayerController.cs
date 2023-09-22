@@ -45,7 +45,7 @@ public class PlayerController : character
                     StartCoroutine(AttackCo());
                 }
 
-                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)
+                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)//press m to fire arrow
                 {
                     StartCoroutine(SecondAttackCo());
                 }
@@ -102,11 +102,11 @@ public class PlayerController : character
     
     private IEnumerator SecondAttackCo()
     {
-        animator.SetBool("attacking", true);
+        //animator.SetBool("attacking", true);
         currentState = characterState.attack;
         yield return null;
         MakeArrow();
-        animator.SetBool("attacking", false);
+        //animator.SetBool("attacking", false);
         yield return new WaitForSeconds(.15f);
         currentState = characterState.walk;
     }
