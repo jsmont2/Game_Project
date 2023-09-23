@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
-    Animator anim;
+    private Animator anim;
+    private AudioSource shing;
     private void Awake()
     {
         anim = this.GetComponent<Animator>();
         anim.SetBool("Spikes_Down", true);
         AnimateSpikeTrap();
+        shing = this.GetComponent<AudioSource>();
     }
     private void AnimateSpikeTrap()
     {
@@ -24,6 +26,7 @@ public class SpikeTrap : MonoBehaviour
             yield return new WaitForSeconds(1.3f);
             anim.SetBool("Spikes_Rising", false);
             anim.SetBool("Spikes_Up", true);
+            shing.Play();
             yield return new WaitForSeconds(2f);
             anim.SetBool("Spikes_Up", false);
             anim.SetBool("Spikes_Lowering", true);
