@@ -50,6 +50,19 @@ public class character : MonoBehaviour
         {
             StartCoroutine(KnockCo(hit, kt));
         }
+            Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
+            Vector2 difference = hit.transform.position - other.position;
+            difference = difference.normalized * force;
+            hit.AddForce(difference, ForceMode2D.Impulse);
+
+            if (hit != null)
+            {               
+                 StartCoroutine(KnockCo(hit, kt));                 
+            }
+            
+
+            
+     
     }
 
 
@@ -104,8 +117,14 @@ public class character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
+
+    public new objectType GetType()
+    {
+        return objType;
+    }
+
     public float getknockTime()
     {
         return knockTime;

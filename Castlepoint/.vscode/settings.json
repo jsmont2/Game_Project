@@ -2,6 +2,7 @@
     "files.exclude": {
         "**/.DS_Store": true,
         "**/.git": true,
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "**/.gitmodules": true,
 =======
@@ -9,6 +10,11 @@
         "**/.gitmodules": true,
         "**/.vsconfig": true,
 >>>>>>> Stashed changes
+=======
+        "**/.vs": true,
+        "**/.gitmodules": true,
+        "**/.vsconfig": true,
+>>>>>>> main
         "**/*.booproj": true,
         "**/*.pidb": true,
         "**/*.suo": true,
@@ -53,14 +59,20 @@
         "library/": true,
         "obj/": true,
         "Obj/": true,
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "ProjectSettings/": true,
 =======
+=======
+>>>>>>> main
         "Logs/": true,
         "logs/": true,
         "ProjectSettings/": true,
         "UserSettings/": true,
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> main
         "temp/": true,
         "Temp/": true
     },

@@ -14475,7 +14475,7 @@ RectTransform:
   - {fileID: 1710970540}
   - {fileID: 1321888926}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -78095,18 +78095,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4764689201361685466, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4764689202895771626, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
       propertyPath: go
       value: 
       objectReference: {fileID: 1008994354}
-    - target: {fileID: 4764689202895771626, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-      propertyPath: maxHealth
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4764689202895771626, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
       propertyPath: background
       value: 
@@ -78288,7 +78280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8168749460986353068, guid: ae9c10ca22d1cb04897edc9c6f28b5fd, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8168749460986353068, guid: ae9c10ca22d1cb04897edc9c6f28b5fd, type: 3}
       propertyPath: m_AnchorMax.x

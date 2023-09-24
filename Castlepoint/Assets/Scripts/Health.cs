@@ -21,6 +21,9 @@ public class Health : character
     public AudioClip collisionSound;
     private AudioSource heartSound;
 
+    // Hit animation
+    private Animator animator;
+
     private void Start()
     {
         heartSound = GetComponent<AudioSource>();
@@ -62,12 +65,25 @@ public class Health : character
         {
             background.SetActive(false);
         }
-        else
+        else 
         {
-            background.SetActive(true);
-            SceneManager.LoadScene("game_over"); // loads game over
-
+            StartCoroutine(PlayDeathAnimationAndLoadGameOver());
         }
+    }
+
+    IEnumerator PlayDeathAnimationAndLoadGameOver()
+    {
+        // Play the death animation
+        Animator animator = GetComponent<Animator>();
+        Debug.Log("Playing Death Animation");
+        animator.SetTrigger("isDead");
+
+        // Wait for the duration of the death animation
+        //yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(9.0f);
+
+        // Load the game over scene
+        SceneManager.LoadScene("game_over");
     }
 
     public void RestartButton()
@@ -84,9 +100,13 @@ public class Health : character
             Debug.Log("Took dmg");
             TakeDamage(collision.gameObject.GetComponent<character>().getDmg());
             this.Knock(collision.transform, collision.gameObject.GetComponent<character>().getThrust(), collision.gameObject.GetComponent<character>().getknockTime());
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger("isHurt");
             
+
+
         }
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
