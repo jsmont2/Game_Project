@@ -37,9 +37,10 @@ public class character : MonoBehaviour
     public float thrust;
     public float damage;
     public GameObject thisObject;
-	public Animator animator;
-
-	public void Knock(Transform other, float force, float kt) // Knockback
+    public Animator animator;
+    [SerializeField]
+    public bool isElevated;
+    public void Knock(Transform other, float force, float kt) // Knockback
     {
         Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
         Vector2 difference = hit.transform.position - other.position;
@@ -59,8 +60,8 @@ public class character : MonoBehaviour
             rb.GetComponent<character>().currentState = characterState.stagger;
             animator.SetBool("hit", true);
             yield return new WaitForSeconds(kt);
-			animator.SetBool("hit", false);
-			rb.velocity = Vector2.zero;
+            animator.SetBool("hit", false);
+            rb.velocity = Vector2.zero;
             rb.GetComponent<character>().currentState = characterState.idle;
             rb.velocity = Vector2.zero;
         }
@@ -71,7 +72,7 @@ public class character : MonoBehaviour
         health -= dmg;
         if (health <= 0)
         {
-            if(this.charType == characterType.enemy)
+            if (this.charType == characterType.enemy)
             {
                 int newRand = Random.Range(1, 11);
                 if (newRand == 2)
@@ -97,7 +98,7 @@ public class character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isElevated = false;
     }
 
     // Update is called once per frame

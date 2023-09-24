@@ -6,12 +6,21 @@ public class SpikeTrap : MonoBehaviour
 {
     private Animator anim;
     private AudioSource shing;
+    
     private void Awake()
     {
         anim = this.GetComponent<Animator>();
         anim.SetBool("Spikes_Down", true);
-        AnimateSpikeTrap();
         shing = this.GetComponent<AudioSource>();
+    }
+    private void OnBecameVisible() {
+        AnimateSpikeTrap();
+    }
+    private void OnBecameInvisible() {
+        anim.SetBool("Spikes_Down", true);
+        anim.SetBool("Spikes_Rising", false);
+        anim.SetBool("Spikes_Up", false);
+        anim.SetBool("Spikes_Lowering", false);
     }
     private void AnimateSpikeTrap()
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Timeline;
 using UnityEngine.UIElements;
 /*
@@ -21,10 +22,10 @@ public class Room_Spawner : MonoBehaviour
 	private bool bossRoomCreated;
 	[SerializeField]
 	private int sizeOfDungeon;
-	private Vector3 upOffset = new Vector3(0, 20, 0);
-	private Vector3 downOffset = new Vector3(0, -20, 0);
-	private Vector3 leftOffset = new Vector3(-20, 0, 0);
-	private Vector3 rightOffset = new Vector3(20, 0, 0);
+	private Vector3 upOffset = new Vector3(0, 60, 0);
+	private Vector3 downOffset = new Vector3(0, -60, 0);
+	private Vector3 leftOffset = new Vector3(-60, 0, 0);
+	private Vector3 rightOffset = new Vector3(60, 0, 0);
 	private Vector3 originRoomPos;
 	private Vector3 checkRoomPos;
 	private int currentSizeOfDungeon;
@@ -48,7 +49,7 @@ public class Room_Spawner : MonoBehaviour
 	private void SpawnDungeon(List<Room> roomList, List<Room> originList, List<Room> dungeonRooms)
 	{
 		tempRoom = RandomizeRoom(originList);//Randomize which room is selected from origin list
-		originRoomPos = new Vector3(-8f, 0, 0);//This is the position of the origin room
+		originRoomPos = new Vector3(0, 0, 0);//This is the position of the origin room
 		Room copy = Instantiate(tempRoom, originRoomPos, Quaternion.identity);//create the room in game
 		copy.SetRoomPosition(originRoomPos);
 		copy.SetOrigin();
@@ -58,6 +59,14 @@ public class Room_Spawner : MonoBehaviour
 		cappingRooms = true;
 		checkRoomsForDistanceFromOrigin(dungeonRooms);
 		CapRoomOpenings(roomList, dungeonRooms);
+		SetAllRoomsActiveOff(dungeonRooms);
+	}
+	private void SetAllRoomsActiveOff(List<Room> dungeonRooms)
+	{
+		for (int i = 1; i < dungeonRooms.Count; i++)
+		{
+			dungeonRooms[i].gameObject.SetActive(false);
+		}
 	}
 	public Room checkRoomsForDistanceFromOrigin(List<Room> dungeonRooms)
 	{

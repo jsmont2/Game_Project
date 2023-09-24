@@ -10,8 +10,8 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     public float attackRadius;
     public Transform homePosition;
     public Animator anim;
-    
-   
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,37 +20,41 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;    //allows the enemy to find the player and chase him
-        
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckDistance();
+        if (isElevated == target.gameObject.GetComponent<character>().isElevated)
+        {
+            CheckDistance();
+        }
     }
 
     //Code of the enemy ai. triggers once the player is in range and then follows him, then stops if out of chase radius
     void CheckDistance()
     {
-        if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
+        if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
         {
-            if (currentState == characterState.idle || currentState == characterState.walk && currentState != characterState.stagger )
+            if (currentState == characterState.idle || currentState == characterState.walk && currentState != characterState.stagger)
             {
-            Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
-             changeAnim(temp - transform.position);
-             rb.MovePosition(temp);
+                changeAnim(temp - transform.position);
+                rb.MovePosition(temp);
 
-            ChangeState(characterState.walk);
+                ChangeState(characterState.walk);
                 anim.SetBool("wakeUp", true);
             }
-        }   else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
-            {
+        }
+        else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
+        {
             anim.SetBool("wakeUp", false);
-            }
+        }
     }
 
-    private void SetAnimFloat(Vector2 setVector)    
+    private void SetAnimFloat(Vector2 setVector)
     {
         anim.SetFloat("moveX", setVector.x);
         anim.SetFloat("moveY", setVector.y);
@@ -58,19 +62,21 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     //enemy animation movement depending on which direction it's moving relative to the player
     private void changeAnim(Vector2 direction)      //sets the animations for the enemy when it chases the player whether up and down or left or right
     {
-        if(Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
-            if(direction.x < 0)
+            if (direction.x < 0)
             {
                 SetAnimFloat(Vector2.right);
-            }else if(direction.x < 0)
+            }
+            else if (direction.x < 0)
             {
                 SetAnimFloat(Vector2.left);
 
             }
-        } else if(Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
+        }
+        else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
         {
-            if(direction.y > 0)
+            if (direction.y > 0)
             {
                 SetAnimFloat(Vector2.up);
             }
@@ -83,7 +89,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
 
     private void ChangeState(characterState newState)
     {
-        if(currentState != newState)
+        if (currentState != newState)
         {
             currentState = newState;
 

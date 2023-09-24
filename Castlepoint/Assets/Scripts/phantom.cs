@@ -24,7 +24,10 @@ public class phantom : Enemy // inherits everything from enemy script including 
     // Update is called once per frame
     void FixedUpdate()
     {
-        CheckDistance();
+       if (isElevated == target.gameObject.GetComponent<character>().isElevated)
+        {
+            CheckDistance();
+        }
     }
 
     void CheckDistance()

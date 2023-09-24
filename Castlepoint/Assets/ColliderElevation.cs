@@ -5,21 +5,22 @@ using UnityEngine;
 public class ColliderElevation : MonoBehaviour
 {
     [SerializeField] private GameObject collisionUpperLevel;
-    [SerializeField] private GameObject abovePlayer;
     [SerializeField] private GameObject groundCollisionAbovePlayer;
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D other) {
-        if(this.tag == "Elevation_Down" && other.tag == "Player")
+        if(this.tag == "Elevation_Down")
         {
-            collisionUpperLevel.SetActive(false);
-            abovePlayer.SetActive(true);
-            groundCollisionAbovePlayer.SetActive(true);
+            Physics2D.IgnoreCollision(collisionUpperLevel.GetComponent<Collider2D>(), other.GetComponent<Collider2D>(), true);
+            Physics2D.IgnoreCollision(groundCollisionAbovePlayer.GetComponent<Collider2D>(), other.GetComponent<Collider2D>(), false);
+            other.gameObject.GetComponent<Renderer>().sortingOrder = 0;
+            other.gameObject.GetComponent<character>().isElevated = false;
         }
-        if(this.tag == "Elevation_Up" && other.tag == "Player")
+        if(this.tag == "Elevation_Up")
         {
-            collisionUpperLevel.SetActive(true);
-            abovePlayer.SetActive(false);
-            groundCollisionAbovePlayer.SetActive(false);
+            Physics2D.IgnoreCollision(collisionUpperLevel.GetComponent<Collider2D>(), other.GetComponent<Collider2D>(), false);
+            Physics2D.IgnoreCollision(groundCollisionAbovePlayer.GetComponent<Collider2D>(), other.GetComponent<Collider2D>(), true);
+            other.gameObject.GetComponent<Renderer>().sortingOrder = 2;
+            other.gameObject.GetComponent<character>().isElevated = true;
         }
     }
 }
