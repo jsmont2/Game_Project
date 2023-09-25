@@ -49,7 +49,7 @@ public class SpikeTrap : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other) {
         if (other.tag == "Player")
         {
-            if (anim.GetBool("Spikes_Up") || anim.GetBool("Spikes_Lowering"))
+            if (anim.GetBool("Spikes_Up"))
             {
                 other.GetComponent<character>().Knock(this.transform, 10f, .1f);
                 other.GetComponent<character>().TakeDamage(1);
