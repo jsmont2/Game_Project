@@ -104,7 +104,10 @@ public class character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+    }
+    public new objectType GetType()
+    {
+        return objType;
     }
     public float getknockTime()
     {

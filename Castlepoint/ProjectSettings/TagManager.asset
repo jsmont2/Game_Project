@@ -3,19 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - enemy
-  - heartUp
-  - golem
-  - sword
-  - hurtBox
-  - Transition
-  - Elevation_Down
-  - Elevation_Up
-  - TransitionUp
-  - TransitionDown
-  - TransitionLeft
-  - TransitionRight
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -52,10 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Decorations
-    uniqueID: 1715479957
-    locked: 0
-  - name: Player
-    uniqueID: 626508775
     locked: 0

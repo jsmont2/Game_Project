@@ -39,6 +39,16 @@ public class Enemy : character
                 GameObject temp = collision.gameObject;
                 //temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());            
             }
+            Debug.Log("knock");
+            GameObject temp = collision.gameObject;
+            temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());
+            if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
+            {
+                Debug.Log("hit");
+                StartCoroutine(FlashRed());
+                Knock(collision.transform, GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getknockTime());
+                TakeDamage(GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getDmg());
+            }
         }
         else { Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), true); }
 
@@ -58,6 +68,7 @@ public class Enemy : character
                 //hitAnim.SetBool("hit", false);
             }
         }
+
     }
 
 
