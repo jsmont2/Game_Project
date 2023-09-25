@@ -20,7 +20,9 @@ public class phantom : Enemy // inherits everything from enemy script including 
         target = GameObject.FindWithTag("Player").transform;    //allows the enemy to find the player and chase him
         
     }
-
+    void OnEnable() {
+        isElevated = false;
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
