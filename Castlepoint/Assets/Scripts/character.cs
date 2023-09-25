@@ -105,10 +105,10 @@ public class character : MonoBehaviour
     void Update()
     {
     }
-    public new objectType GetType()
+    /*public new objectType GetType()
     {
         return objType;
-    }
+    }*/
     public float getknockTime()
     {
         return knockTime;
