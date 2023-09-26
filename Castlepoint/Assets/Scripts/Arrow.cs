@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : character
+public class Arrow : MonoBehaviour
 {
     public float speed2;
     public Rigidbody2D myRigidbody;
@@ -14,8 +14,10 @@ public class Arrow : character
     void Start()
     {
        lifetimeCounter = lifetime;
-    }
 
+    }
+    private void Awake() {
+    }
     private void Update()// destroys arrows that dont hit an enemy
     {
         lifetimeCounter -= Time.deltaTime;

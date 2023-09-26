@@ -87,6 +87,7 @@ MonoBehaviour:
   damage: 0
   thisObject: {fileID: 0}
   animator: {fileID: 0}
+  isElevated: 0
   numOfHearts: 3
   background: {fileID: 0}
   go: {fileID: 0}
@@ -272,8 +273,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 626508775
-  m_SortingLayer: 2
+  m_SortingLayerID: 141163995
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1e1446d6e1fb04549a9df1e848ccf491, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -360,7 +361,9 @@ MonoBehaviour:
   thrust: 10
   damage: 1
   thisObject: {fileID: 0}
-  projectile: {fileID: 7424196571582084430, guid: 2d9cc879ea4bae249a7fc5719f9d6959, type: 3}
+  animator: {fileID: 0}
+  isElevated: 0
+  projectile: {fileID: 7424196571582084430, guid: 768f0d818fdea484680e207ad161e2b0, type: 3}
 --- !u!114 &4764689202895771626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,7 +380,7 @@ MonoBehaviour:
   currentState: 0
   speed: 0
   rb: {fileID: 0}
-  objType: 0
+  charType: 0
   maxHealth: 3
   health: 3
   enemyName: 
@@ -389,6 +392,7 @@ MonoBehaviour:
   damage: 0
   thisObject: {fileID: 0}
   animator: {fileID: 0}
+  isElevated: 0
   numOfHearts: 3
   background: {fileID: 0}
   go: {fileID: 0}

@@ -43,8 +43,8 @@ public class Enemy : character
             {
                 Debug.Log("hit");
                 StartCoroutine(FlashRed());
-                Knock(collision.transform, GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getknockTime());
-                TakeDamage(GameObject.FindGameObjectWithTag("arrow").GetComponent<character>().getDmg());
+                Knock(collision.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
+                TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
             }
         }
         else { Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), true); }
