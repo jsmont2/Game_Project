@@ -108,7 +108,7 @@ public class PlayerController : character
         currentState = characterState.attack;
         yield return null;
         MakeArrow();
-        //animator.SetBool("attacking", false);
+        animator.SetBool("attacking", false);
         yield return new WaitForSeconds(.15f);
         currentState = characterState.walk;
     }

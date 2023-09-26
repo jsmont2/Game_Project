@@ -57,13 +57,14 @@ public class character : MonoBehaviour
     {
         if (rb != null)
         {
+            UnityEngine.Debug.Log(this);
             rb.GetComponent<character>().currentState = characterState.stagger;
-            animator.SetBool("hit", true);
+            this.GetComponent<Animator>().SetBool("hit", true);
             yield return new WaitForSeconds(kt);
-            animator.SetBool("hit", false);
+            UnityEngine.Debug.Log("COLLISION");
+            this.GetComponent<Animator>().SetBool("hit", false);
             rb.velocity = Vector2.zero;
             rb.GetComponent<character>().currentState = characterState.idle;
-            rb.velocity = Vector2.zero;
         }
     }
 

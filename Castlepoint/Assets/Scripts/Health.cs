@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Health : character
+public class Health : MonoBehaviour
 {
-    //public int health; // the current number of full hearts the player has
-    // health already in character script
+    //public int thePlayer.health; // the current number of full hearts the player has
+    // thePlayer.health already in character script
     public int numOfHearts; //sets the max number of hearts the player should have
 
     public GameObject background;
@@ -16,6 +16,8 @@ public class Health : character
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+    [SerializeField]
+    public GameObject thePlayer;
 
     // For sound FX's
     public AudioClip collisionSound;
@@ -30,17 +32,16 @@ public class Health : character
         heartSound.clip = collisionSound;
 		animator = GetComponent<Animator>();
 	}
-
     void Update()
     {
-        if (health > numOfHearts)
+        if (thePlayer.GetComponent<character>().health > numOfHearts)
         {
-            health = numOfHearts;
+            thePlayer.GetComponent<character>().health = numOfHearts;
         }
 
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < health)
+            if (i < thePlayer.GetComponent<character>().health)
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -61,7 +62,7 @@ public class Health : character
             }
         }
 
-        if (health != 0)
+        if (thePlayer.GetComponent<character>().health != 0)
         {
             background.SetActive(false);
         }
@@ -74,7 +75,7 @@ public class Health : character
     IEnumerator PlayDeathAnimationAndLoadGameOver()
     {
         // Play the death animation
-        Animator animator = GetComponent<Animator>();
+        Animator animator = thePlayer.GetComponent<Animator>();
         Debug.Log("Playing Death Animation");
         animator.SetTrigger("isDead");
 
@@ -97,9 +98,9 @@ public class Health : character
         if (collision.collider.tag == "enemy")
         {
             // lose 1 heart if colliding with enemy
-            Debug.Log("Took dmg");
-            TakeDamage(collision.gameObject.GetComponent<character>().getDmg());
-            this.Knock(collision.transform, collision.gameObject.GetComponent<character>().getThrust(), collision.gameObject.GetComponent<character>().getknockTime());
+            
+           // TakeDamage(collision.gameObject.GetComponent<character>().getDmg());
+            //this.Knock(collision.transform, collision.gameObject.GetComponent<character>().getThrust(), collision.gameObject.GetComponent<character>().getknockTime());
             Animator animator = GetComponent<Animator>();
             animator.SetTrigger("isHurt");
             
@@ -112,11 +113,11 @@ public class Health : character
     private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
     {
         Debug.Log("A trigger happened");
-        if (other.tag == "heartUp" && health != maxHealth)
+        if (other.tag == "heartUp" && thePlayer.GetComponent<character>().health != thePlayer.GetComponent<character>().maxHealth)
         {
             Debug.Log("Picked up heart");
             other.gameObject.SetActive(false);
-            health += 1;
+            thePlayer.GetComponent<character>().health += 1;
             heartSound.Play();
         }
 

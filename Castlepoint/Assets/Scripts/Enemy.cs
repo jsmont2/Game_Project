@@ -28,7 +28,6 @@ public class Enemy : character
         yield return new WaitForSeconds(0.1f); //f is used when using a decimal and not a whole number which stands for float.
         sprite.color = Color.white;// after turning red for a second, the sprite will go back to turning white since the default color for all enemies/sprites are already white even though they appear to be normal(i.e. they won't turn plain white
     }
-
     void OnCollisionEnter2D(Collision2D collision)  // Knockback and damage
     {
         if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
@@ -36,8 +35,10 @@ public class Enemy : character
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), false);
             if (collision.gameObject.CompareTag("Player"))
             {
+                
                 GameObject temp = collision.gameObject;
-                temp.GetComponent<character>().Knock(temp.transform, thrust, temp.GetComponent<character>().getknockTime());          
+                collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
+                collision.gameObject.GetComponent<character>().TakeDamage(damage);          
             }
             if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
             {
