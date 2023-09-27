@@ -81,7 +81,7 @@ public class Health : MonoBehaviour
 
         // Wait for the duration of the death animation
         //yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-        yield return new WaitForSeconds(9.0f);
+        yield return new WaitForSeconds(0.9f);
 
         // Load the game over scene
         SceneManager.LoadScene("game_over");

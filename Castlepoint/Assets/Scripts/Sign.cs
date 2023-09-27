@@ -11,6 +11,7 @@ public class Sign : MonoBehaviour
     public Text dialogText;
     public string dialog;
     public bool playerInRange;
+    public GameObject prompt;
 
 
     // Start is called before the first frame update
@@ -21,11 +22,22 @@ public class Sign : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+
+        if (playerInRange)
+        {
+            prompt.SetActive(true);
+        }
+        else
+        {
+            prompt.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
             if (dialogBox.activeInHierarchy)
             {
                 dialogBox.SetActive(false);
+
             }
             else
             {
@@ -42,7 +54,9 @@ public class Sign : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+           
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
