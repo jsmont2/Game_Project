@@ -663,7 +663,7 @@ TextureImporter:
       213: -3283040558097507970
     second: Overworld_Tileset 1_219
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -684,7 +684,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -723,7 +722,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -787,18 +785,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -5442,227 +5428,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Overworld_Tileset 1_0: 3112140744474874492
-      Overworld_Tileset 1_1: 2864994956158814484
-      Overworld_Tileset 1_10: -8237474357115514824
-      Overworld_Tileset 1_100: -6443991449897950577
-      Overworld_Tileset 1_101: 1548787589502950227
-      Overworld_Tileset 1_102: -858805186048247196
-      Overworld_Tileset 1_103: -6360886512641472025
-      Overworld_Tileset 1_104: 8672874996877669392
-      Overworld_Tileset 1_105: 5647443757724665668
-      Overworld_Tileset 1_106: 7765512169945632922
-      Overworld_Tileset 1_107: 6069129725040113982
-      Overworld_Tileset 1_108: 4627445227211951744
-      Overworld_Tileset 1_109: 8346609252280595037
-      Overworld_Tileset 1_11: 530810137203105445
-      Overworld_Tileset 1_110: 3211100731380284125
-      Overworld_Tileset 1_111: 966527973013004013
-      Overworld_Tileset 1_112: -2585877910178422667
-      Overworld_Tileset 1_113: 4474029282919957970
-      Overworld_Tileset 1_114: -1458080803446970776
-      Overworld_Tileset 1_115: 7016479040547950952
-      Overworld_Tileset 1_116: -7438446328529164272
-      Overworld_Tileset 1_117: 3879216031516955467
-      Overworld_Tileset 1_118: -8094625758548663186
-      Overworld_Tileset 1_119: 6604335103418344750
-      Overworld_Tileset 1_12: -4891293176241155485
-      Overworld_Tileset 1_120: -3519043540759728525
-      Overworld_Tileset 1_121: 8705892029754638829
-      Overworld_Tileset 1_122: -3141595287424806050
-      Overworld_Tileset 1_123: -6614297145685360060
-      Overworld_Tileset 1_124: 7399071794252385130
-      Overworld_Tileset 1_125: -6860681583481960557
-      Overworld_Tileset 1_126: 8223794164674280777
-      Overworld_Tileset 1_127: -7112145103907055434
-      Overworld_Tileset 1_128: -2954893101189440034
-      Overworld_Tileset 1_129: 8353944393893548558
-      Overworld_Tileset 1_13: 3528934587072593197
-      Overworld_Tileset 1_130: -8526228897715849843
-      Overworld_Tileset 1_131: -3166814778208894826
-      Overworld_Tileset 1_132: -7995984892687623708
-      Overworld_Tileset 1_133: 3910396597416395733
-      Overworld_Tileset 1_134: -858931938299897447
-      Overworld_Tileset 1_135: -6867543939698223753
-      Overworld_Tileset 1_136: -4299199636234375
-      Overworld_Tileset 1_137: 2288057435194660580
-      Overworld_Tileset 1_138: -2329808088698244427
-      Overworld_Tileset 1_139: 1616677346903958907
-      Overworld_Tileset 1_14: 8280751668202140397
-      Overworld_Tileset 1_140: -8952261696013856976
-      Overworld_Tileset 1_141: 6044135217660893757
-      Overworld_Tileset 1_142: 3600336451495470537
-      Overworld_Tileset 1_143: 1040365288342386863
-      Overworld_Tileset 1_144: -2385274115717982145
-      Overworld_Tileset 1_145: 1908819254376441283
-      Overworld_Tileset 1_146: 5406649499273754804
-      Overworld_Tileset 1_147: 8283603672884700543
-      Overworld_Tileset 1_148: 3015793683486497682
-      Overworld_Tileset 1_149: -3572649966300304105
-      Overworld_Tileset 1_15: 7902824301592585337
-      Overworld_Tileset 1_150: -2707378713005626890
-      Overworld_Tileset 1_151: 4498676935383343206
-      Overworld_Tileset 1_152: 4399558437872957680
-      Overworld_Tileset 1_153: 2131836308588368044
-      Overworld_Tileset 1_154: -1130538975170381978
-      Overworld_Tileset 1_155: 7837049002640089529
-      Overworld_Tileset 1_156: -3459429624256071335
-      Overworld_Tileset 1_157: -4361399546568883715
-      Overworld_Tileset 1_158: -6652267854741099261
-      Overworld_Tileset 1_159: 4390085939376293787
-      Overworld_Tileset 1_16: -6037506920366424937
-      Overworld_Tileset 1_160: -7126738619249663842
-      Overworld_Tileset 1_161: -8913221539084266783
-      Overworld_Tileset 1_162: 426112910768349197
-      Overworld_Tileset 1_163: -5596412416560373488
-      Overworld_Tileset 1_164: -7754472127287461818
-      Overworld_Tileset 1_165: 6850104476090966708
-      Overworld_Tileset 1_166: 7494157866255925511
-      Overworld_Tileset 1_167: -2284209775274665643
-      Overworld_Tileset 1_168: -8603690040543012117
-      Overworld_Tileset 1_169: -1666291414757893806
-      Overworld_Tileset 1_17: 8861916202103545872
-      Overworld_Tileset 1_170: 8962255420997926215
-      Overworld_Tileset 1_171: -7275513548069547224
-      Overworld_Tileset 1_172: 6653226318232008458
-      Overworld_Tileset 1_173: 4590472033268388667
-      Overworld_Tileset 1_174: -5848215856694886117
-      Overworld_Tileset 1_175: -5397094904622152926
-      Overworld_Tileset 1_176: 6329253672576106333
-      Overworld_Tileset 1_177: 975001558430577658
-      Overworld_Tileset 1_178: -8718578720406977004
-      Overworld_Tileset 1_179: -159848558790577235
-      Overworld_Tileset 1_18: 5676521601325953357
-      Overworld_Tileset 1_180: 658091795537208628
-      Overworld_Tileset 1_181: -6717157001991839800
-      Overworld_Tileset 1_182: 7726712459566475334
-      Overworld_Tileset 1_183: 8086175330774044225
-      Overworld_Tileset 1_184: -5162950050824401255
-      Overworld_Tileset 1_185: 2492291419753892196
-      Overworld_Tileset 1_186: -7519122281541417795
-      Overworld_Tileset 1_187: -1657482459766002611
-      Overworld_Tileset 1_188: 6861360465041993181
-      Overworld_Tileset 1_189: 6202426154693502215
-      Overworld_Tileset 1_19: -8111029928532182445
-      Overworld_Tileset 1_190: 9077967195437186075
-      Overworld_Tileset 1_191: 4543640513427234411
-      Overworld_Tileset 1_192: -5591812556520826032
-      Overworld_Tileset 1_193: 8524991547209224327
-      Overworld_Tileset 1_194: -2038219239970475612
-      Overworld_Tileset 1_195: 2463396336881249799
-      Overworld_Tileset 1_196: -6900780458725966834
-      Overworld_Tileset 1_197: 1932397348610601013
-      Overworld_Tileset 1_198: -1461186572120929287
-      Overworld_Tileset 1_199: -4425047681433579489
-      Overworld_Tileset 1_2: -628480107731698465
-      Overworld_Tileset 1_20: 510514561324816350
-      Overworld_Tileset 1_200: 5360842335832360392
-      Overworld_Tileset 1_201: 1864719508456194071
-      Overworld_Tileset 1_202: 2214844662603269755
-      Overworld_Tileset 1_203: 8121941879443801859
-      Overworld_Tileset 1_204: -7071298070921230699
-      Overworld_Tileset 1_205: 6264662209829322548
-      Overworld_Tileset 1_206: 2100545638986448000
-      Overworld_Tileset 1_207: -5461685854422842937
-      Overworld_Tileset 1_208: -3904396762139803511
-      Overworld_Tileset 1_209: 8052622357339125887
-      Overworld_Tileset 1_21: 441530807006307058
-      Overworld_Tileset 1_210: -634708321309525073
-      Overworld_Tileset 1_211: -1776192533790035478
-      Overworld_Tileset 1_212: 4452558685442926243
-      Overworld_Tileset 1_213: 3331567006702557615
-      Overworld_Tileset 1_214: -5999613511481206046
-      Overworld_Tileset 1_215: -9180087366181548567
-      Overworld_Tileset 1_216: 920765769323122446
-      Overworld_Tileset 1_217: 8620091871941722770
-      Overworld_Tileset 1_218: 7267667865962470139
-      Overworld_Tileset 1_219: -3283040558097507970
-      Overworld_Tileset 1_22: -7579433590417396065
-      Overworld_Tileset 1_23: 771936299914460448
-      Overworld_Tileset 1_24: -5454549292629197378
-      Overworld_Tileset 1_25: -2052670433254290552
-      Overworld_Tileset 1_26: 4764006200613189822
-      Overworld_Tileset 1_27: 2109197680727456185
-      Overworld_Tileset 1_28: -3892235660950706475
-      Overworld_Tileset 1_29: 6435465203016201504
-      Overworld_Tileset 1_3: -4467854515125047413
-      Overworld_Tileset 1_30: -315784377411932740
-      Overworld_Tileset 1_31: 5906175471359235808
-      Overworld_Tileset 1_32: 6128027873390146642
-      Overworld_Tileset 1_33: 7275884140586552675
-      Overworld_Tileset 1_34: -9116641456794178938
-      Overworld_Tileset 1_35: 6223902857851749144
-      Overworld_Tileset 1_36: 9222268898161712593
-      Overworld_Tileset 1_37: 3832069026576117992
-      Overworld_Tileset 1_38: 2536493108281409682
-      Overworld_Tileset 1_39: -1388807511577327678
-      Overworld_Tileset 1_4: 3209909570292199242
-      Overworld_Tileset 1_40: -3545306241482317090
-      Overworld_Tileset 1_41: 1134248786745579627
-      Overworld_Tileset 1_42: -8697001796019028699
-      Overworld_Tileset 1_43: -2916283068635729786
-      Overworld_Tileset 1_44: -1260634214870238670
-      Overworld_Tileset 1_45: 1570659561883285683
-      Overworld_Tileset 1_46: -8861582969247498836
-      Overworld_Tileset 1_47: -6395670710684617697
-      Overworld_Tileset 1_48: 606013200504147100
-      Overworld_Tileset 1_49: 1101301737699977763
-      Overworld_Tileset 1_5: 5215391462455492566
-      Overworld_Tileset 1_50: -6329458852267178071
-      Overworld_Tileset 1_51: 1062024558285783283
-      Overworld_Tileset 1_52: -8530307568325721730
-      Overworld_Tileset 1_53: 2000995651883611891
-      Overworld_Tileset 1_54: -6035925094108892488
-      Overworld_Tileset 1_55: 1833498938587188716
-      Overworld_Tileset 1_56: 9004513039263540921
-      Overworld_Tileset 1_57: 649578808849898569
-      Overworld_Tileset 1_58: 9054833574549752440
-      Overworld_Tileset 1_59: 2481311424170665178
-      Overworld_Tileset 1_6: -1264551950541986352
-      Overworld_Tileset 1_60: -3325889388753783602
-      Overworld_Tileset 1_61: 6091645432854619772
-      Overworld_Tileset 1_62: -1548798429444575299
-      Overworld_Tileset 1_63: -9051030840163641010
-      Overworld_Tileset 1_64: -7654363230297532849
-      Overworld_Tileset 1_65: -4966721154019489721
-      Overworld_Tileset 1_66: 8312401945065679513
-      Overworld_Tileset 1_67: 6323058440839654208
-      Overworld_Tileset 1_68: 6449168031861982101
-      Overworld_Tileset 1_69: -6380166243585336112
-      Overworld_Tileset 1_7: 699696774224566721
-      Overworld_Tileset 1_70: 1013805975113565802
-      Overworld_Tileset 1_71: 303932167277492071
-      Overworld_Tileset 1_72: -872384975240768999
-      Overworld_Tileset 1_73: 5837002990813981533
-      Overworld_Tileset 1_74: 6432587810118983280
-      Overworld_Tileset 1_75: 4354017161003416176
-      Overworld_Tileset 1_76: -6922365007450594374
-      Overworld_Tileset 1_77: -50601385171740210
-      Overworld_Tileset 1_78: 5900145813047862120
-      Overworld_Tileset 1_79: 2780794036560006407
-      Overworld_Tileset 1_8: 1846371729418863840
-      Overworld_Tileset 1_80: 2976317801068120161
-      Overworld_Tileset 1_81: 5590100446854164224
-      Overworld_Tileset 1_82: -4184663913741847159
-      Overworld_Tileset 1_83: -7935059777850319090
-      Overworld_Tileset 1_84: 5442185815355282308
-      Overworld_Tileset 1_85: 7725157735839537398
-      Overworld_Tileset 1_86: -1911496545856335587
-      Overworld_Tileset 1_87: -5353765597574307485
-      Overworld_Tileset 1_88: -500964696907118765
-      Overworld_Tileset 1_89: 5782582356069067184
-      Overworld_Tileset 1_9: -6415198221816814661
-      Overworld_Tileset 1_90: -327007843488514212
-      Overworld_Tileset 1_91: -3482689895103780792
-      Overworld_Tileset 1_92: -8067877124607797074
-      Overworld_Tileset 1_93: 1393819380556444487
-      Overworld_Tileset 1_94: -4844626829763822485
-      Overworld_Tileset 1_95: 357524839291695607
-      Overworld_Tileset 1_96: -2476073568880107265
-      Overworld_Tileset 1_97: 5045434725794123967
-      Overworld_Tileset 1_98: 1748174220523512205
-      Overworld_Tileset 1_99: 3288741872121990364
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
