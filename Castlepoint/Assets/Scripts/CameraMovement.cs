@@ -13,7 +13,9 @@ public class CameraMovement : MonoBehaviour
     {
         
     }
-
+    private void Update() {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
     // Update is called once per frame
     void LateUpdate()
     {

@@ -176,7 +176,7 @@ public class Room : MonoBehaviour
 	private int distanceFromOrigin;
 	private Vector3 roomPosition;
 	public AdjacentRooms adjacentRooms = new AdjacentRooms();
-
+	public bool leadsToBossRoom;
 
 
 

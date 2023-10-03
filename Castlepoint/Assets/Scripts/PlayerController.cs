@@ -6,7 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 using Quaternion = UnityEngine.Quaternion;
@@ -25,16 +25,23 @@ public class PlayerController : character
     //public float speed;
     //private Rigidbody2D rb;
     private Vector3 change;
-    
+
     private Vector3 move;
     private Animator animator;
     public GameObject projectile;
-    
+    public List<string> sceneList;
+    private int sceneListSize;
+    [SerializeField] public bool hasKey;
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        sceneList.Add(SceneManager.GetActiveScene().name);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        currentState= characterState.idle;
+        currentState = characterState.idle;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX", 0);
@@ -42,15 +49,21 @@ public class PlayerController : character
     }
     void Update()
     {
-        if (Input.GetButtonDown("attack") && currentState != characterState.attack && currentState != characterState.stagger)
-                {
-                    StartCoroutine(AttackCo());
-                }
+        if (Input.GetButtonDown("attack") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))
+        {
+            StartCoroutine(AttackCo());
+        }
 
-                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)//press m to fire arrow
-                {
-                    StartCoroutine(SecondAttackCo());
-                }
+        else if (Input.GetButtonDown("Second Weapon") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))//press m to fire arrow
+        {
+            StartCoroutine(SecondAttackCo());
+        }
+        if (SceneManager.GetActiveScene().name != sceneList[sceneListSize])
+        {
+            sceneList.Add(SceneManager.GetActiveScene().name);
+            sceneListSize++;
+            StartPos();
+        }
     }
 
     // Update is called once per frame
@@ -66,30 +79,52 @@ public class PlayerController : character
                 UpdateAnimationAndMove();
             }
 
-        }  
-
+        }
     }
-    void UpdateAnimationAndMove() 
+    private void StartPos()
+    {
+
+        if (sceneList.Count >= 2)
+        {
+            if (sceneList[sceneListSize - 1] == "dungeon_proc_gen_test")
+            { this.gameObject.transform.position = new Vector3(40.5f, 31f, 0); }
+            if (sceneList[sceneListSize - 1] == "overworld")
+            { this.gameObject.transform.position = new Vector3(0, 13, 0); }
+            Debug.Log(this.transform.position);
+        }
+    }
+    void UpdateAnimationAndMove()
     {
         if (move != Vector3.zero)
         {
-            MoveCharacter();    
+            MoveCharacter();
             animator.SetFloat("moveX", move.x);
             animator.SetFloat("moveY", move.y);
-            animator.SetBool("moving",true);
+            animator.SetBool("moving", true);
 
-        }else
+        }
+        else
         {
-            animator.SetBool("moving",false);
+            animator.SetBool("moving", false);
 
-        }        
+        }
     }
     void MoveCharacter() //function that moves player
     {
         //making change to change.normalized normalized the speed when moving the player diagonally
-        rb.MovePosition(transform.position + move.normalized * speed * Time.deltaTime); 
+        rb.MovePosition(transform.position + move.normalized * speed * Time.deltaTime);
     }
-   
+    public IEnumerator PlayDeathAnimationAndLoadGameOver()
+    {
+        this.GetComponent<Animator>().SetBool("isDead", true);
+        this.GetComponent<character>().currentState = characterState.death;
+        // Wait for the duration of the death animation
+        //yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(1f);
+
+        // Load the game over scene
+        SceneManager.LoadScene("game_over");
+    }
 
     private IEnumerator AttackCo()
     {
@@ -100,8 +135,8 @@ public class PlayerController : character
         yield return new WaitForSeconds(.15f);
         currentState = characterState.walk;
     }
-   
-    
+
+
     private IEnumerator SecondAttackCo()
     {
         //animator.SetBool("attacking", true);
@@ -116,29 +151,15 @@ public class PlayerController : character
     private void MakeArrow()
     {
         Vector2 temp = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        Arrow arrow = Instantiate(projectile, transform.position,Quaternion.identity).GetComponent<Arrow>();
+        Arrow arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Arrow>();
         arrow.Setup(temp, ChooseArrowDirection());
     }
 
     Vector3 ChooseArrowDirection()
     {
-        float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX"))* Mathf.Rad2Deg;
+        float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX")) * Mathf.Rad2Deg;
         return new Vector3(0, 0, temp);
     }
 
-    //public void Knock(float knockTime)      // Knockback
-    //{
-    //    StartCoroutine(KnockCo(knockTime));
-    //}
 
-    //public IEnumerator KnockCo(float knockTime)
-    //{
-    //    if(rb != null)
-    //    {
-    //        yield return new WaitForSeconds(knockTime);
-    //        rb.velocity = Vector2.zero;
-    //        currentState = characterState.idle;
-    //        rb.velocity = Vector2.zero;
-    //    }
-    //}
 }

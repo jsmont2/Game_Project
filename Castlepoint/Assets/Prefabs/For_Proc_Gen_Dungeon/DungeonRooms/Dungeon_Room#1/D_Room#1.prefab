@@ -90,6 +90,7 @@ MonoBehaviour:
   hasLeftConnection: 0
   hasRightConnection: 0
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
 --- !u!1001 &1504052852542905578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,6 +168,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 921390053787620503}
     m_Modifications:
+    - target: {fileID: 1201492401012273024, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1201492401012273024, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1430666884437198226, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: collisionUpperLevel
       value: 
@@ -255,7 +264,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomTriggers
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 535759620932245739, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
 --- !u!4 &4889454157584409839 stripped
 Transform:

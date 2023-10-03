@@ -37,8 +37,12 @@ public class Enemy : character
             {
                 
                 GameObject temp = collision.gameObject;
-                collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
-                collision.gameObject.GetComponent<character>().TakeDamage(damage);          
+                collision.gameObject.GetComponent<character>().TakeDamage(damage); 
+                if(collision.gameObject.GetComponent<character>().health != 0)
+                {
+                    collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);   
+                }  
+                                  
             }
             if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
             {

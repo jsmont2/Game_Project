@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: a5af3c9f972764a4b855e7705dadbe37
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7926524240977822462
+    second: locked_door_sprite_0
+  - first:
+      213: 8817772943440398925
+    second: locked_door_sprite_1
+  - first:
+      213: 4108481406323874736
+    second: locked_door_sprite_2
+  - first:
+      213: 7607449865873778477
+    second: locked_door_sprite_3
+  - first:
+      213: 3173678732796981356
+    second: locked_door_sprite_4
+  - first:
+      213: -6858788105223919916
+    second: locked_door_sprite_5
+  - first:
+      213: 6900081264204093335
+    second: locked_door_sprite_6
+  - first:
+      213: 4790985857706598367
+    second: locked_door_sprite_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,12 +65,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -137,7 +161,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: locked_door_sprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 88
+        width: 73
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef28107fccba00e60800000000000000
+      internalID: 7926524240977822462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_door_sprite_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 88
+        width: 73
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ac0d306c50f5a70800000000000000
+      internalID: 8817772943440398925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_door_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 88
+        width: 74
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb5b364212440930800000000000000
+      internalID: 4108481406323874736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_door_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 88
+        width: 76
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27eff5d857139960800000000000000
+      internalID: 7607449865873778477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_door_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3
+        width: 72
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60739b1efb2b0c20800000000000000
+      internalID: 3173678732796981356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_door_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 3
+        width: 73
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d62476ce80b0d0a0800000000000000
+      internalID: -6858788105223919916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_door_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 3
+        width: 74
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79796320a5302cf50800000000000000
+      internalID: 6900081264204093335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: locked_door_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 3
+        width: 77
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf958cf0400d7240800000000000000
+      internalID: 4790985857706598367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

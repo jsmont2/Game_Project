@@ -12,7 +12,8 @@ public class character : MonoBehaviour
         walk,
         attack,
         stagger,
-        interact
+        interact,
+        death
     }
 
     public enum characterType
@@ -40,6 +41,7 @@ public class character : MonoBehaviour
     public Animator animator;
     [SerializeField]
     public bool isElevated;
+
     public void Knock(Transform other, float force, float kt) // Knockback
     {
         Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
@@ -50,6 +52,8 @@ public class character : MonoBehaviour
         {
             StartCoroutine(KnockCo(hit, kt));
         }
+
+
     }
 
 
@@ -57,11 +61,9 @@ public class character : MonoBehaviour
     {
         if (rb != null)
         {
-            UnityEngine.Debug.Log(this);
             rb.GetComponent<character>().currentState = characterState.stagger;
             this.GetComponent<Animator>().SetBool("hit", true);
             yield return new WaitForSeconds(kt);
-            UnityEngine.Debug.Log("COLLISION");
             this.GetComponent<Animator>().SetBool("hit", false);
             rb.velocity = Vector2.zero;
             rb.GetComponent<character>().currentState = characterState.idle;
@@ -71,6 +73,7 @@ public class character : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         health -= dmg;
+
         if (health <= 0)
         {
             if (this.charType == characterType.enemy)
@@ -80,8 +83,13 @@ public class character : MonoBehaviour
                 {
                     Instantiate(heartForEnemy, transform.position, Quaternion.identity);
                 }
+                this.gameObject.SetActive(false);
             }
-            this.gameObject.SetActive(false);
+            if (this.charType == characterType.player)
+            {
+                this.currentState = characterState.death;
+                StartCoroutine(this.gameObject.GetComponent<PlayerController>().PlayDeathAnimationAndLoadGameOver());
+            }
         }
     }
 
