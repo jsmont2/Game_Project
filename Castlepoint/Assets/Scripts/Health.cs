@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
     public GameObject thePlayer;
 
     // For sound FX's
-    public AudioClip collisionSound;
+    public AudioClip heartUpSound;
     private AudioSource heartSound;
 
     // Hit animation
@@ -29,7 +29,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         heartSound = GetComponent<AudioSource>();
-        heartSound.clip = collisionSound;
+        heartSound.clip = heartUpSound;
 		animator = GetComponent<Animator>();
 	}
     void Update()

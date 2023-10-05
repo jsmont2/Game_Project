@@ -10,25 +10,17 @@ using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 using Quaternion = UnityEngine.Quaternion;
-/*public enum PlayerState //the state machine for the player
-{
-    attack,
-    walk,
-    interact,
-    stagger,
-    idle
-}*/
 
 public class PlayerController : character
 {
-    //public PlayerState currentState;
-    //public float speed;
-    //private Rigidbody2D rb;
+
     private Vector3 change;
     
     private Vector3 move;
     private Animator animator;
     public GameObject projectile;
+    public AudioClip arrowThrowSound;
+    private AudioSource arrowthrowSound;
     
 
     // Start is called before the first frame update
@@ -39,6 +31,8 @@ public class PlayerController : character
         rb = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
+        arrowthrowSound = GetComponent<AudioSource>();
+        arrowthrowSound.clip = arrowThrowSound;
     }
     void Update()
     {
@@ -50,6 +44,7 @@ public class PlayerController : character
                 else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)//press m to fire arrow
                 {
                     StartCoroutine(SecondAttackCo());
+                    arrowthrowSound.Play();
                 }
     }
 
@@ -126,19 +121,5 @@ public class PlayerController : character
         return new Vector3(0, 0, temp);
     }
 
-    //public void Knock(float knockTime)      // Knockback
-    //{
-    //    StartCoroutine(KnockCo(knockTime));
-    //}
 
-    //public IEnumerator KnockCo(float knockTime)
-    //{
-    //    if(rb != null)
-    //    {
-    //        yield return new WaitForSeconds(knockTime);
-    //        rb.velocity = Vector2.zero;
-    //        currentState = characterState.idle;
-    //        rb.velocity = Vector2.zero;
-    //    }
-    //}
 }
