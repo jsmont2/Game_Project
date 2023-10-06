@@ -482,6 +482,7 @@ GameObject:
   - component: {fileID: 160511209}
   - component: {fileID: 160511211}
   - component: {fileID: 160511210}
+  - component: {fileID: 160511212}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -574,22 +575,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fed07b6af2edb04fabed289180008c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: c1331945c5af88c4b926af826a7971e8, type: 2}
+  signal: {fileID: 11400000, guid: 00a1fc496a55d8e4f9cb3da2e0b16029, type: 2}
   signalEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 160511211}
-        m_TargetAssemblyTypeName: MagicManager, Assembly-CSharp
-        m_MethodName: DecreaseMagic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 160511211}
         m_TargetAssemblyTypeName: MagicManager, Assembly-CSharp
         m_MethodName: AddMagic
@@ -616,6 +605,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magicSlider: {fileID: 160511209}
   playerInventory: {fileID: 11400000, guid: 0fcacc613a9fe0945b457bc8371e26e3, type: 2}
+--- !u!114 &160511212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160511207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fed07b6af2edb04fabed289180008c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  signal: {fileID: 11400000, guid: c1331945c5af88c4b926af826a7971e8, type: 2}
+  signalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 160511211}
+        m_TargetAssemblyTypeName: MagicManager, Assembly-CSharp
+        m_MethodName: DecreaseMagic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &183697196
 PrefabInstance:
   m_ObjectHideFlags: 0
