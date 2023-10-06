@@ -21,7 +21,8 @@ public class PlayerController : character
     public GameObject projectile;
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
-    
+    public Signal reduceMagic;
+    public Inventory playerInventory;
 
     // Start is called before the first frame update
     void Start()
@@ -110,11 +111,15 @@ public class PlayerController : character
 
     private void MakeArrow()
     {
-        Vector2 temp = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        Arrow arrow = Instantiate(projectile, transform.position,Quaternion.identity).GetComponent<Arrow>();
-        arrow.Setup(temp, ChooseArrowDirection());
+        if (playerInventory.currentMagic > 0)
+        {
+            Vector2 temp = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+            Arrow arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Arrow>();
+            arrow.Setup(temp, ChooseArrowDirection());
+            playerInventory.ReduceMagic(arrow.magicCost);
+            reduceMagic.Raise();
+        }
     }
-
     Vector3 ChooseArrowDirection()
     {
         float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX"))* Mathf.Rad2Deg;
