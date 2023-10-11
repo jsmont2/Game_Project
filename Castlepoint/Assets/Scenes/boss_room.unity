@@ -11540,8 +11540,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 626508775
-  m_SortingLayer: 2
+  m_SortingLayerID: 141163995
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -5688739654425014672, guid: fbb2bebad65c564479bf06739ad7e022, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11620,13 +11620,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b58b5f28a15eb74989ccea37578e608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartForEnemy: {fileID: 0}
   currentState: 0
-  maxHealth: {fileID: 11400000, guid: 1bace0ee69a5fdd4b9680968dca6d626, type: 2}
+  speed: 0
+  rb: {fileID: 0}
+  charType: 0
+  maxHealth: 0
   health: 10
   enemyName: geo
   baseAttack: 1
   moveSpeed: 2
   sprite: {fileID: 0}
+  knockTime: 0
+  thrust: 0
+  damage: 0
+  thisObject: {fileID: 0}
+  animator: {fileID: 0}
+  isElevated: 0
   target: {fileID: 0}
   chaseRadius: 1
   attackRadius: 0.7
@@ -11696,10 +11706,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d7a94fbf942244ebdd542ee451f1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 1.5
+  heartForEnemy: {fileID: 0}
+  currentState: 0
+  speed: 0
+  rb: {fileID: 0}
+  charType: 0
+  maxHealth: 0
+  health: 0
+  enemyName: 
+  baseAttack: 0
+  moveSpeed: 0
+  sprite: {fileID: 0}
   knockTime: 3
+  thrust: 1.5
   damage: 0
-  anim: {fileID: 0}
+  thisObject: {fileID: 0}
+  animator: {fileID: 0}
+  isElevated: 0
 --- !u!114 &727739192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11712,13 +11735,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4624067142761e4bbc5eacf47a6d9b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartForEnemy: {fileID: 0}
   currentState: 0
-  maxHealth: {fileID: 11400000, guid: 1bace0ee69a5fdd4b9680968dca6d626, type: 2}
+  speed: 0
+  rb: {fileID: 0}
+  charType: 0
+  maxHealth: 0
   health: 10
   enemyName: Geo
   baseAttack: 1
   moveSpeed: 1
   sprite: {fileID: 727739184}
+  knockTime: 0
+  thrust: 0
+  damage: 0
+  thisObject: {fileID: 0}
+  animator: {fileID: 0}
+  isElevated: 0
   target: {fileID: 1594300320}
   chaseRadius: 15
   attackRadius: 0.5
