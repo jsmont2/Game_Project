@@ -2,25 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public enum characterState {
-    idle, 
-    walk,
-    attack,
-    stagger
-}*/
 public class Enemy : character
 {
-    //public characterState currentState;
-    //public FloatValue maxHealth;
-    //public float health;
-    //public string enemyName;
-    //public int baseAttack;
-    //public float moveSpeed;
-    //public SpriteRenderer sprite;
-    ////public Animator hitAnim; //tried to set the animation for when the enemy gets hit
-    //private float knockTime = 0.5f;
-
-
     //code that makes the enemies flash red when hit
     public IEnumerator FlashRed()
     {
@@ -65,9 +48,7 @@ public class Enemy : character
                 StartCoroutine(FlashRed());
                 Knock(other.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
                 TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
-                //hitAnim = GetComponent<Animator>();
-                //hitAnim.SetBool("hit", true); // tried to set the animation for when the enemy gets hit
-                //hitAnim.SetBool("hit", false);
+           
             }
         }
 

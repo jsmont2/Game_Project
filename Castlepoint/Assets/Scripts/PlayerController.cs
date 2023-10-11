@@ -10,20 +10,10 @@ using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 using Quaternion = UnityEngine.Quaternion;
-/*public enum PlayerState //the state machine for the player
-{
-    attack,
-    walk,
-    interact,
-    stagger,
-    idle
-}*/
 
 public class PlayerController : character
 {
-    //public PlayerState currentState;
-    //public float speed;
-    //private Rigidbody2D rb;
+
     private Vector3 change;
 
     private Vector3 move;
@@ -37,6 +27,10 @@ public class PlayerController : character
         DontDestroyOnLoad(this.gameObject);
         sceneList.Add(SceneManager.GetActiveScene().name);
     }
+    public AudioClip arrowThrowSound;
+    private AudioSource arrowthrowSound;
+    public Signal reduceMagic;
+    public Inventory playerInventory;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +40,8 @@ public class PlayerController : character
         rb = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", -1);
+        arrowthrowSound = GetComponent<AudioSource>();
+        arrowthrowSound.clip = arrowThrowSound;
     }
     void Update()
     {
@@ -57,6 +53,7 @@ public class PlayerController : character
         else if (Input.GetButtonDown("Second Weapon") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))//press m to fire arrow
         {
             StartCoroutine(SecondAttackCo());
+            arrowthrowSound.Play();
         }
         if (SceneManager.GetActiveScene().name != sceneList[sceneListSize])
         {
@@ -150,11 +147,15 @@ public class PlayerController : character
 
     private void MakeArrow()
     {
-        Vector2 temp = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
-        Arrow arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Arrow>();
-        arrow.Setup(temp, ChooseArrowDirection());
+        if (playerInventory.currentMagic > 0)
+        {
+            Vector2 temp = new Vector2(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+            Arrow arrow = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Arrow>();
+            arrow.Setup(temp, ChooseArrowDirection());
+            playerInventory.ReduceMagic(arrow.magicCost);
+            reduceMagic.Raise();
+        }
     }
-
     Vector3 ChooseArrowDirection()
     {
         float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX")) * Mathf.Rad2Deg;
