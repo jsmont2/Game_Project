@@ -10,8 +10,8 @@ public class Health : MonoBehaviour
     // thePlayer.health already in character script
     public int numOfHearts; //sets the max number of hearts the player should have
 
-    //public GameObject background;
-    //public Text go;
+    public GameObject background;
+    public Text go;
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -26,7 +26,6 @@ public class Health : MonoBehaviour
     // Hit animation
     private Animator animator;
 
-    // code for heart sound effect
     private void Start()
     {
         heartSound = GetComponent<AudioSource>();
@@ -42,7 +41,7 @@ public class Health : MonoBehaviour
 
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < thePlayer.GetComponent<character>().health) // references the player and health from the character script
+            if (i < thePlayer.GetComponent<character>().health)
             {
                 hearts[i].sprite = fullHeart;
             }
@@ -63,9 +62,12 @@ public class Health : MonoBehaviour
             }
         }
 
-        if (thePlayer.GetComponent<character>().health == 0)
+        if (thePlayer.GetComponent<character>().health != 0)
         {
-            Debug.Log("playing death anim");
+            background.SetActive(false);
+        }
+        else 
+        {
             StartCoroutine(PlayDeathAnimationAndLoadGameOver());
         }
     }
