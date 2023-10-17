@@ -12,7 +12,8 @@ public class character : MonoBehaviour
         walk,
         attack,
         stagger,
-        interact
+        interact,
+        dead
     }
 
     public enum characterType
@@ -80,8 +81,10 @@ public class character : MonoBehaviour
                 {
                     Instantiate(heartForEnemy, transform.position, Quaternion.identity);
                 }
+                //I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
+                this.gameObject.SetActive(false);
             }
-            this.gameObject.SetActive(false);
+            //"this.gameObject.SetActive(false);" was here previously 
         }
     }
 

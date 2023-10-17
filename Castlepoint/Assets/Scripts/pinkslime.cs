@@ -37,23 +37,28 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     //Code of the enemy ai. triggers once the player is in range and then follows him, then stops if out of chase radius
     void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
+        if (currentState != characterState.dead) //notes: left off at trying to get the enemies to stop chasing the player here
         {
-            if (currentState == characterState.idle || currentState == characterState.walk && currentState != characterState.stagger)
+            if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
             {
-                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                if (currentState == characterState.idle || currentState == characterState.walk && currentState != characterState.stagger)
+                {
+                    Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
-                changeAnim(temp - transform.position);
-                rb.MovePosition(temp);
+                    changeAnim(temp - transform.position);
+                    rb.MovePosition(temp);
 
-                ChangeState(characterState.walk);
-                anim.SetBool("wakeUp", true);
+                    ChangeState(characterState.walk);
+                    anim.SetBool("wakeUp", true);
+                }
+            }
+
+            else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
+            {
+                anim.SetBool("wakeUp", false);
             }
         }
-        else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
-        {
-            anim.SetBool("wakeUp", false);
-        }
+      
     }
 
     private void SetAnimFloat(Vector2 setVector)

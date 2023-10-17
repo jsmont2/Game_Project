@@ -13,41 +13,45 @@ public class Enemy : character
     }
     void OnCollisionEnter2D(Collision2D collision)  // Knockback and damage
     {
-        if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
+        if (currentState != characterState.dead)
         {
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), false);
-            if (collision.gameObject.CompareTag("Player"))
+            if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
             {
-                
-                GameObject temp = collision.gameObject;
-                collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
-                collision.gameObject.GetComponent<character>().TakeDamage(damage);          
-            }
-            if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
-            {
-                Debug.Log("hit");
-                StartCoroutine(FlashRed());
-                Knock(collision.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
-                TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
-            }
-        }
-        else { Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), true); }
+                Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), false);
+                if (collision.gameObject.CompareTag("Player"))
+                {
 
+                    GameObject temp = collision.gameObject;
+                    collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
+                    collision.gameObject.GetComponent<character>().TakeDamage(damage);
+                }
+                if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
+                {
+                    Debug.Log("hit");
+                    StartCoroutine(FlashRed());
+                    Knock(collision.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
+                    TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
+                }
+            }
+            else { Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), true); }
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
+        if (currentState != characterState.dead)
         {
-            if (other.gameObject.tag == "sword")
+            if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
             {
-                StartCoroutine(FlashRed());
-                Knock(other.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
-                TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
-           
+                if (other.gameObject.tag == "sword")
+                {
+                    StartCoroutine(FlashRed());
+                    Knock(other.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
+                    TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
+
+                }
             }
         }
-
     }
 
 

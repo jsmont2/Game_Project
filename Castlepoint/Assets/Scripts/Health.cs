@@ -8,7 +8,8 @@ public class Health : MonoBehaviour
 {
     //public int thePlayer.health; // the current number of full hearts the player has
     // thePlayer.health already in character script
-    public int numOfHearts; //sets the max number of hearts the player should have
+    public int maxHearts; //sets the max number of hearts the player should have just for this health script
+    public float currentHearts;
 
     //public GameObject background;
     //public Text go;
@@ -35,24 +36,25 @@ public class Health : MonoBehaviour
 	}
     void Update()
     {
-        if (thePlayer.GetComponent<character>().health > numOfHearts)
+        if (currentHearts > maxHearts)
         {
-            thePlayer.GetComponent<character>().health = numOfHearts;
+           currentHearts = maxHearts;
         }
 
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < thePlayer.GetComponent<character>().health) // references the player and health from the character script
+            if (i < currentHearts) 
             {
                 hearts[i].sprite = fullHeart;
             }
             else
             {
+                
                 hearts[i].sprite = emptyHeart;
                 
             }
 
-            if (i < numOfHearts)
+            if (i < maxHearts)
             {
                 hearts[i].enabled = true;
             }
