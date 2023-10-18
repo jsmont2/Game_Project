@@ -32,6 +32,9 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         {
             CheckDistance();
         }
+
+
+
     }
 
     //Code of the enemy ai. triggers once the player is in range and then follows him, then stops if out of chase radius
@@ -102,4 +105,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
 
         }
     }
+
+
+
 }

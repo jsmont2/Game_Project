@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class character : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class character : MonoBehaviour
             this.GetComponent<Animator>().SetBool("hit", false);
             rb.velocity = Vector2.zero;
             rb.GetComponent<character>().currentState = characterState.idle;
+            
         }
     }
 
@@ -82,10 +84,26 @@ public class character : MonoBehaviour
                     Instantiate(heartForEnemy, transform.position, Quaternion.identity);
                 }
                 //I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
-                this.gameObject.SetActive(false);
+                StartCoroutine(EnemyDeathAnimAndDestroy());
+                currentState = characterState.dead;
+                
             }
             //"this.gameObject.SetActive(false);" was here previously 
         }
+    }
+
+    private IEnumerator EnemyDeathAnimAndDestroy()
+    {
+        // Play enemy death animation
+        animator.SetTrigger("isDead");
+
+        // Wait for the duration of the death animation
+        yield return new WaitForSeconds(0.5f); // Replace ANIMATION_DURATION with the actual duration of your death animation.
+
+        // Disable the game object after the animation has played
+        this.gameObject.SetActive(false);
+        UnityEngine.Debug.Log("Playing Pink slime death anim");
+
     }
 
     public float getDmg()
