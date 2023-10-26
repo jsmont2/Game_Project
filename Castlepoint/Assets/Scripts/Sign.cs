@@ -44,8 +44,8 @@ public class Sign : MonoBehaviour
                 dialogBox.SetActive(true);
                 dialogText.text = dialog;
             }
-            }
         }
+    }
 
 
 
