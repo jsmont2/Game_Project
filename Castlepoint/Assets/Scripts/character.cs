@@ -42,6 +42,8 @@ public class character : MonoBehaviour
     public Animator animator;
     [SerializeField]
     public bool isElevated;
+    public GameObject smallerPinkSlimePrefab;
+
     public void Knock(Transform other, float force, float kt) // Knockback
     {
         Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
@@ -89,6 +91,25 @@ public class character : MonoBehaviour
                 
             }
             //"this.gameObject.SetActive(false);" was here previously 
+        }
+
+        if (health <= 0 && gameObject.CompareTag("big_pinkslime"))
+        {
+            if (this.charType == characterType.enemy)
+            {
+
+                StartCoroutine(EnemyDeathAnimAndDestroy());
+                // Spawn the first smaller pink slime
+                Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(-.5f, 0, 0), Quaternion.identity);
+
+                // Spawn the second smaller pink slime
+                Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+
+                // Spawn the third smaller pink slime
+                Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                currentState = characterState.dead;
+
+            }
         }
     }
 

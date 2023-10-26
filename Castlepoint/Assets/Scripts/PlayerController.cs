@@ -92,7 +92,7 @@ public class PlayerController : character
             }
         }
 
-        if (health == 0)
+        if (health <= 0)
         {
             Debug.Log("playing death anim");
             currentState = characterState.dead;
