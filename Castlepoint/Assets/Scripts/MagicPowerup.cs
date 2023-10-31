@@ -7,6 +7,8 @@ public class MagicPowerup : Powerup
 
     public Inventory playerInventory;
     public float magicValue;
+    public AudioSource collectSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class MagicPowerup : Powerup
         {
             playerInventory.currentMagic += magicValue;
             powerupSignal.Raise();
+            collectSound.Play();
             Destroy(this.gameObject);
         }
     }
