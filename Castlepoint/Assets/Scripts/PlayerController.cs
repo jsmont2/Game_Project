@@ -21,11 +21,6 @@ public class PlayerController : character
     
     private Vector3 move;
     private Animator playerAnimator;
-    public GameObject projectile;
-    public AudioClip arrowThrowSound;
-    private AudioSource arrowthrowSound;
-    public Signal reduceMagic;
-    public Inventory playerInventory;
 
     //For heart system
     public Image[] hearts;
@@ -35,6 +30,14 @@ public class PlayerController : character
     // For heart sound FX's
     public AudioClip heartUpSound;
     private AudioSource heartSound;
+
+    // For Arrows
+    public GameObject projectile;
+    public Signal reduceMagic;
+    public Inventory playerInventory;
+    public AudioClip arrowThrowSound;
+    private AudioSource arrowthrowSound;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +63,9 @@ public class PlayerController : character
                 else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)//press m to fire arrow
                 {
                     StartCoroutine(SecondAttackCo());
-                    arrowthrowSound.Play();
+                    //play arrow sound here
+                    Debug.Log("Playing Arrow Sound");
+                    arrowthrowSound.PlayOneShot(arrowThrowSound);
                 }
         //Health
         if (health > maxHealth)

@@ -10,10 +10,18 @@ public class Arrow : MonoBehaviour
     private float lifetimeCounter;
     public float magicCost;
 
+    // For enemy hit sound FX
+    public AudioClip enemyHitSoundFX;
+    private AudioSource enemyhitSoundFX;
+
     // Start is called before the first frame update
     void Start()
     {
        lifetimeCounter = lifetime;
+
+        // For hit sound FX
+        enemyhitSoundFX = GetComponent<AudioSource>();
+        enemyhitSoundFX.clip = enemyHitSoundFX;
 
     }
     private void Awake() {
@@ -36,6 +44,9 @@ public class Arrow : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("enemy"))
         {
+
+            Debug.Log("PLAYING ENEMY HIT SOUND FX");
+            enemyhitSoundFX.PlayOneShot(enemyHitSoundFX); // For some reason this sound isn't playing
             GameObject temp = collision.gameObject;
             Destroy(this.gameObject);
             

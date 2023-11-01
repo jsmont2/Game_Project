@@ -44,6 +44,20 @@ public class character : MonoBehaviour
     public bool isElevated;
     public GameObject smallerPinkSlimePrefab;
 
+    // For enemy hit sound FX
+    public AudioClip enemyHitSoundFX;
+    private AudioSource enemyhitSoundFX;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        isElevated = false;
+
+        // For hit sound FX
+        enemyhitSoundFX = GetComponent<AudioSource>();
+        enemyhitSoundFX.clip = enemyHitSoundFX;
+    }
+
     public void Knock(Transform other, float force, float kt) // Knockback
     {
         Rigidbody2D hit = this.GetComponent<Rigidbody2D>();
@@ -75,11 +89,15 @@ public class character : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+        // Is this where we put the sound for enemy hits??
+        // enemyhitSoundFX.PlayOneShot(enemyHitSoundFX);
+
         health -= dmg;
         if (health <= 0)
         {
             if (this.charType == characterType.enemy)
             {
+                UnityEngine.Debug.Log("PLAYING ENEMY HIT SOUND");
                 int newRand = Random.Range(1, 11);
                 if (newRand == 2)
                 {
@@ -135,14 +153,7 @@ public class character : MonoBehaviour
     public float getThrust()
     {
         return thrust;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        isElevated = false;
-    }
+    }    
 
     // Update is called once per frame
     void Update()

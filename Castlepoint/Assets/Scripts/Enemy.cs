@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Enemy : character
 {
+  
+
+
+
     //code that makes the enemies flash red when hit
     public IEnumerator FlashRed()
     {
@@ -20,6 +24,7 @@ public class Enemy : character
                 Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), false);
                 if (collision.gameObject.CompareTag("Player"))
                 {
+                    
 
                     GameObject temp = collision.gameObject;
                     collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
@@ -48,6 +53,9 @@ public class Enemy : character
                     StartCoroutine(FlashRed());
                     Knock(other.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
                     TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
+
+                    //enemyhitSoundFX.PlayOneShot(enemyHitSoundFX);
+                    //Debug.Log("PLAYING ENEMY HIT SOUND FX");
 
                 }
             }
