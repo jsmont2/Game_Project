@@ -31,6 +31,10 @@ public class PlayerController : character
     public AudioClip heartUpSound;
     private AudioSource heartSound;
 
+    // For magic sound FX's
+    public AudioClip magicUpSound;
+    private AudioSource magicUp;
+
     // For Arrows
     public GameObject projectile;
     public Signal reduceMagic;
@@ -50,8 +54,13 @@ public class PlayerController : character
         arrowthrowSound = GetComponent<AudioSource>();
         arrowthrowSound.clip = arrowThrowSound;
 
+        // heart sound pick up sound fx
         heartSound = GetComponent<AudioSource>();
         heartSound.clip = heartUpSound;
+
+        // magic sound pick up sound fx
+        magicUp = GetComponent<AudioSource>();
+        magicUp.clip = magicUpSound;
     }
     void Update()
     {
@@ -222,7 +231,7 @@ public class PlayerController : character
 
     private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
     {
-        Debug.Log("A trigger happened");
+        //Debug.Log("A trigger happened");
         if (other.tag == "heartUp" && health != maxHealth)
         {
             Debug.Log("Picked up heart");
@@ -230,7 +239,10 @@ public class PlayerController : character
             health += 1;
             heartSound.Play();
         }
-
+        if (other.tag == "magicUp")
+        {
+            magicUp.PlayOneShot(magicUpSound);
+        }
 
     }
 

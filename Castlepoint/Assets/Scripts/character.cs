@@ -89,15 +89,15 @@ public class character : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        // Is this where we put the sound for enemy hits??
-        // enemyhitSoundFX.PlayOneShot(enemyHitSoundFX);
 
         health -= dmg;
+       
         if (health <= 0)
         {
             if (this.charType == characterType.enemy)
             {
-                UnityEngine.Debug.Log("PLAYING ENEMY HIT SOUND");
+               
+
                 int newRand = Random.Range(1, 11);
                 if (newRand == 2)
                 {
@@ -109,6 +109,11 @@ public class character : MonoBehaviour
                 
             }
             //"this.gameObject.SetActive(false);" was here previously 
+        } else
+        {
+            // Is this where we put the sound for enemy hits??
+            UnityEngine.Debug.Log("PLAYING ENEMY HIT SOUND");
+            enemyhitSoundFX.PlayOneShot(enemyHitSoundFX);
         }
 
         if (health <= 0 && gameObject.CompareTag("big_pinkslime"))
