@@ -11,6 +11,8 @@ public class spider : Enemy // inherits everything from enemy script including m
     public Transform homePosition;
     public Animator anim;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +20,18 @@ public class spider : Enemy // inherits everything from enemy script including m
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;    //allows the enemy to find the player and chase him
-        
+
+       
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         CheckDistance();
+
+        
+
     }
 
     void CheckDistance()
