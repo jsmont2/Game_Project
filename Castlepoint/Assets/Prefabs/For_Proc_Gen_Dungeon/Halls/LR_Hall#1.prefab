@@ -5659,6 +5659,7 @@ MonoBehaviour:
   hasLeftConnection: 1
   hasRightConnection: 1
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
 --- !u!1 &3059324695937427158
 GameObject:
   m_ObjectHideFlags: 0
@@ -10491,7 +10492,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5138397534495537689}
-  - {fileID: 9110814497762939246}
+  - {fileID: 7201988065474953075}
   - {fileID: 4832438382810148667}
   - {fileID: 4948332608339832870}
   - {fileID: 781940962765612177}
@@ -10517,6 +10518,7 @@ MonoBehaviour:
   hasLeftConnection: 1
   hasRightConnection: 1
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
 --- !u!1001 &1186065050622024355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10802,6 +10804,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069383430092960937, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8250226209091361460, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_Name
       value: RoomTriggers
@@ -10832,9 +10842,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
---- !u!4 &9110814497762939246 stripped
+--- !u!4 &7201988065474953075 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5410561064305497533, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
   m_PrefabInstance: {fileID: 3847816930528232659}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3870669426765300710

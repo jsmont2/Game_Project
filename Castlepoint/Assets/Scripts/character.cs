@@ -14,13 +14,19 @@ public class character : MonoBehaviour
         attack,
         stagger,
         interact,
+<<<<<<< HEAD
         dead
+=======
+        death,
+        invulnerable
+>>>>>>> bf31b9a5 (Added functionality to boss)
     }
 
     public enum characterType
     {
         player,
-        enemy
+        enemy,
+        boss
     }
 
     public GameObject heartForEnemy;
@@ -89,6 +95,15 @@ public class character : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+<<<<<<< HEAD
+=======
+        if(currentState != characterState.invulnerable)
+        {health -= dmg;}   
+        if(charType == characterType.boss)
+        {
+            moveSpeed +=(maxHealth - health) * .01f;
+        }     
+>>>>>>> bf31b9a5 (Added functionality to boss)
 
         health -= dmg;
        
@@ -172,5 +187,11 @@ public class character : MonoBehaviour
     {
         return knockTime;
     }
-
+    public void ChangeState(characterState newState)
+    {
+        if (currentState != newState)
+        {
+            currentState = newState;
+        }
+    }
 }

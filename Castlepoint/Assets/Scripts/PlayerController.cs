@@ -39,9 +39,13 @@ public class PlayerController : character
     public GameObject projectile;
     public Signal reduceMagic;
     public Inventory playerInventory;
+<<<<<<< HEAD
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
     
+=======
+    private bool touchingChest;
+>>>>>>> bf31b9a5 (Added functionality to boss)
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +68,7 @@ public class PlayerController : character
     }
     void Update()
     {
+<<<<<<< HEAD
         if (Input.GetButtonDown("attack") && currentState != characterState.attack && currentState != characterState.stagger)
                 {
                     StartCoroutine(AttackCo());
@@ -78,11 +83,18 @@ public class PlayerController : character
                 }
         //Health
         if (health > maxHealth)
+=======
+        if (touchingChest == false && Input.GetButtonDown("attack") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))
+>>>>>>> bf31b9a5 (Added functionality to boss)
         {
             health = maxHealth;
         }
+<<<<<<< HEAD
 
         for (int i = 0; i < hearts.Length; i++)
+=======
+        else if (Input.GetButtonDown("Second Weapon") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))//press m to fire arrow
+>>>>>>> bf31b9a5 (Added functionality to boss)
         {
             if (i < health)
             {
@@ -192,6 +204,7 @@ public class PlayerController : character
         float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX"))* Mathf.Rad2Deg;
         return new Vector3(0, 0, temp);
     }
+<<<<<<< HEAD
 
     
 
@@ -248,4 +261,28 @@ public class PlayerController : character
 
 
 
+=======
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Chest")//if player is touching a chest
+        {
+            touchingChest = true;
+            if(Input.GetButtonDown("attack"))//if player tries to open the chest
+            {
+                other.gameObject.GetComponent<Chest>().OpenChest();
+            }
+        }        
+    }
+    private void OnCollisionExit2D(Collision2D other) {
+        if(other.gameObject.tag == "Chest")
+        {
+            touchingChest = false;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "laser")
+        {
+            this.gameObject.GetComponent<character>().TakeDamage(1f);
+        }
+    }
+>>>>>>> bf31b9a5 (Added functionality to boss)
 }

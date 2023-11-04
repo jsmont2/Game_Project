@@ -177,5 +177,54 @@ MonoBehaviour:
   thisObject: {fileID: 0}
   animator: {fileID: 0}
   isElevated: 0
+<<<<<<< HEAD:Castlepoint/Assets/Prefabs/SpiderWebPellet.prefab
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
+=======
+  myRigidbody: {fileID: 0}
+  target: {fileID: 0}
+  chaseRadius: 1
+  attackRadius: 0.7
+  homePosition: {fileID: 0}
+  anim: {fileID: 0}
+  target: {fileID: 0}
+  chaseRadius: 1
+  attackRadius: 0.7
+  homePosition: {fileID: 0}
+  anim: {fileID: 0}
+--- !u!114 &7605019203499273283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605019203499273280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4624067142761e4bbc5eacf47a6d9b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartForEnemy: {fileID: 0}
+  currentState: 0
+  speed: 0
+  rb: {fileID: 0}
+  charType: 0
+  maxHealth: 0
+  health: 10
+  enemyName: Geo
+  baseAttack: 1
+  moveSpeed: 1
+  sprite: {fileID: 7605019203499273288}
+  knockTime: 0
+  thrust: 0
+  damage: 0
+  thisObject: {fileID: 0}
+  animator: {fileID: 0}
+  isElevated: 0
+  myRigidbody: {fileID: 0}
+  target: {fileID: 0}
+  chaseRadius: 15
+  attackRadius: 0.5
+  homePosition: {fileID: 0}
+  anim: {fileID: 0}
+>>>>>>> bf31b9a5 (Added functionality to boss):Castlepoint/Assets/Prefabs/Golem.prefab
