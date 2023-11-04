@@ -40,9 +40,11 @@ public class Room_Spawner : MonoBehaviour
 	private bool needsConnectionRight;
 	private bool needsConnectionLeft;
 	private bool cappingRooms;
+	private bool spawnedKey;
 	private void Awake()
 	{
 		cappingRooms = false;
+		spawnedKey = false;
 		roomsCreated = new List<Room>();
 		tempRoom = new Room();
 		SpawnDungeon(rooms, originRooms, roomsCreated);
@@ -61,6 +63,10 @@ public class Room_Spawner : MonoBehaviour
 		FindMaxDistanceFromOrigin(dungeonRooms);
 		CapRoomOpenings(roomList, dungeonRooms);
 		SetAllRoomsActiveOff(dungeonRooms);
+	}
+	private void SpawnKeyForBoss(List<Room> dungeonRooms)
+	{
+		
 	}
 	private void SetAllRoomsActiveOff(List<Room> dungeonRooms)
 	{

@@ -212,6 +212,12 @@ MonoBehaviour:
   thisObject: {fileID: 0}
   animator: {fileID: 0}
   isElevated: 0
+  myRigidbody: {fileID: 0}
+  target: {fileID: 0}
+  chaseRadius: 1
+  attackRadius: 0.7
+  homePosition: {fileID: 0}
+  anim: {fileID: 0}
   target: {fileID: 0}
   chaseRadius: 1
   attackRadius: 0.7
@@ -246,6 +252,7 @@ MonoBehaviour:
   thisObject: {fileID: 0}
   animator: {fileID: 0}
   isElevated: 0
+  myRigidbody: {fileID: 0}
   target: {fileID: 0}
   chaseRadius: 15
   attackRadius: 0.5

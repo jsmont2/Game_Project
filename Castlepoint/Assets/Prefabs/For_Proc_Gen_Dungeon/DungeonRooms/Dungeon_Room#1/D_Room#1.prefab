@@ -187,11 +187,11 @@ PrefabInstance:
     - target: {fileID: 3496252169488097334, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: collisionUpperLevel
       value: 
-      objectReference: {fileID: 3536486321363640149}
+      objectReference: {fileID: 0}
     - target: {fileID: 3496252169488097334, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: groundCollisionAbovePlayer
       value: 
-      objectReference: {fileID: 1200431257002216028}
+      objectReference: {fileID: 0}
     - target: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -247,25 +247,28 @@ PrefabInstance:
     - target: {fileID: 7445017534237290320, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: collisionUpperLevel
       value: 
-      objectReference: {fileID: 3536486321363640149}
+      objectReference: {fileID: 0}
     - target: {fileID: 7445017534237290320, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: groundCollisionAbovePlayer
       value: 
-      objectReference: {fileID: 1200431257002216028}
+      objectReference: {fileID: 0}
     - target: {fileID: 7951303906578386590, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: collisionUpperLevel
       value: 
-      objectReference: {fileID: 3536486321363640149}
+      objectReference: {fileID: 0}
     - target: {fileID: 7951303906578386590, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: groundCollisionAbovePlayer
       value: 
-      objectReference: {fileID: 1200431257002216028}
+      objectReference: {fileID: 0}
     - target: {fileID: 8069383430092960937, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_Name
       value: RoomTriggers
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 535759620932245739, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+    - {fileID: 3828703388334176561, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+    - {fileID: 992834000825035440, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+    - {fileID: 8845265826017322353, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
 --- !u!4 &4889454157584409839 stripped
 Transform:

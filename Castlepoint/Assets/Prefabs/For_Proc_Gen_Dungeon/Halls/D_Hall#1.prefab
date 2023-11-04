@@ -114,7 +114,7 @@ Transform:
   m_Children:
   - {fileID: 4918803000933183152}
   - {fileID: 2971323778672879368}
-  - {fileID: 9042178646315730375}
+  - {fileID: 6989236896045640666}
   - {fileID: 3428319923197286661}
   - {fileID: 2621466129661957042}
   - {fileID: 5161224523318944911}
@@ -140,6 +140,7 @@ MonoBehaviour:
   hasLeftConnection: 0
   hasRightConnection: 0
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
 --- !u!1001 &427991384572732600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1071,6 +1072,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069383430092960937, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8250226209091361460, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_Name
       value: RoomTriggers
@@ -1087,6 +1096,10 @@ PrefabInstance:
       propertyPath: groundCollisionAbovePlayer
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8356272400815858256, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8849714554563428685, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: abovePlayer
       value: 
@@ -1101,9 +1114,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
---- !u!4 &9042178646315730375 stripped
+--- !u!4 &6989236896045640666 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5410561064305497533, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
   m_PrefabInstance: {fileID: 3921061931749249146}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4167682472332479403
