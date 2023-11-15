@@ -42,9 +42,12 @@ public class PlayerController : character
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
 
+    // For Box
+    private Vector2 boxPushSpeed;
+
     // For Pushing
     //private bool isPushing = false;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -73,12 +76,11 @@ public class PlayerController : character
                     StartCoroutine(AttackCo());
                 }
 
-                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger)//press m to fire arrow
+                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger && gameObject.name == "archer") //press m to fire arrow
                 {
                     StartCoroutine(SecondAttackCo());
                     //play arrow sound here
                     Debug.Log("Playing Arrow Sound");
-                    arrowthrowSound.PlayOneShot(arrowThrowSound);
                 }
         // Health
         if (health > maxHealth)
@@ -149,6 +151,7 @@ public class PlayerController : character
 
         }else
         {
+            rb.velocity = Vector2.zero; // No input, stop moving
             animator.SetBool("moving",false);
 
         }        
@@ -191,6 +194,8 @@ public class PlayerController : character
             arrow.Setup(temp, ChooseArrowDirection());
             playerInventory.ReduceMagic(arrow.magicCost);
             reduceMagic.Raise();
+            arrowthrowSound.PlayOneShot(arrowThrowSound);
+
         }
     }
     Vector3 ChooseArrowDirection()
@@ -233,21 +238,36 @@ public class PlayerController : character
 
         }
 
-        if (collision.collider.tag == "box")
-        {
-            animator.SetBool("isPushing", true);
-            Debug.Log("touching box");
-        }
+    }
 
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("box"))
+        {
+            if (animator.GetBool("moving"))
+            {
+                animator.SetBool("isPushing", true);
+                // Apply force to the box only when pushing
+                Rigidbody2D boxRB = collision.collider.GetComponent<Rigidbody2D>();
+                boxRB.velocity = new Vector2(move.x, move.y) * boxPushSpeed;
+            }
+            else
+            {
+                animator.SetBool("isPushing", false);
+
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.tag == "box")
+        if (collision.collider.CompareTag("box"))
         {
+            // Stop applying force when not pushing
+            Rigidbody2D boxRB = collision.collider.GetComponent<Rigidbody2D>();
+            boxRB.velocity = Vector2.zero;
             animator.SetBool("isPushing", false);
 
-            Debug.Log("Not touching box");
         }
     }
 
