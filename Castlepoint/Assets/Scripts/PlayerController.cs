@@ -41,6 +41,9 @@ public class PlayerController : character
     public Inventory playerInventory;
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
+
+    // For Pushing
+    //private bool isPushing = false;
     
 
     // Start is called before the first frame update
@@ -64,6 +67,7 @@ public class PlayerController : character
     }
     void Update()
     {
+        // Attack
         if (Input.GetButtonDown("attack") && currentState != characterState.attack && currentState != characterState.stagger)
                 {
                     StartCoroutine(AttackCo());
@@ -76,7 +80,7 @@ public class PlayerController : character
                     Debug.Log("Playing Arrow Sound");
                     arrowthrowSound.PlayOneShot(arrowThrowSound);
                 }
-        //Health
+        // Health
         if (health > maxHealth)
         {
             health = maxHealth;
@@ -112,6 +116,8 @@ public class PlayerController : character
             currentState = characterState.dead;
             StartCoroutine(PlayDeathAnimationAndLoadGameOver());
         }
+
+        // Push
 
 
     }
@@ -227,6 +233,22 @@ public class PlayerController : character
 
         }
 
+        if (collision.collider.tag == "box")
+        {
+            animator.SetBool("isPushing", true);
+            Debug.Log("touching box");
+        }
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "box")
+        {
+            animator.SetBool("isPushing", false);
+
+            Debug.Log("Not touching box");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
@@ -243,6 +265,8 @@ public class PlayerController : character
         {
             magicUp.PlayOneShot(magicUpSound);
         }
+
+       
 
     }
 
