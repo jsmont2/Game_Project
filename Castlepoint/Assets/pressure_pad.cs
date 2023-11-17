@@ -4,29 +4,54 @@ using UnityEngine;
 
 public class pressure_pad : MonoBehaviour
 {
-
     public Sprite pressed;
+    public Sprite unpressed;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private SpriteRenderer spriteRenderer;
+
+    public enum PressurePadState
     {
-        if (collision.collider.CompareTag("box"))
-        {
-            // Change the sprite when colliding with an object with the specified tag
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        unpressed,
+        pressed
+    }
 
-            if (spriteRenderer != null && pressed != null)
-            {
-                spriteRenderer.sprite = pressed;
-                Debug.Log("pressure pad pressed");
-            }
+    public PressurePadState currentState;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        unpressed = spriteRenderer.sprite;
+        currentState = PressurePadState.unpressed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("box") || other.CompareTag("Player"))
+        {
+            Debug.Log("Pressure pad pressed");
+            ChangeSprite(pressed);
+            currentState = PressurePadState.pressed;
         }
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerExit2D(Collider2D other)
     {
-        
+        if (other.CompareTag("box") || other.CompareTag("Player"))
+        {
+            Debug.Log("Pressure pad released");
+            ChangeSprite(unpressed);
+            currentState= PressurePadState.unpressed;
+        }
+    }
+
+    private void ChangeSprite(Sprite newSprite)
+    {
+        // Change the sprite
+        if (spriteRenderer != null && newSprite != null)
+        {
+            spriteRenderer.sprite = newSprite;
+        }
     }
 
     // Update is called once per frame
