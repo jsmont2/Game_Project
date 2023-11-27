@@ -48,7 +48,6 @@ public class Enemy : character
             else if (direction.x < 0)
             {
                 SetAnimFloat(Vector2.left);
-
             }
         }
         else if (Mathf.Abs(direction.x) < Mathf.Abs(direction.y))
@@ -61,6 +60,14 @@ public class Enemy : character
             {
                 SetAnimFloat(Vector2.down);
             }
+        }
+        if(this.charType == characterType.boss)
+        {
+            if (direction.x < 0)
+            {
+                this.transform.rotation = Quaternion.Euler(0,180,0);
+            }
+            else{this.transform.rotation = Quaternion.Euler(0,0,0);}
         }
     }
     private void SetAnimFloat(Vector2 setVector)
@@ -98,7 +105,7 @@ public class Enemy : character
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
+        if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated && currentState != characterState.invulnerable)
         {
             if (other.gameObject.tag == "sword")
             {
