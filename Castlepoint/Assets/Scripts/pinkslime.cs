@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
-    //private Rigidbody2D myRigidbody;
+    //private Rigidbody2D myRigidbody; // moved the rigidbody to the character script
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
     public Animator anim;
+
+    
 
 
 

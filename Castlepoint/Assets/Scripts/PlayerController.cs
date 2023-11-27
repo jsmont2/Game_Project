@@ -45,9 +45,12 @@ public class PlayerController : character
     // For Box
     private Vector2 boxPushSpeed;
 
-    // For Pushing
-    //private bool isPushing = false;
+    // Level Up System
 
+    // For GameManager
+    private GameManager gameManager;
+   
+  
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +70,9 @@ public class PlayerController : character
         // magic sound pick up sound fx
         magicUp = GetComponent<AudioSource>();
         magicUp.clip = magicUpSound;
+
+        // Find the GameManager in the scene
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
     void Update()
     {
@@ -76,7 +82,7 @@ public class PlayerController : character
                     StartCoroutine(AttackCo());
                 }
 
-                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger && gameObject.name == "archer") //press m to fire arrow
+                else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger && gameObject.name != "player") //press m to fire arrow
                 {
                     StartCoroutine(SecondAttackCo());
                     //play arrow sound here

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : character
 {
-  
 
+    
 
 
     //code that makes the enemies flash red when hit

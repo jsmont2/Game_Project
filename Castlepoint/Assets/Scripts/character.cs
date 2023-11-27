@@ -48,6 +48,8 @@ public class character : MonoBehaviour
     public AudioClip enemyHitSoundFX;
     private AudioSource enemyhitSoundFX;
 
+  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,6 +107,7 @@ public class character : MonoBehaviour
                 }
                 //I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
                 StartCoroutine(EnemyDeathAnimAndDestroy());
+                
                 currentState = characterState.dead;
                 
             }

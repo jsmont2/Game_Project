@@ -19,6 +19,7 @@ public class pause : MonoBehaviour
         {
             if (GameIsPaused)
             {
+                Debug.Log("Resume button clicked!");
                 Resume();
                 PlayResumeSound(); // Play the resume sound when unpausing
 
