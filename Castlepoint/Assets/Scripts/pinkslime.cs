@@ -11,7 +11,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     public Transform homePosition;
     public Animator anim;
 
-    
+    public int expAmount = 15;
 
 
 
@@ -108,6 +108,15 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         }
     }
 
+    private void OnDestroy()
+    {
+        // Notify the XP controller that the pinkslime has been destroyed
+        XpController xpController = FindObjectOfType<XpController>();
+        if (xpController != null)
+        {
+            xpController.PinkSlimeDestroyed();
+        }
+    }
 
 
 }

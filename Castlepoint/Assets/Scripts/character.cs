@@ -48,6 +48,9 @@ public class character : MonoBehaviour
     public AudioClip enemyHitSoundFX;
     private AudioSource enemyhitSoundFX;
 
+    // Declaring pinkslime experience
+    pinkslime pinkslimeExpAmount;
+
   
 
     // Start is called before the first frame update
@@ -98,16 +101,19 @@ public class character : MonoBehaviour
         {
             if (this.charType == characterType.enemy)
             {
-               
+                
+
 
                 int newRand = Random.Range(1, 11);
                 if (newRand == 2)
                 {
                     Instantiate(heartForEnemy, transform.position, Quaternion.identity);
                 }
-                //I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
+                //Joel: I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
+
                 StartCoroutine(EnemyDeathAnimAndDestroy());
-                
+                //ExperienceManager.instance.AddExperience(pinkslimeExpAmount.expAmount);
+
                 currentState = characterState.dead;
                 
             }
@@ -148,9 +154,12 @@ public class character : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Replace ANIMATION_DURATION with the actual duration of your death animation.
 
         // Disable the game object after the animation has played
-        this.gameObject.SetActive(false);
-        UnityEngine.Debug.Log("Playing Pink slime death anim");
+        //this.gameObject.SetActive(false);
 
+        // Gives experience to the player
+        Destroy(this.gameObject);
+        UnityEngine.Debug.Log("Playing Pink slime death anim");
+        
     }
 
     public float getDmg()

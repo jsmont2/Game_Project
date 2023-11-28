@@ -46,6 +46,9 @@ public class PlayerController : character
     private Vector2 boxPushSpeed;
 
     // Level Up System
+    [SerializeField] int currentExperience, maxExperience, currentLevel;
+
+
 
     // For GameManager
     private GameManager gameManager;
@@ -296,6 +299,35 @@ public class PlayerController : character
 
     }
 
+    private void OnEnable()
+    {
+        // Subscribing to the Event
+        ExperienceManager.instance.OnExperienceChange += HandleExperienceChange;
+    }
 
+    private void OnDisable()
+    {
+        // Unsubscribing to the Event
+        ExperienceManager.instance.OnExperienceChange -= HandleExperienceChange;
+    }
+    private void HandleExperienceChange(int newExperience)
+    {
+        currentExperience += newExperience;
+        if (currentExperience >= maxExperience)
+        {
+            LevelUp();
+        }
+    }
+
+    private void LevelUp()
+    {
+        // Code to change the sprite skins goes here
+        // After leveling up to the level 2, the player skin should switch to the default skin
+        // Then from level 2 to level 3, the spell caster
+
+        currentLevel++;
+        currentExperience = 0;
+        maxExperience += 100;
+    }
 
 }
