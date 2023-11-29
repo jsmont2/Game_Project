@@ -19,6 +19,7 @@ public class XpController : MonoBehaviour
         ExpText.text = currentXp + " / " + TargetXp;
 
         ExperienceController();
+        
     }
 
     public void ExperienceController()
@@ -46,8 +47,6 @@ public class XpController : MonoBehaviour
             level++;
             TargetXp += 50;
         }
-
-   
     }
 
     public void PinkSlimeDestroyed()
