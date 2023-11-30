@@ -1,9 +1,27 @@
 fileFormatVersion: 2
 guid: 064c5350235e84849a9f133033b567b8
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8991609231124914159
+    second: char_attack_up_anim_strip_6_0
+  - first:
+      213: 5074164508310586123
+    second: char_attack_up_anim_strip_6_1
+  - first:
+      213: -4284226514682735941
+    second: char_attack_up_anim_strip_6_2
+  - first:
+      213: -6770304864086143333
+    second: char_attack_up_anim_strip_6_3
+  - first:
+      213: -248352049917649490
+    second: char_attack_up_anim_strip_6_4
+  - first:
+      213: 3365260141589634363
+    second: char_attack_up_anim_strip_6_5
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -24,6 +42,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -41,7 +60,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -62,13 +81,14 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -80,7 +100,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -135,9 +155,147 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: char_attack_up_anim_strip_6_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 32
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1102dab3b03673380800000000000000
+      internalID: -8991609231124914159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: char_attack_up_anim_strip_6_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 0
+        width: 32
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b034fb97cbd0b6640800000000000000
+      internalID: 5074164508310586123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: char_attack_up_anim_strip_6_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 0
+        width: 32
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb296070fae5b84c0800000000000000
+      internalID: -4284226514682735941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: char_attack_up_anim_strip_6_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 32
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ecb03c89b0b02a0800000000000000
+      internalID: -6770304864086143333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: char_attack_up_anim_strip_6_4
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 0
+        width: 32
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ead1b6d502dad8cf0800000000000000
+      internalID: -248352049917649490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: char_attack_up_anim_strip_6_5
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 0
+        width: 32
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3d1b34d44ec3be20800000000000000
+      internalID: 3365260141589634363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -148,6 +306,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      char_attack_up_anim_strip_6_0: -8991609231124914159
+      char_attack_up_anim_strip_6_1: 5074164508310586123
+      char_attack_up_anim_strip_6_2: -4284226514682735941
+      char_attack_up_anim_strip_6_3: -6770304864086143333
+      char_attack_up_anim_strip_6_4: -248352049917649490
+      char_attack_up_anim_strip_6_5: 3365260141589634363
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
