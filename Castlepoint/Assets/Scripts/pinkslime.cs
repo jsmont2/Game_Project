@@ -32,6 +32,12 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     {
         if (isElevated == target.gameObject.GetComponent<character>().isElevated)
         {
+            // Update the target if the current target is not the player
+            if (target.gameObject.CompareTag("Player"))
+            {
+                target = GameObject.FindWithTag("Player").transform;
+            }
+
             CheckDistance();
         }
 
@@ -103,7 +109,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     {
         if (currentState != newState)
         {
-            currentState = newState;
+            currentState = newState;    
 
         }
     }
@@ -115,6 +121,12 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         if (xpController != null)
         {
             xpController.PinkSlimeDestroyed();
+        }
+
+        // Check if the current target is the player and update it to the new player
+        if (target.gameObject.CompareTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
         }
     }
 
