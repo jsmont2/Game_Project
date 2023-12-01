@@ -31,6 +31,13 @@ public class big_pinkslime : Enemy // inherits everything from enemy script incl
     {
         if (isElevated == target.gameObject.GetComponent<character>().isElevated)
         {
+
+            // Update the target if the current target is not the player
+            if (target.gameObject.CompareTag("Player"))
+            {
+                target = GameObject.FindWithTag("Player").transform;
+            }
+
             CheckDistance();
         }
 
@@ -107,6 +114,20 @@ public class big_pinkslime : Enemy // inherits everything from enemy script incl
         }
     }
 
+    private void OnDestroy()
+    {
+        // Notify the XP controller that the pinkslime has been destroyed
+        XpController xpController = FindObjectOfType<XpController>();
+        if (xpController != null)
+        {
+            xpController.PinkSlimeDestroyed();
+        }
 
+        // Check if the current target is the player and update it to the new player
+        if (target.gameObject.CompareTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+    }
 
 }
