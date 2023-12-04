@@ -332,6 +332,7 @@ SpriteAtlas:
   - {fileID: 2918765736757176406, guid: bf17d0d4669af41e9956bd725a8d2abe, type: 3}
   - {fileID: 6005967440763693101, guid: bf17d0d4669af41e9956bd725a8d2abe, type: 3}
   - {fileID: 7282329403429160013, guid: bf17d0d4669af41e9956bd725a8d2abe, type: 3}
+  - {fileID: 21300000, guid: ac3d48d4f5c3cfb4ca07f9d38b3138ee, type: 3}
   - {fileID: 21300000, guid: 396b6cf4ad03b774387294ff6ae8cab9, type: 3}
   - {fileID: 21300000, guid: 7bfa3c35333cd164f922f2e6aff475f2, type: 3}
   - {fileID: 1013436911731344633, guid: f5616545104c75f4d8115b62929550c1, type: 3}
@@ -344,6 +345,7 @@ SpriteAtlas:
   - {fileID: -2519167118189067609, guid: f65c6b45e02ffe74cb4e093f813f1ee8, type: 3}
   - {fileID: 7273185659286031226, guid: f65c6b45e02ffe74cb4e093f813f1ee8, type: 3}
   - {fileID: -5406600566752101596, guid: f65c6b45e02ffe74cb4e093f813f1ee8, type: 3}
+  - {fileID: 21300000, guid: 3b4ce05519a223c418e87fd31d6aeafd, type: 3}
   - {fileID: 1960480447798186985, guid: a2650a65c9c774227895b5bdd8db5468, type: 3}
   - {fileID: -3606632115263360069, guid: a2650a65c9c774227895b5bdd8db5468, type: 3}
   - {fileID: -2406918412145833394, guid: a2650a65c9c774227895b5bdd8db5468, type: 3}
@@ -1112,12 +1114,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 532e90fa7b2be7a4c9097b1fc0d016e1, type: 3}
   - {fileID: 21300000, guid: 55abdc0bcf7521947a8e9aea84911871, type: 3}
   - {fileID: 21300000, guid: 6b94713ba8e5d8447aed9fa088b8fbc7, type: 3}
+  - {fileID: 21300000, guid: be64465b9411e6b4cad187a35a7eea4d, type: 3}
   - {fileID: 1102098855345704235, guid: cfe8066b785a54988a3cc2cf29984484, type: 3}
   - {fileID: 6554618840134901956, guid: cfe8066b785a54988a3cc2cf29984484, type: 3}
   - {fileID: 2762587322112515621, guid: cfe8066b785a54988a3cc2cf29984484, type: 3}
   - {fileID: 3805558579873958352, guid: cfe8066b785a54988a3cc2cf29984484, type: 3}
   - {fileID: 4773096438546229803, guid: cfe8066b785a54988a3cc2cf29984484, type: 3}
   - {fileID: 1834240142197075540, guid: cfe8066b785a54988a3cc2cf29984484, type: 3}
+  - {fileID: 21300000, guid: 822d677be645573498c8cee93b562df9, type: 3}
   - {fileID: 4606908045521496030, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
   - {fileID: -4195582761621981391, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
   - {fileID: 909984456465569597, guid: 1b2c43dbb7ccbbf459a6ce14ec3b9d1b, type: 3}
@@ -1410,6 +1414,7 @@ SpriteAtlas:
   - {fileID: 8188511814744904456, guid: 13365d7e8f5940e43bf95a731659fad4, type: 3}
   - {fileID: -2832154351975770438, guid: 13365d7e8f5940e43bf95a731659fad4, type: 3}
   - {fileID: -5506965087603891737, guid: 13365d7e8f5940e43bf95a731659fad4, type: 3}
+  - {fileID: 3625043607559282579, guid: 26a1598e2ccc9a74693fd4b3eb267837, type: 3}
   - {fileID: -7182035843476614996, guid: 901732be403896b44bd615547b4ffbe4, type: 3}
   - {fileID: 2433770528510140795, guid: 901732be403896b44bd615547b4ffbe4, type: 3}
   - {fileID: 6078729913963014298, guid: 901732be403896b44bd615547b4ffbe4, type: 3}
@@ -1751,6 +1756,7 @@ SpriteAtlas:
   - char_attack_down_anim_strip_6 copy_0
   - char_attack_down_anim_strip_6 copy_5
   - char_attack_down_anim_strip_6 copy_4
+  - PlayerMarker
   - char_run_right_anim
   - spikes_tile_trap_anim
   - village_head_1_1
@@ -1763,6 +1769,7 @@ SpriteAtlas:
   - water_tile_anim_strip_8_3
   - water_tile_anim_strip_8_0
   - water_tile_anim_strip_8_1
+  - Minimap mask
   - char_run_up_anim_strip_6 copy_1
   - char_run_up_anim_strip_6 copy_0
   - char_run_up_anim_strip_6 copy_3
@@ -2531,12 +2538,14 @@ SpriteAtlas:
   - char_attack_down_anim
   - pinkbat_death_anim_right
   - spinner_death_anim_all_dir
+  - Minimap Overlay
   - char_idle_down_anim_strip_6 copy_1
   - char_idle_down_anim_strip_6 copy_0
   - char_idle_down_anim_strip_6 copy_3
   - char_idle_down_anim_strip_6 copy_2
   - char_idle_down_anim_strip_6 copy_5
   - char_idle_down_anim_strip_6 copy_4
+  - New Piskel
   - Heart_0
   - Heart_1
   - char_pushing_down_anim_strip_6_4
@@ -2829,6 +2838,7 @@ SpriteAtlas:
   - hurtLeft_2
   - hurtLeft_0
   - hurtLeft_1
+  - Isometric Diamond
   - char_attack_left_anim_strip_6_5
   - char_attack_left_anim_strip_6_4
   - char_attack_left_anim_strip_6_3
