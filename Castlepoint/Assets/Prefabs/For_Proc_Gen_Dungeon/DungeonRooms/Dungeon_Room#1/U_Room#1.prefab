@@ -66,7 +66,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 1
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &2262714417309726461
 GameObject:
   m_ObjectHideFlags: 0
@@ -18075,7 +18078,10 @@ MonoBehaviour:
   hasBottomConnection: 0
   hasLeftConnection: 0
   hasRightConnection: 0
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &4031860901583759535
 GameObject:
   m_ObjectHideFlags: 0
