@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7707476371563539822}
   - component: {fileID: 7707476371563539817}
   - component: {fileID: 7707476371563539816}
+  - component: {fileID: 7707476371563539823}
   m_Layer: 0
   m_Name: phantom
   m_TagString: enemy
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 626508775
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2797783794539611184, guid: ceb07dd10991def46878d1e4c5cd403e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,15 +174,22 @@ MonoBehaviour:
   health: 4
   enemyName: Danny
   baseAttack: 2
-  moveSpeed: 2
+  moveSpeed: 4
   sprite: {fileID: 7707476371563539818}
   knockTime: 0.1
   thrust: 15
   damage: 1
   thisObject: {fileID: 7707476371563539812}
   animator: {fileID: 0}
+  isElevated: 0
+  myRigidbody: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 3
+  chaseRadius: 9
+  attackRadius: 0
+  homePosition: {fileID: 0}
+  anim: {fileID: 0}
+  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
+  chaseRadius: 9
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
@@ -197,10 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d7a94fbf942244ebdd542ee451f1ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heartForEnemy: {fileID: 0}
   currentState: 0
   speed: 0
   rb: {fileID: 0}
-  objType: 0
+  charType: 0
   maxHealth: 4
   health: 4
   enemyName: 
@@ -211,3 +220,5 @@ MonoBehaviour:
   thrust: 1.5
   damage: 0
   thisObject: {fileID: 7707476371563539812}
+  animator: {fileID: 0}
+  isElevated: 0

@@ -5646,8 +5646,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 0
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
   leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &4806675358517586855
 GameObject:
   m_ObjectHideFlags: 0
@@ -9765,8 +9767,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 1
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
   leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &5762832664351293438
 GameObject:
   m_ObjectHideFlags: 0
@@ -10624,6 +10628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#2
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -10818,6 +10826,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#4
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -10950,6 +10962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#3
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -11019,6 +11035,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer

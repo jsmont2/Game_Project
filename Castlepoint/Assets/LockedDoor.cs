@@ -12,6 +12,7 @@ public class LockedDoor : MonoBehaviour
     {
         animator.SetBool("isLocked", true);
         isLocked = true;
+        thisDoor = GameObject.Find("LockedDoor");
     }
     private void OnBecameVisible()
     {
@@ -26,16 +27,16 @@ public class LockedDoor : MonoBehaviour
     {
         animator.SetBool("isLocked", false);
         isLocked = false;
-        yield return new WaitForSeconds(.9f);
-        thisDoor.SetActive(false);
+        yield return new WaitForSeconds(.8f);
+        Debug.Log("yup");
         abovePlayer.SetActive(true);
+        Destroy(thisDoor);      
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
         
         if (other.gameObject.GetComponent<PlayerController>().hasKey == true && isLocked)
-        {
-            Debug.Log("yup");
+        {            
             StartCoroutine(UnlockDoor());
         }
     }
