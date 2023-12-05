@@ -81,13 +81,13 @@ public class character_COPY : MonoBehaviour
         if (rb != null)
         {
             UnityEngine.Debug.Log(this);
-            rb.GetComponent<character>().currentState = characterState.stagger;
+            rb.GetComponent<character_COPY>().currentState = characterState.stagger;
             this.GetComponent<Animator>().SetBool("hit", true);
             yield return new WaitForSeconds(kt);
             UnityEngine.Debug.Log("COLLISION");
             this.GetComponent<Animator>().SetBool("hit", false);
             rb.velocity = Vector2.zero;
-            rb.GetComponent<character>().currentState = characterState.idle;
+            rb.GetComponent<character_COPY>().currentState = characterState.idle;
 
         }
     }
