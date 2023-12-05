@@ -16,7 +16,7 @@ public class Room_Spawner : MonoBehaviour
 	private List<Room> roomsCreated;
 	[SerializeField]
 	private List<Room> roomCaps;
-	[SerializeField] 
+	[SerializeField]
 	private List<Room> bossRoomsList;
 	[SerializeField]
 	Room tempRoom;
@@ -62,11 +62,29 @@ public class Room_Spawner : MonoBehaviour
 		cappingRooms = true;
 		FindMaxDistanceFromOrigin(dungeonRooms);
 		CapRoomOpenings(roomList, dungeonRooms);
+		SpawnKeyForBoss(dungeonRooms);
 		SetAllRoomsActiveOff(dungeonRooms);
 	}
 	private void SpawnKeyForBoss(List<Room> dungeonRooms)
 	{
-		
+		int rand = UnityEngine.Random.Range(1, dungeonRooms.Count);
+		while (!spawnedKey)
+		{
+			for (int i = 0; i < dungeonRooms[rand].chestList.transform.childCount; i++)
+			{
+				if (dungeonRooms[rand] != bossRoomsList[i])
+				{
+					if (dungeonRooms[rand].chestList.transform.GetChild(i).gameObject.active)
+					{
+						dungeonRooms[rand].chestList.transform.GetChild(i).GetComponent<Chest>().SetHasKey();
+						spawnedKey = true;
+						dungeonRooms[rand].hasKey = true;
+					}
+					else { rand = UnityEngine.Random.Range(1, dungeonRooms.Count); }
+				}
+			}
+		}
+
 	}
 	private void SetAllRoomsActiveOff(List<Room> dungeonRooms)
 	{
@@ -891,7 +909,7 @@ public class Room_Spawner : MonoBehaviour
 	private void CapRoomOpenings(List<Room> roomList, List<Room> dungeonRoomList)
 	{
 		Room temp = FindFurthestRoom(dungeonRoomList);
-		
+
 		if (temp.HasTopCon() && temp.adjacentRooms.GetConnectionAbove() == null)
 		{
 			SpawnRoom(bossRoomsList, dungeonRoomList, temp, upOffset);

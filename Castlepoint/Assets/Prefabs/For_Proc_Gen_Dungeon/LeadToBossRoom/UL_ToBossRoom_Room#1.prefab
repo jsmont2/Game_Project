@@ -41867,7 +41867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4798482117826550354
 Transform:
   m_ObjectHideFlags: 0
@@ -41952,8 +41952,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 1
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
   leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &4340221353940530258
 GameObject:
   m_ObjectHideFlags: 0
@@ -42507,8 +42509,10 @@ MonoBehaviour:
   hasBottomConnection: 0
   hasLeftConnection: 1
   hasRightConnection: 0
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
   leadsToBossRoom: 1
+  hasKey: 0
 --- !u!1001 &806207003234059001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42650,6 +42654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#3
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -42719,6 +42727,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
@@ -42961,6 +42973,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
@@ -43333,6 +43349,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
