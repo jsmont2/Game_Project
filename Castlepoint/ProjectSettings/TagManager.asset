@@ -3,12 +3,31 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - enemy
+  - TransitionDown
+  - TransitionRight
+  - TransitionLeft
+  - TransitionUp
+  - Elevation_Up
+  - Elevation_Down
+  - heartUp
+  - Chest
+  - box
+  - HeartUI
+  - hurtBox
+  - sword
+  - laser
+  - pressure_pad
+  - arrow
+  - magicUp
+  - big_pinkslime
+  - collision
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - player
   - Water
   - UI
   - 
@@ -40,4 +59,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: player
+    uniqueID: 2266162009
     locked: 0
