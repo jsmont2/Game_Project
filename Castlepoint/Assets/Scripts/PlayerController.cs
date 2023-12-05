@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
@@ -29,20 +30,9 @@ public class PlayerController : character
     }
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
-<<<<<<< HEAD
     public Signal reduceMagic;
     public Inventory playerInventory;
     private bool touchingChest;
-=======
-
-    // For Box
-    private Vector2 boxPushSpeed;
-
-    // Level Up System
-    [SerializeField] int currentExperience, maxExperience, currentLevel;
-
-
-
     // For GameManager
     private GameManager gameManager;
 
@@ -52,14 +42,19 @@ public class PlayerController : character
     public GameObject playerObjectLevel2;  // Reference to the player game object at level 2
     public GameObject playerObjectLevel3;  // Reference to the player game object at level 3
     public CameraMovement cameraMovement;
-
     private Vector3 initialPlayerPosition;
     private Vector3 initialPlayerPositionLevel2;
     private Vector3 initialPlayerPositionLevel3;
-
-
->>>>>>> Joel
-
+    // For heart sound FX's
+    public AudioClip heartUpSound;
+    private AudioSource heartSound;
+    // For magic sound FX's
+    public AudioClip magicUpSound;
+    private AudioSource magicUp;
+    // For Box
+    private Vector2 boxPushSpeed;
+    // Level Up System
+    [SerializeField] int currentExperience, maxExperience, currentLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,12 +65,6 @@ public class PlayerController : character
         animator.SetFloat("moveY", -1);
         arrowthrowSound = GetComponent<AudioSource>();
         arrowthrowSound.clip = arrowThrowSound;
-<<<<<<< HEAD
-    }
-    void Update()
-    {
-        if (touchingChest == false && Input.GetButtonDown("attack") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))
-=======
 
         // heart sound pick up sound fx
         heartSound = GetComponent<AudioSource>();
@@ -93,24 +82,10 @@ public class PlayerController : character
         {
             Debug.LogError("Missing references in the PlayerController script. Please assign them in the Unity Editor.");
         }
-
     }
     void Update()
     {
-        // Attack
-        if (Input.GetButtonDown("attack") && currentState != characterState.attack && currentState != characterState.stagger)
-        {
-             StartCoroutine(AttackCo());
-        }
-         else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger && gameObject.name != "player") //press m to fire arrow
-         {
-            StartCoroutine(SecondAttackCo());
-            //play arrow sound here
-            Debug.Log("Playing Arrow Sound");
-         }
-        // Health
-        if (health > maxHealth)
->>>>>>> Joel
+        if (touchingChest == false && Input.GetButtonDown("attack") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))
         {
             StartCoroutine(AttackCo());
         }
@@ -125,25 +100,18 @@ public class PlayerController : character
             sceneListSize++;
             StartPos();
         }
-<<<<<<< HEAD
-=======
-
         // Change skins when leveling up 
         if (xpController.level == 2)  // Change the level as needed
         {
             initialPlayerPositionLevel2 = playerObjectLevel1.transform.position;
             ChangeToPlayerObject2(playerObjectLevel2);
 
-        } else if (xpController.level == 3)
+        }
+        else if (xpController.level == 3)
         {
             initialPlayerPositionLevel3 = playerObjectLevel2.transform.position;
             ChangeToPlayerObject3(playerObjectLevel3);
         }
-
-        
-     
-
->>>>>>> Joel
     }
 
     // Update is called once per frame
@@ -185,12 +153,7 @@ public class PlayerController : character
         }
         else
         {
-<<<<<<< HEAD
             animator.SetBool("moving", false);
-=======
-            rb.velocity = Vector2.zero; // No input, stop moving
-            animator.SetBool("moving",false);
->>>>>>> Joel
 
         }
     }
@@ -242,8 +205,6 @@ public class PlayerController : character
             arrow.Setup(temp, ChooseArrowDirection());
             playerInventory.ReduceMagic(arrow.magicCost);
             reduceMagic.Raise();
-            arrowthrowSound.PlayOneShot(arrowThrowSound);
-
         }
     }
     Vector3 ChooseArrowDirection()
@@ -251,21 +212,6 @@ public class PlayerController : character
         float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX")) * Mathf.Rad2Deg;
         return new Vector3(0, 0, temp);
     }
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tag == "Chest")//if player is touching a chest
-        {
-            touchingChest = true;
-            if(Input.GetButtonDown("attack"))//if player tries to open the chest
-            {
-                other.gameObject.GetComponent<Chest>().OpenChest();
-            }
-        }        
-    }
-<<<<<<< HEAD
-    private void OnCollisionExit2D(Collision2D other) {
-        if(other.gameObject.tag == "Chest")
-=======
-
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("box"))
@@ -284,45 +230,39 @@ public class PlayerController : character
             }
         }
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.collider.CompareTag("box"))
+        if (other.gameObject.tag == "Chest")//if player is touching a chest
+        {
+            touchingChest = true;
+            if (Input.GetButtonDown("attack"))//if player tries to open the chest
+            {
+                other.gameObject.GetComponent<Chest>().OpenChest();
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Chest")
+        {
+            touchingChest = false;
+        }
+        if (other.collider.CompareTag("box"))
         {
             // Stop applying force when not pushing
-            Rigidbody2D boxRB = collision.collider.GetComponent<Rigidbody2D>();
+            Rigidbody2D boxRB = other.collider.GetComponent<Rigidbody2D>();
             boxRB.velocity = Vector2.zero;
             animator.SetBool("isPushing", false);
 
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("A trigger happened");
-        if (other.tag == "heartUp" && health != maxHealth)
->>>>>>> Joel
-        {
-            touchingChest = false;
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject.tag == "laser")
+        if (other.gameObject.tag == "laser")
         {
             this.gameObject.GetComponent<character>().TakeDamage(1f);
         }
-<<<<<<< HEAD
     }
-=======
-        if (other.tag == "magicUp")
-        {
-            magicUp.PlayOneShot(magicUpSound);
-        }
-
-       
-
-    }
-
     private void LevelUp()
     {
         // Code to change the sprite skins goes here
@@ -333,7 +273,7 @@ public class PlayerController : character
         currentExperience = 0;
         maxExperience += 100;
     }
-  
+
     private void ChangeToPlayerObject2(GameObject newPlayerObject)
     {
         // Record the position of the current player
@@ -388,5 +328,4 @@ public class PlayerController : character
     {
         return initialPlayerPositionLevel3;
     }
->>>>>>> Joel
 }

@@ -43,19 +43,13 @@ public class character : MonoBehaviour
     public Animator animator;
     [SerializeField]
     public bool isElevated;
-<<<<<<< HEAD
-=======
     public GameObject smallerPinkSlimePrefab;
-
     // For enemy hit sound FX
     public AudioClip enemyHitSoundFX;
     private AudioSource enemyhitSoundFX;
 
     // Declaring pinkslime experience
     pinkslime pinkslimeExpAmount;
-
-  
-
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +59,6 @@ public class character : MonoBehaviour
         enemyhitSoundFX = GetComponent<AudioSource>();
         enemyhitSoundFX.clip = enemyHitSoundFX;
     }
->>>>>>> Joel
 
     public void Knock(Transform other, float force, float kt) // Knockback
     {
@@ -97,39 +90,36 @@ public class character : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        if(currentState != characterState.invulnerable)
-        {health -= dmg;}   
-        if(charType == characterType.boss)
+        if (currentState != characterState.invulnerable)
+        { health -= dmg; }
+        if (charType == characterType.boss)
         {
-            moveSpeed +=(maxHealth - health) * .01f;
-        }     
+            moveSpeed += (maxHealth - health) * .01f;
+        }
 
         if (health <= 0)
         {
             if (this.charType == characterType.enemy)
             {
-<<<<<<< HEAD
-=======
-                
+                if (gameObject.CompareTag("big_pinkslime"))
+                {
+                    StartCoroutine(EnemyDeathAnimAndDestroy());
+                    // Spawn the first smaller pink slime
+                    Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(-.5f, 0, 0), Quaternion.identity);
 
+                    // Spawn the second smaller pink slime
+                    Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
 
->>>>>>> Joel
+                    // Spawn the third smaller pink slime
+                    Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                    currentState = characterState.death;
+                }
                 int newRand = Random.Range(1, 11);
                 if (newRand == 2)
                 {
                     Instantiate(heartForEnemy, transform.position, Quaternion.identity);
                 }
-<<<<<<< HEAD
                 this.gameObject.SetActive(false);
-=======
-                //Joel: I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
-
-                StartCoroutine(EnemyDeathAnimAndDestroy());
-                //ExperienceManager.instance.AddExperience(pinkslimeExpAmount.expAmount);
-
-                currentState = characterState.dead;
-                
->>>>>>> Joel
             }
             if (this.charType == characterType.player)
             {
@@ -138,9 +128,6 @@ public class character : MonoBehaviour
             }
         }
     }
-
-<<<<<<< HEAD
-=======
     private IEnumerator EnemyDeathAnimAndDestroy()
     {
         // Play enemy death animation
@@ -155,10 +142,8 @@ public class character : MonoBehaviour
         // Gives experience to the player
         Destroy(this.gameObject);
         UnityEngine.Debug.Log("Playing Pink slime death anim");
-        
-    }
 
->>>>>>> Joel
+    }
     public float getDmg()
     {
         return damage;
@@ -167,13 +152,6 @@ public class character : MonoBehaviour
     public float getThrust()
     {
         return thrust;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        isElevated = false;
     }
 
     // Update is called once per frame

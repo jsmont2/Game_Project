@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 public class boss : character
 {
     //public characterState currentState;
-    public FloatValue maxHealth;
+    public float maxHealth;
     public float health;
     public string enemyName;
     public int baseAttack;
@@ -21,7 +21,7 @@ public class boss : character
 
     private void Awake()
     {
-        health = maxHealth.initialValue;
+        //health = maxHealth.initialValue;
     }
 
     private void TakeDamage(float damage)

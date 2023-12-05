@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
+    public int expAmount = 15;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,6 +86,21 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         {
             currentState = newState;
 
+        }
+    }
+    private void OnDestroy()
+    {
+        // Notify the XP controller that the pinkslime has been destroyed
+        XpController xpController = FindObjectOfType<XpController>();
+        if (xpController != null)
+        {
+            xpController.PinkSlimeDestroyed();
+        }
+
+        // Check if the current target is the player and update it to the new player
+        if (target.gameObject.CompareTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
         }
     }
 }

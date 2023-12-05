@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class Enemy : character
 {
-<<<<<<< HEAD
     public Rigidbody2D myRigidbody;
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
     public Animator anim;
-=======
-
-    
-
-
->>>>>>> Joel
     //code that makes the enemies flash red when hit
     public IEnumerator FlashRed()
     {
@@ -68,13 +61,13 @@ public class Enemy : character
                 SetAnimFloat(Vector2.down);
             }
         }
-        if(this.charType == characterType.boss)
+        if (this.charType == characterType.boss)
         {
             if (direction.x < 0)
             {
-                this.transform.rotation = Quaternion.Euler(0,180,0);
+                this.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
-            else{this.transform.rotation = Quaternion.Euler(0,0,0);}
+            else { this.transform.rotation = Quaternion.Euler(0, 0, 0); }
         }
     }
     private void SetAnimFloat(Vector2 setVector)
@@ -82,51 +75,32 @@ public class Enemy : character
         anim.SetFloat("moveX", setVector.x);
         anim.SetFloat("moveY", setVector.y);
     }
-    
     void OnCollisionEnter2D(Collision2D collision)  // Knockback and damage
     {
-        if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
+        if (currentState != characterState.death)
         {
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), false);
-            if (collision.gameObject.CompareTag("Player"))
+            if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated)
             {
-                
-                GameObject temp = collision.gameObject;
-                collision.gameObject.GetComponent<character>().TakeDamage(damage); 
-                if(collision.gameObject.GetComponent<character>().health != 0)
+                Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), false);
+                if (collision.gameObject.CompareTag("Player"))
                 {
-<<<<<<< HEAD
-                    collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);   
-                }  
-                                  
-            }
-            if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
-            {
-                StartCoroutine(FlashRed());
-                Knock(collision.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
-                TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
-=======
-                    
-
                     GameObject temp = collision.gameObject;
-                    collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
                     collision.gameObject.GetComponent<character>().TakeDamage(damage);
+                    if (collision.gameObject.GetComponent<character>().health != 0)
+                    {
+                        collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
+                    }
                 }
                 if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
                 {
-                    Debug.Log("hit");
                     StartCoroutine(FlashRed());
                     Knock(collision.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
                     TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
-
                 }
->>>>>>> Joel
             }
+            else { Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), true); }
         }
-        else { Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), true); }
-
     }
-
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (isElevated == GameObject.FindGameObjectWithTag("Player").gameObject.GetComponent<character>().isElevated && currentState != characterState.invulnerable)
@@ -136,19 +110,11 @@ public class Enemy : character
                 StartCoroutine(FlashRed());
                 Knock(other.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
                 TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
-           
             }
         }
-
     }
-
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
-
-
-
-
 }
