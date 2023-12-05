@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1349
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 442}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,10 +121,10 @@ MonoBehaviour:
     y: 30
     width: 2560
     height: 1299
-  m_MinSize: {x: 921, y: 342}
-  m_MaxSize: {x: 16006, y: 8042}
+  m_MinSize: {x: 911, y: 392}
+  m_MaxSize: {x: 22006, y: 14042}
   vertical: 0
-  controlID: 3600
+  controlID: 97
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,10 +146,10 @@ MonoBehaviour:
     y: 0
     width: 567
     height: 1299
-  m_MinSize: {x: 241, y: 342}
-  m_MaxSize: {x: 4001, y: 8042}
+  m_MinSize: {x: 231, y: 392}
+  m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 3529
+  controlID: 46
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GridPaintPaletteWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -195,15 +195,15 @@ MonoBehaviour:
     y: 655
     width: 567
     height: 644
-  m_MinSize: {x: 241, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
   - {fileID: 16}
   - {fileID: 17}
-  m_Selected: 2
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 2
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,10 +225,10 @@ MonoBehaviour:
     y: 0
     width: 1149
     height: 1299
-  m_MinSize: {x: 202, y: 321}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 202, y: 342}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 3488
+  controlID: 98
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,8 +248,8 @@ MonoBehaviour:
     y: 0
     width: 1149
     height: 776
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -274,8 +274,8 @@ MonoBehaviour:
     y: 776
     width: 1149
     height: 523
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 19}
@@ -461,22 +461,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/NEW TILE PALLETES/ANIMATED PALLETE HERE/Tiles_(animated)/Overworld
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets
+  - Assets/NEW TILE PALLETES/ANIMATED PALLETE HERE/Tiles_(animated)/Overworld
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\jsaaa\OneDrive\Documents\Game_Programming\Game_Project\Castlepoint
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 31}
-    m_SelectedIDs: d4ca0000
-    m_LastClickedID: 51924
-    m_ExpandedIDs: 000000007a660000d4ca0000d6ca0000d8ca0000daca0000dcca0000deca0000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: a4ee0000
+    m_LastClickedID: 61092
+    m_ExpandedIDs: 00000000dc66000004cb000006cb000008cb00000acb00000ccb00000ecb00007acb000084cb00000acc00009cee0000a0ee0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -504,7 +504,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d4ca0000d6ca0000d8ca0000daca0000dcca0000deca0000
+    m_ExpandedIDs: 0000000004cb000006cb000008cb00000acb00000ccb00000ecb0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -529,24 +529,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: b0000000
-    m_LastClickedInstanceID: 176
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 26590000e45a00007a64000074640000706400006e6400006c64000080560000b26c00003661000066740000e84b0000c2560000e4590000ec590000f6550000ea4b0000a4560000206b0000b0650000e06300008e550000dc610000ee61000048660000645a00005e5a0000e05a0000e25a0000e65a0000625b0000645b0000665b0000685b0000785a0000b65c0000c462000086620000646e00008069000094570000b88700000c5d0000085d00007676000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Overworld_Tileset 1
-      m_OriginalName: Overworld_Tileset 1
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 30326
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 8}
     m_CreateAssetUtility:
@@ -559,7 +559,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
-  m_DirectoriesAreaWidth: 200
+  m_DirectoriesAreaWidth: 199
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -614,7 +614,7 @@ MonoBehaviour:
     m_CachedPref: -50
     m_ControlHash: 1964396721
     m_PrefName: Preview_TilemapBrushInspector
-  m_Palette: {fileID: 3678790720253911804, guid: f276de2b8b313224cb3231ffb191d586, type: 3}
+  m_Palette: {fileID: 2713484696269246323, guid: 2538cead8fb696d448d51ea2a1f5a273, type: 3}
   m_DrawGizmos: 0
 --- !u!114 &18
 MonoBehaviour:
@@ -652,9 +652,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 11.182624, y: 8.128314, z: -58.21798}
+    m_Target: {x: 67.32277, y: 50.812325, z: -58.111702}
     speed: 2
-    m_Value: {x: 11.182624, y: 8.128314, z: -58.21798}
+    m_Value: {x: 67.32277, y: 50.812325, z: -58.111702}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -705,9 +705,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 15.255374
+    m_Target: 15.941866
     speed: 2
-    m_Value: 15.255374
+    m_Value: 15.941866
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1308,9 +1308,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: cef60000
-      m_LastClickedID: 63182
-      m_ExpandedIDs: 4443feffea48feff9e4dfeff920fffffe2f30000
+      m_SelectedIDs: a4ee0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 660fffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
