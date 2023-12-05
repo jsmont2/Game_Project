@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Enemy : character
 {
+<<<<<<< HEAD
     public Rigidbody2D myRigidbody;
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
     public Animator anim;
+=======
+
+    
+
+
+>>>>>>> Joel
     //code that makes the enemies flash red when hit
     public IEnumerator FlashRed()
     {
@@ -88,6 +95,7 @@ public class Enemy : character
                 collision.gameObject.GetComponent<character>().TakeDamage(damage); 
                 if(collision.gameObject.GetComponent<character>().health != 0)
                 {
+<<<<<<< HEAD
                     collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);   
                 }  
                                   
@@ -97,6 +105,22 @@ public class Enemy : character
                 StartCoroutine(FlashRed());
                 Knock(collision.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
                 TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
+=======
+                    
+
+                    GameObject temp = collision.gameObject;
+                    collision.gameObject.GetComponent<character>().Knock(this.transform, thrust, knockTime);
+                    collision.gameObject.GetComponent<character>().TakeDamage(damage);
+                }
+                if (collision.gameObject.tag == "arrow") // trying to get arrow to do damage 
+                {
+                    Debug.Log("hit");
+                    StartCoroutine(FlashRed());
+                    Knock(collision.transform, GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getThrust(), GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getknockTime());
+                    TakeDamage(GameObject.FindGameObjectWithTag("Player").GetComponent<character>().getDmg());
+
+                }
+>>>>>>> Joel
             }
         }
         else { Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>(), true); }

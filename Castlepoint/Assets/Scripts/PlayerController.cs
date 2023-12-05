@@ -29,9 +29,36 @@ public class PlayerController : character
     }
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
+<<<<<<< HEAD
     public Signal reduceMagic;
     public Inventory playerInventory;
     private bool touchingChest;
+=======
+
+    // For Box
+    private Vector2 boxPushSpeed;
+
+    // Level Up System
+    [SerializeField] int currentExperience, maxExperience, currentLevel;
+
+
+
+    // For GameManager
+    private GameManager gameManager;
+
+    // For changing player skins when leveling up
+    public XpController xpController;      // Reference to your XpController script
+    public GameObject playerObjectLevel1;  // Reference to the player game object at level 1
+    public GameObject playerObjectLevel2;  // Reference to the player game object at level 2
+    public GameObject playerObjectLevel3;  // Reference to the player game object at level 3
+    public CameraMovement cameraMovement;
+
+    private Vector3 initialPlayerPosition;
+    private Vector3 initialPlayerPositionLevel2;
+    private Vector3 initialPlayerPositionLevel3;
+
+
+>>>>>>> Joel
 
     // Start is called before the first frame update
     void Start()
@@ -43,10 +70,47 @@ public class PlayerController : character
         animator.SetFloat("moveY", -1);
         arrowthrowSound = GetComponent<AudioSource>();
         arrowthrowSound.clip = arrowThrowSound;
+<<<<<<< HEAD
     }
     void Update()
     {
         if (touchingChest == false && Input.GetButtonDown("attack") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))
+=======
+
+        // heart sound pick up sound fx
+        heartSound = GetComponent<AudioSource>();
+        heartSound.clip = heartUpSound;
+
+        // magic sound pick up sound fx
+        magicUp = GetComponent<AudioSource>();
+        magicUp.clip = magicUpSound;
+
+        // Find the GameManager in the scene
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+
+        // Ensuring the archer and spell caster objects are not null
+        if (xpController == null || playerObjectLevel1 == null || playerObjectLevel2 == null)
+        {
+            Debug.LogError("Missing references in the PlayerController script. Please assign them in the Unity Editor.");
+        }
+
+    }
+    void Update()
+    {
+        // Attack
+        if (Input.GetButtonDown("attack") && currentState != characterState.attack && currentState != characterState.stagger)
+        {
+             StartCoroutine(AttackCo());
+        }
+         else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger && gameObject.name != "player") //press m to fire arrow
+         {
+            StartCoroutine(SecondAttackCo());
+            //play arrow sound here
+            Debug.Log("Playing Arrow Sound");
+         }
+        // Health
+        if (health > maxHealth)
+>>>>>>> Joel
         {
             StartCoroutine(AttackCo());
         }
@@ -61,6 +125,25 @@ public class PlayerController : character
             sceneListSize++;
             StartPos();
         }
+<<<<<<< HEAD
+=======
+
+        // Change skins when leveling up 
+        if (xpController.level == 2)  // Change the level as needed
+        {
+            initialPlayerPositionLevel2 = playerObjectLevel1.transform.position;
+            ChangeToPlayerObject2(playerObjectLevel2);
+
+        } else if (xpController.level == 3)
+        {
+            initialPlayerPositionLevel3 = playerObjectLevel2.transform.position;
+            ChangeToPlayerObject3(playerObjectLevel3);
+        }
+
+        
+     
+
+>>>>>>> Joel
     }
 
     // Update is called once per frame
@@ -102,7 +185,12 @@ public class PlayerController : character
         }
         else
         {
+<<<<<<< HEAD
             animator.SetBool("moving", false);
+=======
+            rb.velocity = Vector2.zero; // No input, stop moving
+            animator.SetBool("moving",false);
+>>>>>>> Joel
 
         }
     }
@@ -154,6 +242,8 @@ public class PlayerController : character
             arrow.Setup(temp, ChooseArrowDirection());
             playerInventory.ReduceMagic(arrow.magicCost);
             reduceMagic.Raise();
+            arrowthrowSound.PlayOneShot(arrowThrowSound);
+
         }
     }
     Vector3 ChooseArrowDirection()
@@ -171,8 +261,47 @@ public class PlayerController : character
             }
         }        
     }
+<<<<<<< HEAD
     private void OnCollisionExit2D(Collision2D other) {
         if(other.gameObject.tag == "Chest")
+=======
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("box"))
+        {
+            if (animator.GetBool("moving"))
+            {
+                animator.SetBool("isPushing", true);
+                // Apply force to the box only when pushing
+                Rigidbody2D boxRB = collision.collider.GetComponent<Rigidbody2D>();
+                boxRB.velocity = new Vector2(move.x, move.y) * boxPushSpeed;
+            }
+            else
+            {
+                animator.SetBool("isPushing", false);
+
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("box"))
+        {
+            // Stop applying force when not pushing
+            Rigidbody2D boxRB = collision.collider.GetComponent<Rigidbody2D>();
+            boxRB.velocity = Vector2.zero;
+            animator.SetBool("isPushing", false);
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
+    {
+        //Debug.Log("A trigger happened");
+        if (other.tag == "heartUp" && health != maxHealth)
+>>>>>>> Joel
         {
             touchingChest = false;
         }
@@ -182,5 +311,82 @@ public class PlayerController : character
         {
             this.gameObject.GetComponent<character>().TakeDamage(1f);
         }
+<<<<<<< HEAD
     }
+=======
+        if (other.tag == "magicUp")
+        {
+            magicUp.PlayOneShot(magicUpSound);
+        }
+
+       
+
+    }
+
+    private void LevelUp()
+    {
+        // Code to change the sprite skins goes here
+        // After leveling up to the level 2, the player skin should switch to the default skin
+        // Then from level 2 to level 3, the spell caster
+
+        currentLevel++;
+        currentExperience = 0;
+        maxExperience += 100;
+    }
+  
+    private void ChangeToPlayerObject2(GameObject newPlayerObject)
+    {
+        // Record the position of the current player
+        initialPlayerPosition = gameObject.transform.position;
+
+        // Deactivate the current player object
+        gameObject.SetActive(false);
+
+        // Activate the new player object
+        newPlayerObject.SetActive(true);
+
+        // Set the position of the new player to the recorded position
+        playerObjectLevel2.transform.position = GetInitialPlayerPosition();
+
+        cameraMovement.SetTarget(newPlayerObject.transform);
+
+        // Optionally, you can also reposition the player or perform other actions
+        // based on the transition from one object to another.
+    }
+
+    private void ChangeToPlayerObject3(GameObject newPlayerObject)
+    {
+        // Record the position of the current player
+        initialPlayerPosition = gameObject.transform.position;
+
+        // Deactivate the current player object
+        gameObject.SetActive(false);
+
+        // Activate the new player object
+        newPlayerObject.SetActive(true);
+
+        // Set the position of the new player to the recorded position
+        playerObjectLevel3.transform.position = GetInitialPlayerPosition();
+
+        cameraMovement.SetTarget(newPlayerObject.transform);
+
+        // Optionally, you can also reposition the player or perform other actions
+        // based on the transition from one object to another.
+    }
+
+    public Vector3 GetInitialPlayerPosition()
+    {
+        return initialPlayerPosition;
+    }
+
+    public Vector3 GetInitialPlayerPositionLevel2()
+    {
+        return initialPlayerPositionLevel2;
+    }
+
+    public Vector3 GetInitialPlayerPositionLevel3()
+    {
+        return initialPlayerPositionLevel3;
+    }
+>>>>>>> Joel
 }

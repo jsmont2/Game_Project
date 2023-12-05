@@ -16,6 +16,7 @@ public class pause : MonoBehaviour
         {
             if (GameIsPaused)
             {
+                Debug.Log("Resume button clicked!");
                 Resume();
             }
             else

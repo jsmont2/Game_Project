@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
-    //private Rigidbody2D myRigidbody;
+    //private Rigidbody2D myRigidbody; // moved the rigidbody to the character script
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
     public Animator anim;
+
+    public int expAmount = 15;
 
 
 
@@ -30,6 +32,12 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     {
         if (isElevated == target.gameObject.GetComponent<character>().isElevated)
         {
+            // Update the target if the current target is not the player
+            if (target.gameObject.CompareTag("Player"))
+            {
+                target = GameObject.FindWithTag("Player").transform;
+            }
+
             CheckDistance();
         }
     }
@@ -93,8 +101,29 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     {
         if (currentState != newState)
         {
-            currentState = newState;
+            currentState = newState;    
 
         }
     }
+<<<<<<< HEAD
+=======
+
+    private void OnDestroy()
+    {
+        // Notify the XP controller that the pinkslime has been destroyed
+        XpController xpController = FindObjectOfType<XpController>();
+        if (xpController != null)
+        {
+            xpController.PinkSlimeDestroyed();
+        }
+
+        // Check if the current target is the player and update it to the new player
+        if (target.gameObject.CompareTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+    }
+
+
+>>>>>>> Joel
 }

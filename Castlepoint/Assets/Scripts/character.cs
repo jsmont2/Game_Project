@@ -43,6 +43,29 @@ public class character : MonoBehaviour
     public Animator animator;
     [SerializeField]
     public bool isElevated;
+<<<<<<< HEAD
+=======
+    public GameObject smallerPinkSlimePrefab;
+
+    // For enemy hit sound FX
+    public AudioClip enemyHitSoundFX;
+    private AudioSource enemyhitSoundFX;
+
+    // Declaring pinkslime experience
+    pinkslime pinkslimeExpAmount;
+
+  
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        isElevated = false;
+
+        // For hit sound FX
+        enemyhitSoundFX = GetComponent<AudioSource>();
+        enemyhitSoundFX.clip = enemyHitSoundFX;
+    }
+>>>>>>> Joel
 
     public void Knock(Transform other, float force, float kt) // Knockback
     {
@@ -85,12 +108,28 @@ public class character : MonoBehaviour
         {
             if (this.charType == characterType.enemy)
             {
+<<<<<<< HEAD
+=======
+                
+
+
+>>>>>>> Joel
                 int newRand = Random.Range(1, 11);
                 if (newRand == 2)
                 {
                     Instantiate(heartForEnemy, transform.position, Quaternion.identity);
                 }
+<<<<<<< HEAD
                 this.gameObject.SetActive(false);
+=======
+                //Joel: I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
+
+                StartCoroutine(EnemyDeathAnimAndDestroy());
+                //ExperienceManager.instance.AddExperience(pinkslimeExpAmount.expAmount);
+
+                currentState = characterState.dead;
+                
+>>>>>>> Joel
             }
             if (this.charType == characterType.player)
             {
@@ -100,6 +139,26 @@ public class character : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+=======
+    private IEnumerator EnemyDeathAnimAndDestroy()
+    {
+        // Play enemy death animation
+        animator.SetTrigger("isDead");
+
+        // Wait for the duration of the death animation
+        yield return new WaitForSeconds(0.5f); // Replace ANIMATION_DURATION with the actual duration of your death animation.
+
+        // Disable the game object after the animation has played
+        //this.gameObject.SetActive(false);
+
+        // Gives experience to the player
+        Destroy(this.gameObject);
+        UnityEngine.Debug.Log("Playing Pink slime death anim");
+        
+    }
+
+>>>>>>> Joel
     public float getDmg()
     {
         return damage;
