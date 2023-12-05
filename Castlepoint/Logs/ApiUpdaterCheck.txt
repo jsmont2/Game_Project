@@ -2349,6 +2349,7 @@ C# parse time         : 355ms
 candidates check time : 1738ms
 console write time    : 0ms
 
+<<<<<<< HEAD
 >>>>>>> Joel
 =======
 [api-updater (non-obsolete-error-filter)] 11/27/2023 11:01:28 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
@@ -2392,8 +2393,14 @@ candidates check time : 46ms
 console write time    : 0ms
 
 >>>>>>> 0b969598792faf40907654cc7bc72505d266c00b
+<<<<<<< HEAD
 [api-updater (non-obsolete-error-filter)] 12/4/2023 7:59:08 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
 [api-updater (non-obsolete-error-filter)] Exception caught while loading types from C:\Users\John Bates\Desktop\Game_Project\Castlepoint\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll (some types may not be loaded)
+=======
+=======
+[api-updater (non-obsolete-error-filter)] 12/4/2023 7:18:14 PM : Starting C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] Exception caught while loading types from C:\Users\jsaaa\OneDrive\Documents\Game_Programming\Game_Project\Castlepoint\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll (some types may not be loaded)
+>>>>>>> 235de1f857946c111778d7183684bd7a5db4b1ae
 	Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
 	  at (wrapper managed-to-native) System.Reflection.Assembly.GetTypes(System.Reflection.Assembly,bool)
   at System.Reflection.Assembly.GetTypes () [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
@@ -2402,6 +2409,7 @@ console write time    : 0ms
 
 [api-updater (non-obsolete-error-filter)] 
 ----------------------------------
+<<<<<<< HEAD
 jit/startup time      : 87.9705ms
 moved types parse time: 54ms
 candidates parse time : 1ms
@@ -2613,3 +2621,13 @@ C# parse time         : 246ms
 candidates check time : 56ms
 console write time    : 0ms
 
+=======
+jit/startup time      : 52.8868ms
+moved types parse time: 41ms
+candidates parse time : 1ms
+C# parse time         : 212ms
+candidates check time : 42ms
+console write time    : 0ms
+
+>>>>>>> copy-of-Joel
+>>>>>>> 235de1f857946c111778d7183684bd7a5db4b1ae
