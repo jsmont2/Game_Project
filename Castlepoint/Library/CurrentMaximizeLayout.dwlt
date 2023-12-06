@@ -23,10 +23,17 @@ MonoBehaviour:
     y: 30
     width: 2560
     height: 1299
+<<<<<<< HEAD
   m_MinSize: {x: 778, y: 342}
   m_MaxSize: {x: 16003, y: 8042}
   vertical: 0
   controlID: 10201
+=======
+  m_MinSize: {x: 917, y: 321}
+  m_MaxSize: {x: 16003, y: 8021}
+  vertical: 0
+  controlID: 2721
+>>>>>>> copy-of-Joel
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -137,10 +144,17 @@ MonoBehaviour:
     y: 0
     width: 567
     height: 1299
+<<<<<<< HEAD
   m_MinSize: {x: 101, y: 242}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
   controlID: 10202
+=======
+  m_MinSize: {x: 240, y: 321}
+  m_MaxSize: {x: 4001, y: 8021}
+  vertical: 1
+  controlID: 2524
+>>>>>>> copy-of-Joel
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,8 +174,8 @@ MonoBehaviour:
     y: 0
     width: 567
     height: 655
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -177,7 +191,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
   m_Name: ConsoleWindow
+=======
+  m_Name: GridPaintPaletteWindow
+>>>>>>> copy-of-Joel
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -186,14 +204,24 @@ MonoBehaviour:
     y: 655
     width: 567
     height: 644
+<<<<<<< HEAD
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 7}
+=======
+  m_MinSize: {x: 240, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 8}
+>>>>>>> copy-of-Joel
   m_Panes:
   - {fileID: 6}
   - {fileID: 7}
   - {fileID: 8}
+<<<<<<< HEAD
   m_Selected: 1
+=======
+  m_Selected: 2
+>>>>>>> copy-of-Joel
   m_LastSelected: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -233,22 +261,37 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< HEAD
     - Assets/NEW TILE PALLETES/ANIMATED PALLETE HERE/Tiles_(animated)/Overworld
+=======
+    - Assets
+>>>>>>> copy-of-Joel
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
+<<<<<<< HEAD
   - Assets/NEW TILE PALLETES/ANIMATED PALLETE HERE/Tiles_(animated)/Overworld
+=======
+  - Assets
+>>>>>>> copy-of-Joel
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\jsaaa\OneDrive\Documents\Game_Programming\Game_Project\Castlepoint
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 4e080100
     m_LastClickedID: 67662
     m_ExpandedIDs: 0000000078f500008af500000801010050060100
+=======
+    scrollPos: {x: 0, y: 21}
+    m_SelectedIDs: a2ed0000
+    m_LastClickedID: 60834
+    m_ExpandedIDs: 000000001e670000a2ed0000a4ed0000a6ed0000a8ed0000aaed0000aced0000aeed0000
+>>>>>>> copy-of-Joel
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -276,7 +319,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 0000000078f50000
+=======
+    m_ExpandedIDs: 000000001e670000a2ed0000a4ed0000a6ed0000a8ed0000aaed0000aced0000aeed0000
+>>>>>>> copy-of-Joel
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -301,10 +348,17 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< HEAD
     m_SelectedInstanceIDs: 02fe0000
     m_LastClickedInstanceID: 65026
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 26590000e45a00007a64000074640000706400006e6400006c64000080560000b26c00003661000066740000e84b0000c2560000e4590000ec590000f6550000ea4b0000a4560000206b0000b0650000e06300008e550000dc610000ee61000048660000645a00005e5a0000e05a0000e25a0000e65a0000625b0000645b0000665b0000685b0000785a0000b65c0000c462000086620000646e00008069000094570000b88700000c5d0000085d0000767600000000000062f500002aeb0000
+=======
+    m_SelectedInstanceIDs: 2e7c0000
+    m_LastClickedInstanceID: 31790
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: 26590000e45a00007a64000074640000706400006e6400006c64000080560000b26c00003661000066740000e84b0000c2560000e4590000ec590000f6550000ea4b0000a4560000206b0000b0650000e06300008e550000dc610000ee61000048660000645a00005e5a0000e05a0000e25a0000e65a0000625b0000645b0000665b0000685b0000785a0000b65c0000c462000086620000646e00008069000094570000b88700000c5d0000085d00007676000000000000508f0000708f000020f8000010e40000
+>>>>>>> copy-of-Joel
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -386,7 +440,11 @@ MonoBehaviour:
     m_CachedPref: -50
     m_ControlHash: 1964396721
     m_PrefName: Preview_TilemapBrushInspector
+<<<<<<< HEAD
   m_Palette: {fileID: 2713484696269246323, guid: 8f79d46356c30364c8e4b21fb69af70c, type: 3}
+=======
+  m_Palette: {fileID: 5168989736110023329, guid: 276dd566f04889648857375cdfc9f2da, type: 3}
+>>>>>>> copy-of-Joel
   m_DrawGizmos: 0
 --- !u!114 &9
 MonoBehaviour:
@@ -412,7 +470,11 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 10060
+=======
+  controlID: 2598
+>>>>>>> copy-of-Joel
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -432,8 +494,8 @@ MonoBehaviour:
     y: 0
     width: 1149
     height: 776
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
@@ -475,9 +537,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 91.99454, y: 259.9294, z: -44.60294}
     speed: 2
     m_Value: {x: 91.99454, y: 259.9294, z: -44.60294}
+=======
+    m_Target: {x: 23.922094, y: 51.391655, z: -75.059845}
+    speed: 2
+    m_Value: {x: 23.922094, y: 51.391655, z: -75.059845}
+>>>>>>> copy-of-Joel
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -528,9 +596,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 81.6915
     speed: 2
     m_Value: 81.6915
+=======
+    m_Target: 13.086093
+    speed: 2
+    m_Value: 13.086093
+>>>>>>> copy-of-Joel
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -925,7 +999,11 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
+<<<<<<< HEAD
   m_LastSelectedObjectID: -156686
+=======
+  m_LastSelectedObjectID: -109450
+>>>>>>> copy-of-Joel
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -982,7 +1060,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: fa9bfdffe89efdffb0a0fdff8ca4fdff9ca9fdff4eaefdff24ff0000
+=======
+      m_ExpandedIDs: f654feffece8000022ea0000
+>>>>>>> copy-of-Joel
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1063,7 +1145,11 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
+<<<<<<< HEAD
   m_LastInspectedObjectInstanceID: -156686
+=======
+  m_LastInspectedObjectInstanceID: -110118
+>>>>>>> copy-of-Joel
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_LockTracker:
