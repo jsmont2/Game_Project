@@ -4,7 +4,19 @@ using UnityEngine;
 
 public class pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
-    public int expAmount = 15;
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
