@@ -92,7 +92,7 @@ public class PlayerController : character
         else if (Input.GetButtonDown("Second Weapon") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))//press m to fire arrow
         {
             StartCoroutine(SecondAttackCo());
-            arrowthrowSound.Play();
+            //arrowthrowSound.Play();
         }
         if (SceneManager.GetActiveScene().name != sceneList[sceneListSize])
         {
@@ -205,6 +205,7 @@ public class PlayerController : character
             arrow.Setup(temp, ChooseArrowDirection());
             playerInventory.ReduceMagic(arrow.magicCost);
             reduceMagic.Raise();
+            arrowthrowSound.PlayOneShot(arrowThrowSound);
         }
     }
     Vector3 ChooseArrowDirection()

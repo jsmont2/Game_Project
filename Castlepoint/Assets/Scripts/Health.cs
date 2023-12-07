@@ -67,13 +67,34 @@ public class Health : MonoBehaviour
             }
         }
 
-        if (thePlayer.GetComponent<character>().health != 0)
+        if (thePlayer.GetComponent<character>().health <= 0)
         {
-           // background.SetActive(false);
+            StartCoroutine(PlayDeathAnimationAndLoadGameOver());
         }
     }
 
-    
+    IEnumerator PlayDeathAnimationAndLoadGameOver()
+    {
+        //Play the player death animation
+        animator.SetTrigger("isDead");
+
+        // Wait for the duration of the death animation
+        yield return new WaitForSeconds(0.8f);
+
+        SceneManager.LoadScene("game_over");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "enemy")
+        {
+            // lose 1 heart if collding with enemy
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger("isHurt");
+        }
+    }
+
+
 
     public void RestartButton()
     {
