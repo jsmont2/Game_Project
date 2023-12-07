@@ -13,12 +13,12 @@ public class ColliderElevation : MonoBehaviour
     }
     private void SetVariables()
     {
-        if (collisionUpperLevel != null)
+        if (collisionUpperLevel == null)
         {
             if (GameObject.Find("collision_upper_level").active)
                 collisionUpperLevel = GameObject.Find("collision_upper_level");
         }
-        if (groundCollisionAbovePlayer != null)
+        if (groundCollisionAbovePlayer == null)
         {
             if (GameObject.Find("GroundCollisionAbovePlayer").active)
                 groundCollisionAbovePlayer = GameObject.Find("GroundCollisionAbovePlayer");

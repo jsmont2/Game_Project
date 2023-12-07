@@ -7,12 +7,19 @@ public class LockedDoor : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject abovePlayer;
     [SerializeField] private GameObject thisDoor;
+    [SerializeField] private GameObject pressurePad;
     private bool isLocked;
     private void OnEnable()
     {
         animator.SetBool("isLocked", true);
         isLocked = true;
         thisDoor = GameObject.Find("LockedDoor");
+    }
+    private void FixedUpdate() {
+        if(pressurePad != null && (int) pressurePad.GetComponent<pressure_pad>().GetPressurePadState() == 1)
+        {
+            StartCoroutine(UnlockDoor());
+        }
     }
     private void OnBecameVisible()
     {
@@ -33,12 +40,11 @@ public class LockedDoor : MonoBehaviour
         Destroy(thisDoor);      
     }
     private void OnCollisionEnter2D(Collision2D other)
-    {
-        
-        if (other.gameObject.GetComponent<PlayerController>().hasKey == true && isLocked)
+    {        
+        if (other.gameObject.GetComponent<PlayerController>().hasKey == true && isLocked && pressurePad == null)
         {            
             StartCoroutine(UnlockDoor());
-        }
+        }        
     }
 
 
