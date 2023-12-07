@@ -99,28 +99,32 @@ public class character : MonoBehaviour
 
         if (health <= 0)
         {
-            
-            int newRand = Random.Range(1, 11);
-            if (newRand == 2)
+            if (this.charType == characterType.player)
             {
-                Instantiate(heartForEnemy, transform.position, Quaternion.identity);
+                this.currentState = characterState.death;
+                StartCoroutine(this.gameObject.GetComponent<PlayerController>().PlayDeathAnimationAndLoadGameOver());
+            }
+            if (this.charType == characterType.enemy)
+            {
+                int newRand = Random.Range(1, 11);
+                if (newRand == 2)
+                {
+                    Instantiate(heartForEnemy, transform.position, Quaternion.identity);
+                }
+
+                StartCoroutine(EnemyDeathAnimAndDestroy());
+
+                currentState = characterState.death;
             }
 
-            StartCoroutine(EnemyDeathAnimAndDestroy());
-
-            currentState = characterState.death;
 
             //this.gameObject.SetActive(false);
         }
-        if (this.charType == characterType.player)
-        {
-            this.currentState = characterState.death;
-            StartCoroutine(this.gameObject.GetComponent<PlayerController>().PlayDeathAnimationAndLoadGameOver());
-        }
+
 
         if (health <= 0 && gameObject.CompareTag("big_pinkslime"))
         {
-            if (this.charType == characterType.enemy) 
+            if (this.charType == characterType.enemy)
             {
 
                 StartCoroutine(EnemyDeathAnimAndDestroy());
@@ -136,8 +140,8 @@ public class character : MonoBehaviour
             }
         }
     }
-        
-    
+
+
     private IEnumerator EnemyDeathAnimAndDestroy()
     {
         // Play enemy death animation

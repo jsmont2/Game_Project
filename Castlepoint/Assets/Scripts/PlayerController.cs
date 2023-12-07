@@ -134,10 +134,10 @@ public class PlayerController : character
 
         if (sceneList.Count >= 2)
         {
-            if (sceneList[sceneListSize] == "dungeon_proc_gen_test")
-            { this.gameObject.transform.position = new Vector3(0, 13, 0); }
-            if (sceneList[sceneListSize] == "overworld 2_COPY")
+            if (sceneList[sceneListSize - 1] == "dungeon_proc_gen_test")
             { this.gameObject.transform.position = new Vector3(40.5f, 31f, 0); }
+            if (sceneList[sceneListSize - 1] == "overworld 2_COPY")
+            { this.gameObject.transform.position = new Vector3(0, 13, 0); }
             Debug.Log(this.transform.position);
         }
     }
