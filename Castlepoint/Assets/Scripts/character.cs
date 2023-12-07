@@ -99,35 +99,45 @@ public class character : MonoBehaviour
 
         if (health <= 0)
         {
-            if (this.charType == characterType.enemy)
+            
+            int newRand = Random.Range(1, 11);
+            if (newRand == 2)
             {
-                if (gameObject.CompareTag("big_pinkslime"))
-                {
-                    StartCoroutine(EnemyDeathAnimAndDestroy());
-                    // Spawn the first smaller pink slime
-                    Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(-.5f, 0, 0), Quaternion.identity);
-
-                    // Spawn the second smaller pink slime
-                    Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
-
-                    // Spawn the third smaller pink slime
-                    Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-                    currentState = characterState.death;
-                }
-                int newRand = Random.Range(1, 11);
-                if (newRand == 2)
-                {
-                    Instantiate(heartForEnemy, transform.position, Quaternion.identity);
-                }
-                this.gameObject.SetActive(false);
+                Instantiate(heartForEnemy, transform.position, Quaternion.identity);
             }
-            if (this.charType == characterType.player)
+
+            StartCoroutine(EnemyDeathAnimAndDestroy());
+
+            currentState = characterState.death;
+
+            //this.gameObject.SetActive(false);
+        }
+        if (this.charType == characterType.player)
+        {
+            this.currentState = characterState.death;
+            StartCoroutine(this.gameObject.GetComponent<PlayerController>().PlayDeathAnimationAndLoadGameOver());
+        }
+
+        if (health <= 0 && gameObject.CompareTag("big_pinkslime"))
+        {
+            if (this.charType == characterType.enemy) 
             {
-                this.currentState = characterState.death;
-                StartCoroutine(this.gameObject.GetComponent<PlayerController>().PlayDeathAnimationAndLoadGameOver());
+
+                StartCoroutine(EnemyDeathAnimAndDestroy());
+                // Spawn the first smaller pink slime
+                Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(-.5f, 0, 0), Quaternion.identity);
+
+                // Spawn the second smaller pink slime
+                Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0, 0), Quaternion.identity);
+
+                // Spawn the third smaller pink slime
+                Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                currentState = characterState.death;
             }
         }
     }
+        
+    
     private IEnumerator EnemyDeathAnimAndDestroy()
     {
         // Play enemy death animation

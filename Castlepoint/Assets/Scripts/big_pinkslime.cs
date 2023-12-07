@@ -5,11 +5,7 @@ using UnityEngine;
 public class big_pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
     //private Rigidbody2D myRigidbody;
-    public Transform target;
-    public float chaseRadius;
-    public float attackRadius;
-    public Transform homePosition;
-    public Animator anim;
+    
 
 
 
