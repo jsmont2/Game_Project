@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 141163995
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5ec21cc51e985146aa26131a6812b08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -116,7 +116,6 @@ MonoBehaviour:
   powerupSignal: {fileID: 11400000, guid: 00a1fc496a55d8e4f9cb3da2e0b16029, type: 2}
   playerInventory: {fileID: 11400000, guid: 0fcacc613a9fe0945b457bc8371e26e3, type: 2}
   magicValue: 1
-  magicUpSound: {fileID: 8300000, guid: 9f4b4de75860bf64e8bef53e647c902b, type: 3}
 --- !u!82 &3114236805992041141
 AudioSource:
   m_ObjectHideFlags: 0
