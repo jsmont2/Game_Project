@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3170602798960565949}
   - component: {fileID: 3170602798960565944}
   - component: {fileID: 3170602798960566087}
-  - component: {fileID: 5673038564925676465}
+  - component: {fileID: 1518739810}
   m_Layer: 0
   m_Name: big_pinkslime
   m_TagString: big_pinkslime
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 141163995
+  m_SortingLayerID: -1406960065
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -9051647326166752824, guid: 30d11cccbf3fde540b05e94707c03e90, type: 3}
@@ -153,7 +153,7 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5673038564925676465
+--- !u!114 &1518739810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,10 +162,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170602798960565948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efc29d85520aa7e4a93af473317299e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6542239bba71f524baafb13103ac6ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heartForEnemy: {fileID: 7768687770290551836, guid: 64293dfd6f5047d409adc3e8b0175884, type: 3}
+  heartForEnemy: {fileID: 7768687770290551836, guid: 0a25aca3b52128d43b7e39be40f68493, type: 3}
   currentState: 0
   speed: 0
   rb: {fileID: 0}
@@ -184,6 +184,7 @@ MonoBehaviour:
   isElevated: 0
   smallerPinkSlimePrefab: {fileID: 3170602798894370244}
   enemyHitSoundFX: {fileID: 0}
+  myRigidbody: {fileID: 0}
   target: {fileID: 0}
   chaseRadius: 4.5
   attackRadius: 0
@@ -202,11 +203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1887091792688218624, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.2
+      value: 7.88
       objectReference: {fileID: 0}
     - target: {fileID: 1887091792688218624, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.42
+      value: 4.18
       objectReference: {fileID: 0}
     - target: {fileID: 1887091792688218624, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -239,6 +240,18 @@ PrefabInstance:
     - target: {fileID: 1887091792688218624, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887091792688218625, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887091792688218625, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1406960065
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887091792688218626, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
+      propertyPath: chaseRadius
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1887091792688218631, guid: 995214a72a799d14da4f40a26e21cf2b, type: 3}
       propertyPath: m_Name

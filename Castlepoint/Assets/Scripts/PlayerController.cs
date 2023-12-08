@@ -33,8 +33,9 @@ public class PlayerController : character
     public Signal reduceMagic;
     public Inventory playerInventory;
     private bool touchingChest;
+
     // For GameManager
-    private GameManager gameManager;
+    //private GameManager gameManager;
 
     // For changing player skins when leveling up
     public XpController xpController;      // Reference to your XpController script
@@ -75,7 +76,7 @@ public class PlayerController : character
         magicUp.clip = magicUpSound;
 
         // Find the GameManager in the scene
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        //gameManager = GameObject.FindObjectOfType<GameManager>();
 
         // Ensuring the archer and spell caster objects are not null
         if (xpController == null || playerObjectLevel1 == null || playerObjectLevel2 == null)
@@ -263,6 +264,14 @@ public class PlayerController : character
         {
             this.gameObject.GetComponent<character>().TakeDamage(1f);
         }
+
+       
+
+        if (other.tag == "magicUp")
+        {
+            magicUp.PlayOneShot(magicUpSound);
+        }
+
     }
     private void LevelUp()
     {
@@ -329,4 +338,7 @@ public class PlayerController : character
     {
         return initialPlayerPositionLevel3;
     }
+
+    
+
 }
