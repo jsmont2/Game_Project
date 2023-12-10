@@ -29,7 +29,7 @@ public class GameData
     public GameData()//New Game values will be stored in this method
     {
         currentHealth = 3;
-        hasKey = false;
+        hasKey = true;
         currentPosition = new Vector3(0, 0, 0);
         currentMagic = 0;
         currentXp = 0;

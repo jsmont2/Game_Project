@@ -230,8 +230,9 @@ MonoBehaviour:
   - {fileID: 2151697697457267981, guid: 51d01ccbb7019a5499d5c72aec66f96d, type: 3}
   - {fileID: 7220415931899746651, guid: deb3910597c779e49b7bf6aeda28dd18, type: 3}
   tempRoom: {fileID: 0}
-  sizeOfDungeon: 15
-  savedRooms: []
+  sizeOfDungeon: 5
+  randSeed: 0
+  roomsMade: 0
 --- !u!4 &56075746
 Transform:
   m_ObjectHideFlags: 0
@@ -413,6 +414,14 @@ PrefabInstance:
     - target: {fileID: 8333643280376367111, guid: f37a1d5f2290e30448b94e72261db5cb, type: 3}
       propertyPath: m_SortingLayerID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333643280376367116, guid: f37a1d5f2290e30448b94e72261db5cb, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333643280376367116, guid: f37a1d5f2290e30448b94e72261db5cb, type: 3}
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f37a1d5f2290e30448b94e72261db5cb, type: 3}

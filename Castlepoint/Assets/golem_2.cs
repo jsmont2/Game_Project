@@ -37,8 +37,11 @@ public class golem_2 : Enemy // inherits everything from enemy script including 
     {
         CheckDmg();
         if (currentState != characterState.invulnerable)
-        { FireLaserAtt(); FireArmAtt(); }
-        AimAtPlayer(armAttProjectile, 1.3f);//continually aim at player
+        {
+            FireLaserAtt();
+            //FireArmAtt(); 
+        }
+        //AimAtPlayer(armAttProjectile, 1.3f);//continually aim at player
         AimAtPlayer(laserAttObject, 2f);//continually aim at player
         ControlAnimStates();
     }
@@ -76,7 +79,7 @@ public class golem_2 : Enemy // inherits everything from enemy script including 
     }
     private void CheckDmg()
     {
-        if (goInvulnerable - health >= 10)
+        if (goInvulnerable - health >= 5)
         {
             goInvulnerable = health;
             StartCoroutine(Invulnerable());
@@ -90,9 +93,9 @@ public class golem_2 : Enemy // inherits everything from enemy script including 
     }
     private void FireArmAtt()
     {
-        if(!anim.GetBool("armAtt"))//if the golem is not using the arm attack already
+        if (!anim.GetBool("armAtt"))//if the golem is not using the arm attack already
         { armAttTimer += Time.deltaTime * .1f; }//increment arm attack counter
-        if(armAttTimer >= .5f && !anim.GetBool("armAtt"))//if the golem has charged up arm attack
+        if (armAttTimer >= .5f && !anim.GetBool("armAtt"))//if the golem has charged up arm attack
         {
             armAttTimer = 0f;//reset the arm attack counter
             StartCoroutine(ArmAtt());//begin to fire the arm attack
