@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class Inventory : ScriptableObject {
-
+public class Inventory : ScriptableObject, IDataPersistence
+{
+    public void LoadData(GameData data)
+    {
+        currentMagic = data.currentMagic;
+    }
+    public void SaveData(GameData data)
+    {
+        data.currentMagic = currentMagic;
+    }
     public Item currentItem;
     public List<Item> items = new List<Item>();
     public int numberOfKeys;
@@ -14,7 +22,9 @@ public class Inventory : ScriptableObject {
 
     public void OnEnable()
     {
-        currentMagic = maxMagic;
+        if (currentMagic == 0)
+        { currentMagic = maxMagic; }
+
     }
 
     public void ReduceMagic(float magicCost)
@@ -23,8 +33,8 @@ public class Inventory : ScriptableObject {
     }
 
     public bool CheckForItem(Item item)
-    { 
-        if(items.Contains(item))
+    {
+        if (items.Contains(item))
         {
             return true;
         }
@@ -34,13 +44,13 @@ public class Inventory : ScriptableObject {
     public void AddItem(Item itemToAdd)
     {
         // Is the item a key?
-        if(itemToAdd.isKey)
+        if (itemToAdd.isKey)
         {
             numberOfKeys++;
         }
         else
         {
-            if(!items.Contains(itemToAdd))
+            if (!items.Contains(itemToAdd))
             {
                 items.Add(itemToAdd);
             }

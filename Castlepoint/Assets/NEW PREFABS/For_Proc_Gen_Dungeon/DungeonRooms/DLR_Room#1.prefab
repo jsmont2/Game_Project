@@ -1027,7 +1027,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 141163995
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -28745,7 +28745,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 227988865
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -28933,7 +28933,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1003114531
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -46656,7 +46656,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 227988865
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -46883,7 +46883,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 227988865
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -46939,7 +46939,6 @@ Transform:
   m_Children:
   - {fileID: 5488394040765322972}
   - {fileID: 3200336323816675257}
-  - {fileID: 1137864759282112957}
   - {fileID: 4380013882186668375}
   - {fileID: 6280721901628556092}
   - {fileID: 5816472820183169875}
@@ -46964,7 +46963,16 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 1
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  roomActive: 0
+  leadsToBossRoom: 0
+  hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
+  roomNum: 0
+  enemyActiveList: 
+  enemyList: []
 --- !u!1 &8891461607604546074
 GameObject:
   m_ObjectHideFlags: 0
@@ -47591,7 +47599,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 141163995
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -47637,7 +47645,7 @@ Transform:
   - {fileID: 2086480487967316924}
   - {fileID: 7005279302879141953}
   m_Father: {fileID: 986268268820524365}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &2831183379124736933
 Grid:
@@ -47667,7 +47675,16 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 1
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  roomActive: 0
+  leadsToBossRoom: 0
+  hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
+  roomNum: 0
+  enemyActiveList: 
+  enemyList: []
 --- !u!1001 &181471193583002615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47681,7 +47698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6173639438815273163, guid: 78edca6de58d8744fb9977152c673c17, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6173639438815273163, guid: 78edca6de58d8744fb9977152c673c17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -47965,7 +47982,7 @@ PrefabInstance:
       objectReference: {fileID: 5657468941918074352}
     - target: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6407189567505168070, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_RootOrder
@@ -48215,7 +48232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1055047279644998844, guid: 202bc46eb5aaf434eb332d752c5d8a5a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1055047279644998844, guid: 202bc46eb5aaf434eb332d752c5d8a5a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -48264,68 +48281,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1055047279644998844, guid: 202bc46eb5aaf434eb332d752c5d8a5a, type: 3}
   m_PrefabInstance: {fileID: 6781300497702717423}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6950729161691043606
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 986268268820524365}
-    m_Modifications:
-    - target: {fileID: 599402001087785738, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_Name
-      value: Enemies#2ForRoom#1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.411911
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 10.353061
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.2242928
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
---- !u!4 &1137864759282112957 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8052280694039711403, guid: 8752f0613879de2478437bb999ffeda4, type: 3}
-  m_PrefabInstance: {fileID: 6950729161691043606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7295472057056522953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48339,7 +48294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6482463570861779870, guid: 96b47d74e55a6ae40aa5ccc18e192e22, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6482463570861779870, guid: 96b47d74e55a6ae40aa5ccc18e192e22, type: 3}
       propertyPath: m_LocalPosition.x

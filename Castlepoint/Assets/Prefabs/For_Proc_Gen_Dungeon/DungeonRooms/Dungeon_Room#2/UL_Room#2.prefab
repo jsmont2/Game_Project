@@ -429,11 +429,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &285965912045561280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +711,7 @@ GameObject:
   - component: {fileID: 169983415450946728}
   m_Layer: 0
   m_Name: UL_Room#2
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -767,6 +762,8 @@ MonoBehaviour:
   distanceFromOrigin: 0
   leadsToBossRoom: 0
   hasKey: 0
+  box: {fileID: 4736699644269068988}
+  pressurePad: {fileID: 5619173670945766862}
 --- !u!1 &565750289690048080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1028,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &669316299956307677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1247,11 +1245,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -1552,11 +1545,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &939137921580577524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1778,6 +1766,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &982205992568796461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2527,11 +2516,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &1399176414896827055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2753,6 +2737,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &1434167460261699251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3635,11 +3620,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &1680507866807085129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4100,11 +4080,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &1847534444662447532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4326,6 +4301,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &1852038103118155409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4547,6 +4523,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &1855230510686368781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5963,6 +5940,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &1873477790270363034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6184,6 +6162,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &1879441064971853552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7189,11 +7168,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -10162,11 +10136,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &2489543662970706461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10383,11 +10352,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -10614,6 +10578,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &2721357782599382094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11074,11 +11039,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &2868314905740984816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11333,6 +11293,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &2978295640822405982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11793,6 +11754,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &3172986428488153336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12009,11 +11971,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -12349,11 +12306,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -12891,6 +12843,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &3886034769353468331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13590,6 +13543,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &4004048805802276225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14934,6 +14888,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &4773177784141284012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15211,6 +15166,8 @@ MonoBehaviour:
   distanceFromOrigin: 0
   leadsToBossRoom: 0
   hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
 --- !u!1 &5210323667259495967
 GameObject:
   m_ObjectHideFlags: 0
@@ -15396,11 +15353,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -15764,6 +15716,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &5359183221637162402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16219,11 +16172,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -21564,11 +21512,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &5854715776495634620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24573,6 +24516,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &5998570157468201252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25028,11 +24972,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -25984,6 +25923,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &6353149902899908628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26274,6 +26214,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &6581817687440011019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27040,11 +26981,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -27983,11 +27919,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -63759,11 +63690,6 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
 --- !u!114 &7639399656556783796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63980,11 +63906,6 @@ MonoBehaviour:
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
   myRigidbody: {fileID: 0}
-  target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
-  chaseRadius: 8
-  attackRadius: 0
-  homePosition: {fileID: 0}
-  anim: {fileID: 0}
   target: {fileID: 4764689201361685465, guid: a068ff0b1e660204d885ea9eb22cfabf, type: 3}
   chaseRadius: 8
   attackRadius: 0
@@ -65670,6 +65591,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &8675972698971396249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65891,6 +65813,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &8741080634394539867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66454,6 +66377,7 @@ MonoBehaviour:
   attackRadius: 0
   homePosition: {fileID: 0}
   anim: {fileID: 0}
+  expAmount: 15
 --- !u!114 &8921260479962681037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67192,6 +67116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8056b88ff6ee47f4da3b9665cd7da375, type: 3}
+--- !u!1 &4736699644269068988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1590695230220006457, guid: 8056b88ff6ee47f4da3b9665cd7da375, type: 3}
+  m_PrefabInstance: {fileID: 6318387380756379269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4736699644269068987 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1590695230220006462, guid: 8056b88ff6ee47f4da3b9665cd7da375, type: 3}

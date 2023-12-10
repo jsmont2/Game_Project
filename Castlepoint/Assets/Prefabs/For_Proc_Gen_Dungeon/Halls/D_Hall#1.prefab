@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8710817025223602504}
   m_Layer: 0
   m_Name: D_Hall#1
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,8 +141,12 @@ MonoBehaviour:
   hasRightConnection: 0
   chestList: {fileID: 0}
   distanceFromOrigin: 0
+  roomActive: 0
   leadsToBossRoom: 0
   hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
+  roomNum: 0
 --- !u!1001 &427991384572732600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2276,6 +2280,70 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 442767651153682206}
     m_Modifications:
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07564971
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_Color.g
+      value: 0.42883143
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_LightType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_ShadowIntensity
+      value: 0.522
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_LightVolumeOpacity
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 2.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887068479380717030, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 7.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07564971
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_Color.g
+      value: 0.42883143
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_LightType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_ShadowIntensity
+      value: 0.522
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_LightVolumeOpacity
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_PointLightInnerRadius
+      value: 2.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738886979001654042, guid: 87b4475f1057492458d207c0c8456873, type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 7.77
+      objectReference: {fileID: 0}
     - target: {fileID: 8549842331104390365, guid: 87b4475f1057492458d207c0c8456873, type: 3}
       propertyPath: m_RootOrder
       value: 6

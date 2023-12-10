@@ -4,11 +4,52 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Timeline;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 /*
 * Room offset needs to be increments of 20
 */
-public class Room_Spawner : MonoBehaviour
+public class Room_Spawner : MonoBehaviour, IDataPersistence
 {
+	public void LoadData(GameData data)
+	{
+		if (data.randSeed != 0)
+		{
+			randSeed = data.randSeed;
+			UnityEngine.Random.seed = randSeed;
+			cappingRooms = false;
+			spawnedKey = false;
+			roomsCreated = new List<Room>();
+			tempRoom = new Room();
+			SpawnDungeon(rooms, originRooms, roomsCreated);
+			for (int i = 0; i < roomsCreated.Count; i++)
+			{
+				/*if (roomsCreated[i].box != null)
+				{
+					roomsCreated[i].box.transform.position = data.boxPos[i];
+				}*/
+				
+				roomsCreated[i].roomActive = data.roomsActive[i];
+				if (roomsCreated[i].roomActive) { roomsCreated[i].gameObject.SetActive(true); }
+				else { roomsCreated[i].gameObject.SetActive(false); }
+			}
+		}
+
+	}
+	public void SaveData(GameData data)
+	{
+		data.randSeed = randSeed;
+		data.roomNumbers = new List<int>();
+		data.roomsActive = new List<bool>();
+		for (int i = 0; i < roomsCreated.Count; i++)
+		{
+			data.roomNumbers.Add(i);
+			data.roomsActive.Add(roomsCreated[i].roomActive);
+			/*if (roomsCreated[i].box != null)
+			{
+				data.boxPos.Add(roomsCreated[i].box.transform.position);
+			}*/
+		}
+	}
 	[SerializeField]
 	private List<Room> originRooms;
 	[SerializeField]
@@ -41,22 +82,32 @@ public class Room_Spawner : MonoBehaviour
 	private bool needsConnectionLeft;
 	private bool cappingRooms;
 	private bool spawnedKey;
-	private void Awake()
+	public int randSeed;
+	public int roomsMade;
+	private void Start()
 	{
-		cappingRooms = false;
-		spawnedKey = false;
-		roomsCreated = new List<Room>();
-		tempRoom = new Room();
-		SpawnDungeon(rooms, originRooms, roomsCreated);
+		if (randSeed == 0)
+		{
+			randSeed = UnityEngine.Random.Range(0, 10000);
+			UnityEngine.Random.seed = randSeed;
+			cappingRooms = false;
+			spawnedKey = false;
+			roomsCreated = new List<Room>();
+			tempRoom = new Room();
+			SpawnDungeon(rooms, originRooms, roomsCreated);
+		}
 	}
 	private void SpawnDungeon(List<Room> roomList, List<Room> originList, List<Room> dungeonRooms)
 	{
 		tempRoom = RandomizeRoom(originList);//Randomize which room is selected from origin list
-		originRoomPos = new Vector3(0, 0, 0);//This is the position of the origin room
+		tempRoom.roomNum = roomsMade;
+		roomsMade++;
+		originRoomPos = new Vector3(0, -12.5f, 0);//This is the position of the origin room
 		Room copy = Instantiate(tempRoom, originRoomPos, Quaternion.identity);//create the room in game
 		copy.SetRoomPosition(originRoomPos);
 		copy.SetOrigin();
 		dungeonRooms.Add(copy);//add room to created list, this will be used to check position of created rooms
+		tempRoom.roomActive = true;
 		currentSizeOfDungeon++;
 		FinishRoom(roomList, dungeonRooms, copy);//Begins recursion, spawns rooms to close all connections
 		cappingRooms = true;
@@ -90,6 +141,7 @@ public class Room_Spawner : MonoBehaviour
 	{
 		for (int i = 1; i < dungeonRooms.Count; i++)
 		{
+			dungeonRooms[i].roomActive = false;
 			dungeonRooms[i].gameObject.SetActive(false);
 		}
 	}
@@ -106,7 +158,17 @@ public class Room_Spawner : MonoBehaviour
 		room = roomList[UnityEngine.Random.Range(0, roomList.Count)];//Randomize which room is selected from origin list
 		return room;
 	}
-
+	public void MakeTheRoom(List<Room> roomList, List<Room> dungeonRooms, Room copy, Room temp, Room previousRoom, Room checkCons, Vector3 offset)
+	{
+		copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
+		copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
+		copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
+		copy.roomNum = roomsMade;
+		roomsMade++;
+		dungeonRooms.Add(copy);
+		currentSizeOfDungeon++;
+		FinishRoom(roomList, dungeonRooms, copy);
+	}
 	private void SpawnRoom(List<Room> roomList, List<Room> dungeonRooms, Room previousRoom, Vector3 offset)
 	{
 		isRoomAbove = false;
@@ -135,24 +197,14 @@ public class Room_Spawner : MonoBehaviour
 				if (needsConnectionAbove)//if the room above needs a connection made below it
 				{
 					while (temp == null || !temp.HasTopCon()) { temp = RandomizeRoom(roomList); }
-					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
-					copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-					dungeonRooms.Add(copy);
-					currentSizeOfDungeon++;
-					FinishRoom(roomList, dungeonRooms, copy);
+					MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 				}
 				break;
 			case (false, true, false, false)://there is a room below
 				if (needsConnectionBelow)
 				{
 					while (temp == null || !temp.HasBottomCon()) { temp = RandomizeRoom(roomList); }
-					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
-					copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-					dungeonRooms.Add(copy);
-					currentSizeOfDungeon++;
-					FinishRoom(roomList, dungeonRooms, copy);
+					MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 
 				}
 				break;
@@ -160,24 +212,14 @@ public class Room_Spawner : MonoBehaviour
 				if (needsConnectionLeft)
 				{
 					while (temp == null || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
-					copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-					dungeonRooms.Add(copy);
-					currentSizeOfDungeon++;
-					FinishRoom(roomList, dungeonRooms, copy);
+					MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 				}
 				break;
 			case (false, false, false, true)://there is a room to the right
 				if (needsConnectionRight)
 				{
 					while (temp == null || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-					copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-					copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);//Set position of the room
-					copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-					dungeonRooms.Add(copy);
-					currentSizeOfDungeon++;
-					FinishRoom(roomList, dungeonRooms, copy);
+					MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 				}
 				break;
 			case (true, true, false, false)://there is a room above and below
@@ -185,30 +227,15 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false):
 						while (temp == null || !temp.HasTopCon() || temp.HasBottomCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true):
 						while (temp == null || temp.HasTopCon() || !temp.HasBottomCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true)://both rooms above and below need a connection
 						while (temp == null || !temp.HasTopCon() || !temp.HasBottomCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -217,30 +244,15 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false):
 						while (temp == null || !temp.HasTopCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true):
 						while (temp == null || temp.HasTopCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true)://both rooms above and below need a connection
 						while (temp == null || !temp.HasTopCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -249,30 +261,15 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false):
 						while (temp == null || !temp.HasTopCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true):
 						while (temp == null || temp.HasTopCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true)://both rooms above and below need a connection
 						while (temp == null || !temp.HasTopCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -281,30 +278,15 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false):
 						while (temp == null || !temp.HasBottomCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true):
 						while (temp == null || temp.HasBottomCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true)://both rooms above and below need a connection
 						while (temp == null || !temp.HasBottomCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -313,29 +295,15 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false):
 						while (temp == null || !temp.HasBottomCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true):
 						while (temp == null || temp.HasBottomCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true)://both rooms above and below need a connection
 						while (temp == null || !temp.HasBottomCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -344,30 +312,15 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false):
 						while (temp == null || !temp.HasLeftCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true):
 						while (temp == null || temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true)://both rooms above and below need a connection
 						while (temp == null || !temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -376,66 +329,31 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false, false):
 						while (temp == null || !temp.HasTopCon() || temp.HasBottomCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, false):
 						while (temp == null || temp.HasTopCon() || !temp.HasBottomCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, false, true):
 						while (temp == null || temp.HasTopCon() || temp.HasBottomCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, false):
 						while (temp == null || !temp.HasTopCon() || !temp.HasBottomCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, false, true):
 						while (temp == null || !temp.HasTopCon() || temp.HasBottomCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, true):
 						while (temp == null || temp.HasTopCon() || !temp.HasBottomCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, true):
 						while (temp == null || !temp.HasTopCon() || !temp.HasBottomCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -444,66 +362,31 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false, false):
 						while (temp == null || !temp.HasTopCon() || temp.HasBottomCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, false):
 						while (temp == null || temp.HasTopCon() || !temp.HasBottomCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, false, true):
 						while (temp == null || temp.HasTopCon() || temp.HasBottomCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, false):
 						while (temp == null || !temp.HasTopCon() || !temp.HasBottomCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, false, true):
 						while (temp == null || !temp.HasTopCon() || temp.HasBottomCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, true):
 						while (temp == null || temp.HasTopCon() || !temp.HasBottomCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, true):
 						while (temp == null || !temp.HasTopCon() || !temp.HasBottomCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -512,66 +395,31 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false, false):
 						while (temp == null || !temp.HasTopCon() || temp.HasLeftCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, false):
 						while (temp == null || temp.HasTopCon() || !temp.HasLeftCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, false, true):
 						while (temp == null || temp.HasTopCon() || temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, false):
 						while (temp == null || !temp.HasTopCon() || !temp.HasLeftCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, false, true):
 						while (temp == null || !temp.HasTopCon() || temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, true):
 						while (temp == null || temp.HasTopCon() || !temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, true):
 						while (temp == null || !temp.HasTopCon() || !temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -580,66 +428,31 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false, false):
 						while (temp == null || !temp.HasBottomCon() || temp.HasLeftCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, false):
 						while (temp == null || temp.HasBottomCon() || !temp.HasLeftCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, false, true):
 						while (temp == null || temp.HasBottomCon() || temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, false):
 						while (temp == null || !temp.HasBottomCon() || !temp.HasLeftCon() || temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, false, true):
 						while (temp == null || !temp.HasBottomCon() || temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, true):
 						while (temp == null || temp.HasBottomCon() || !temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, true):
 						while (temp == null || !temp.HasBottomCon() || !temp.HasLeftCon() || !temp.HasRightCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;
@@ -648,138 +461,63 @@ public class Room_Spawner : MonoBehaviour
 				{
 					case (true, false, false, false):
 						while (temp == null || !temp.HasBottomCon() || temp.HasTopCon() || temp.HasRightCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, false, false):
 						while (temp == null || temp.HasBottomCon() || !temp.HasTopCon() || temp.HasRightCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, false, true, false):
 						while (temp == null || temp.HasBottomCon() || temp.HasTopCon() || !temp.HasRightCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, false, false, true):
 						while (temp == null || temp.HasBottomCon() || temp.HasTopCon() || temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, false, false):
 						while (temp == null || !temp.HasBottomCon() || !temp.HasTopCon() || temp.HasRightCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, false, true, false):
 						while (temp == null || !temp.HasBottomCon() || temp.HasTopCon() || !temp.HasRightCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, false, false, true):
 						while (temp == null || !temp.HasBottomCon() || temp.HasTopCon() || temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, true, false):
 						while (temp == null || temp.HasBottomCon() || !temp.HasTopCon() || !temp.HasRightCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, false, true):
 						while (temp == null || temp.HasBottomCon() || !temp.HasTopCon() || temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, false, true, true):
 						while (temp == null || temp.HasBottomCon() || temp.HasTopCon() || !temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, true, false):
 						while (temp == null || !temp.HasBottomCon() || !temp.HasTopCon() || !temp.HasRightCon() || temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, false, true):
 						while (temp == null || !temp.HasBottomCon() || !temp.HasTopCon() || temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, false, true, true):
 						while (temp == null || !temp.HasBottomCon() || temp.HasTopCon() || !temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (false, true, true, true):
 						while (temp == null || temp.HasBottomCon() || !temp.HasTopCon() || !temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 					case (true, true, true, true):
 						while (temp == null || !temp.HasBottomCon() || !temp.HasTopCon() || !temp.HasRightCon() || !temp.HasLeftCon()) { temp = RandomizeRoom(roomList); }
-						copy = Instantiate(temp, previousRoom.GetRoomPosition() + offset, Quaternion.identity);//create the room in game below previous room
-						copy.SetRoomPosition(previousRoom.GetRoomPosition() + offset);
-						copy.adjacentRooms.CopyRoomConnections(checkCons, copy);
-						dungeonRooms.Add(copy);
-						currentSizeOfDungeon++;
-						FinishRoom(roomList, dungeonRooms, copy);
+						MakeTheRoom(roomList, dungeonRooms, copy, temp, previousRoom, checkCons, offset);
 						break;
 				}
 				break;

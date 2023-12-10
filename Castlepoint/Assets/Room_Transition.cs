@@ -22,8 +22,8 @@ public class Room_Transition : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            getCamera.GetComponent<CameraMovement>().maxPosition += cameraCffset;
-            getCamera.GetComponent<CameraMovement>().minPosition += cameraCffset;
+            getCamera.GetComponent<CameraMovementDungeon>().maxPosition += cameraCffset;
+            getCamera.GetComponent<CameraMovementDungeon>().minPosition += cameraCffset;
             other.gameObject.transform.position += playerOffset;
             TurnRoomOff();
         }
@@ -33,21 +33,29 @@ public class Room_Transition : MonoBehaviour
         if(this.tag == "TransitionUp")
         {
             thisRoom.adjacentRooms.GetRoomAbove().gameObject.SetActive(true);
-            thisRoom.gameObject.SetActive(false);
+            thisRoom.adjacentRooms.GetRoomAbove().roomActive = true;
+            thisRoom.roomActive = false;
+            thisRoom.gameObject.SetActive(false);            
         }
         if(this.tag == "TransitionDown")
         {
             thisRoom.adjacentRooms.GetRoomBelow().gameObject.SetActive(true);
+            thisRoom.adjacentRooms.GetRoomBelow().roomActive = true;
+            thisRoom.roomActive = false;
             thisRoom.gameObject.SetActive(false);
         }
         if(this.tag == "TransitionLeft")
         {
             thisRoom.adjacentRooms.GetRoomLeft().gameObject.SetActive(true);
+            thisRoom.adjacentRooms.GetRoomLeft().roomActive = true;
+            thisRoom.roomActive = false;
             thisRoom.gameObject.SetActive(false);
         }
         if(this.tag == "TransitionRight")
         {
             thisRoom.adjacentRooms.GetRoomRight().gameObject.SetActive(true);
+            thisRoom.adjacentRooms.GetRoomRight().roomActive = true;
+            thisRoom.roomActive = false;
             thisRoom.gameObject.SetActive(false);
         }
     }

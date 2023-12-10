@@ -5,19 +5,30 @@ using UnityEngine.SceneManagement;
 
 
 public class MainMenu1 : MonoBehaviour
-{
+{    
+    public GameObject DataManager;
+    public GameObject sceneHandle;
+    private void Start() 
+    {
+        DataManager = GameObject.Find("DataPersistenceManager");
+        sceneHandle = GameObject.Find("Scene Data");
+    }
     /*  
         The code below is for the Play Button and it pretty much loads the next scene.
         If you want to change the scene after clicking play go to file on Unity and under the build settings tab you will see the order in which scenes play.
     */
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        DataManager.GetComponent<DataPersistenceManager>().NewGame();
+        SceneManager.LoadSceneAsync(7);
     }
 
     public void LoadGame()
-    {
-        SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+    {        
+        //SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+        DataManager.GetComponent<DataPersistenceManager>().LoadGame();
+        SceneManager.LoadSceneAsync(sceneHandle.GetComponent<SceneScript>().currentScene);
     }
 
     // The code below quits the program when you press quit in the MainMenu.

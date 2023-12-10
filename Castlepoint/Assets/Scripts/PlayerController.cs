@@ -12,9 +12,28 @@ using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 using Quaternion = UnityEngine.Quaternion;
 
-public class PlayerController : character
+public class PlayerController : character, IDataPersistence
 {
+    public void LoadData(GameData data)
+    {
+        //thisPlayer = data.player;
+        this.transform.position = data.currentPosition;
+        this.health = data.currentHealth;
+        this.hasKey = data.hasKey;
+    }
+    public void SaveData(GameData data)
+    {
+        Debug.Log("Saving Player");
+        //data.player = thisPlayer;
+        if (this != null)
+        {
+            data.currentPosition = this.transform.position;
+            data.currentHealth = this.health;
+            data.hasKey = this.hasKey;
+        }
 
+    }
+    public GameObject thisPlayer;
     private Vector3 change;
 
     private Vector3 move;
@@ -24,8 +43,7 @@ public class PlayerController : character
     private int sceneListSize;
     [SerializeField] public bool hasKey;
     private void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
+    {   
         sceneList.Add(SceneManager.GetActiveScene().name);
     }
     public AudioClip arrowThrowSound;
@@ -134,11 +152,10 @@ public class PlayerController : character
 
         if (sceneList.Count >= 2)
         {
-            if (sceneList[sceneListSize - 1] == "dungeon_proc_gen_test")
+            if (sceneList[sceneListSize - 1] == "dungeon_proc_gen_test" && sceneList[sceneListSize] == "OverworldJohn")
             { this.gameObject.transform.position = new Vector3(40.5f, 31f, 0); }
-            if (sceneList[sceneListSize - 1] == "overworld 2_COPY")
+            if (sceneList[sceneListSize - 1] == "OverworldJohn" && sceneList[sceneListSize] == "dungeon_proc_gen_test")
             { this.gameObject.transform.position = new Vector3(0, 13, 0); }
-            Debug.Log(this.transform.position);
         }
     }
     void UpdateAnimationAndMove()

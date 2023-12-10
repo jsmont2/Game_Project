@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pressure_pad : MonoBehaviour
+public class pressure_pad : MonoBehaviour, IDataPersistence
 {
+    public void LoadData(GameData data)
+    {
+
+    }
+    public void SaveData(GameData data)
+    {
+        
+    }
     public Sprite pressed;
     public Sprite unpressed;
 

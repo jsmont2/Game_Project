@@ -3,11 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MagicManager : MonoBehaviour
+public class MagicManager : MonoBehaviour, IDataPersistence
 {
+    public GameObject thisObject;
+    public void LoadData(GameData data)
+    {
+        //thisObject = data.heartUI;
+    }
+    public void SaveData(GameData data)
+    {
+        //data.heartUI = thisObject;
+    }
 
     public Slider magicSlider;
     public Inventory playerInventory;
+    public static MagicManager instance{get; private set;}
+    
     // Start is called before the first frame update
     void Start()
     {

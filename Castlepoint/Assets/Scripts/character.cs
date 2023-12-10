@@ -151,10 +151,8 @@ public class character : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // Replace ANIMATION_DURATION with the actual duration of your death animation.
 
         // Disable the game object after the animation has played
-        //this.gameObject.SetActive(false);
-
         // Gives experience to the player
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
         UnityEngine.Debug.Log("Playing Pink slime death anim");
 
     }

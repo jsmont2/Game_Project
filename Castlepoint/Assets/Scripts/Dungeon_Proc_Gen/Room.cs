@@ -2,9 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
-
-public class Room : MonoBehaviour
+using UnityEngine.SceneManagement;
+using System.Linq;
+using System.Runtime.CompilerServices;
+public class Room : MonoBehaviour, IDataPersistence
 {
+	public void LoadData(GameData data)
+	{
+		
+	}
+	public void SaveData(GameData data)
+	{
+		
+	}
 	/// <summary>
 	/// Stores rooms connected to the room
 	/// </summary>
@@ -178,12 +188,16 @@ public class Room : MonoBehaviour
 	private int floorLevel;
 	[SerializeField]
 	private int distanceFromOrigin;
+	public bool roomActive;
 	private Vector3 roomPosition;
 	public AdjacentRooms adjacentRooms = new AdjacentRooms();
 	public bool leadsToBossRoom;
 	public bool hasKey;
-
-
+	public GameObject box;
+	public GameObject pressurePad;
+	public int roomNum;
+	public List<bool> enemyActiveList;
+	public List<GameObject> enemyList;
 
 
 	/// <summary>
@@ -265,19 +279,45 @@ public class Room : MonoBehaviour
 		}
 		distanceFromOrigin = distanceFromOrigin + 1;
 	}
-	private void Awake() {
-		for(int i = 0; i < this.transform.childCount; i++)
+	public void FindEnemies()
+	{
+		for (int i = 0; i < this.transform.childCount; i++)
 		{
-			if(this.transform.GetChild(i).name == "Chests")
-			{chestList = this.transform.GetChild(i).gameObject;}
-		}
-		if(chestList.active)
-		{
-			int rand = UnityEngine.Random.Range(0,4);
-			for(int i = 0; i < chestList.transform.childCount; i++)
+
+			if (this.transform.GetChild(i).name == "Enemies#1ForRoom#1" || this.transform.GetChild(i).name == "Enemies#1"
+			|| this.transform.GetChild(i).name == "Enemies#2ForRoom#2")
 			{
-				if(rand != i){chestList.transform.GetChild(i).gameObject.SetActive(false);}
+				for (int j = 0; j < this.transform.GetChild(i).transform.childCount; j++)
+				{
+					enemyList.Add(this.transform.GetChild(i).transform.GetChild(j).gameObject);
+					enemyActiveList.Add(this.transform.GetChild(i).transform.GetChild(j).gameObject.active);
+				}
 			}
 		}
+	}
+	private void Awake()
+	{
+		for (int i = 0; i < this.transform.childCount; i++)
+		{
+			if (this.transform.GetChild(i).name == "Chests")
+			{ chestList = this.transform.GetChild(i).gameObject; }
+		}
+		if (chestList != null)
+		{
+			if (chestList.active)
+			{
+				int rand = UnityEngine.Random.Range(0, 4);
+				for (int i = 0; i < chestList.transform.childCount; i++)
+				{
+					if (rand != i) { chestList.transform.GetChild(i).gameObject.SetActive(false); }
+				}
+			}
+			roomActive = true;
+		}
+		if (enemyActiveList.Count == 0)
+		{
+			FindEnemies();
+		}
+
 	}
 }

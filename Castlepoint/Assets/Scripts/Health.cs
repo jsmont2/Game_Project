@@ -31,8 +31,13 @@ public class Health : MonoBehaviour
     {
         heartSound = GetComponent<AudioSource>();
         heartSound.clip = heartUpSound;
-		animator = GetComponent<Animator>();
-	}
+        animator = GetComponent<Animator>();    
+        for (int i = 0; i < 2; i++)
+        {
+            //hearts[i] = hearts[i + 1];
+        }    
+        //System.Array.Resize(ref hearts, hearts.Length - 1);
+    }
     void Update()
     {
         if (thePlayer.GetComponent<character>().health > numOfHearts)
@@ -42,43 +47,43 @@ public class Health : MonoBehaviour
         heartsUI = GameObject.FindGameObjectsWithTag("HeartUI");
         for (int i = 0; i < heartsUI.Length; i++)
         {
-            hearts[i] = heartsUI[i].GetComponent<Image>();
+            //hearts[i] = heartsUI[i].GetComponent<Image>();
         }
-        for (int i = 0; i < hearts.Length; i++)
+        for (int i = 0; i < hearts.Length - 1; i++)
         {
 
             if (i < thePlayer.GetComponent<character>().health)
             {
-                hearts[i].sprite = fullHeart;
+                hearts[i + 1].sprite = fullHeart;
             }
             else
             {
-                hearts[i].sprite = emptyHeart;                
+                hearts[i + 1].sprite = emptyHeart;
             }
 
             if (i < numOfHearts)
             {
-                hearts[i].enabled = true;
+                hearts[i + 1].enabled = true;
             }
             else
             {
-                hearts[i].enabled = false;
-                
+                hearts[i + 1].enabled = false;
+
             }
         }
 
         if (thePlayer.GetComponent<character>().health != 0)
         {
-           // background.SetActive(false);
+            // background.SetActive(false);
         }
     }
 
-    
+
 
     public void RestartButton()
     {
         SceneManager.LoadScene("overworld");
-    }   
+    }
 
     private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
     {

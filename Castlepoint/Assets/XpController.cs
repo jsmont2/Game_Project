@@ -3,8 +3,16 @@ using TMPro;
 using UnityEngine.UI;
 using System.Collections;
 
-public class XpController : MonoBehaviour
+public class XpController : MonoBehaviour, IDataPersistence
 {
+    public void LoadData(GameData data)
+    {
+        currentXp = data.currentXp;
+    }
+    public void SaveData(GameData data)
+    {
+        data.currentXp = currentXp;
+    }
     public TextMeshProUGUI LevelText;
     public TextMeshProUGUI ExpText;
     public int level;

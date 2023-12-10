@@ -100,7 +100,7 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
 
         }
     }
-    private void OnDestroy()
+    private void OnDisable()
     {
         // Notify the XP controller that the pinkslime has been destroyed
         XpController xpController = FindObjectOfType<XpController>();

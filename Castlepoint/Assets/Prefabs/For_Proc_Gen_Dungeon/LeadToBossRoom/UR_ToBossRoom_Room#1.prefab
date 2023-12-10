@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 7220415931899746651}
   m_Layer: 0
   m_Name: UR_ToBossRoom_Room#1
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,6 +165,8 @@ MonoBehaviour:
   distanceFromOrigin: 0
   leadsToBossRoom: 0
   hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
 --- !u!1001 &208302983232225136
 PrefabInstance:
   m_ObjectHideFlags: 0

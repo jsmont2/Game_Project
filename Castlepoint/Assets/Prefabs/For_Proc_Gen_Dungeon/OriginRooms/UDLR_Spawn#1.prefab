@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 385501444383168777}
   m_Layer: 0
   m_Name: UDLR_Spawn#1
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,6 +64,8 @@ MonoBehaviour:
   distanceFromOrigin: 0
   leadsToBossRoom: 0
   hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
 --- !u!1 &202180548703595507
 GameObject:
   m_ObjectHideFlags: 0
@@ -17293,6 +17295,8 @@ MonoBehaviour:
   distanceFromOrigin: 0
   leadsToBossRoom: 0
   hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
 --- !u!1 &3806586390397569963
 GameObject:
   m_ObjectHideFlags: 0
@@ -31813,6 +31817,10 @@ PrefabInstance:
     - target: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069383430092960937, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8250226209091361460, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_Name

@@ -145,6 +145,7 @@ MonoBehaviour:
   animator: {fileID: 8847802565337091861}
   abovePlayer: {fileID: 0}
   thisDoor: {fileID: 650737270258273907}
+  pressurePad: {fileID: 0}
 --- !u!1 &3938084063578538031
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +262,7 @@ GameObject:
   - component: {fileID: 9067137642848112533}
   m_Layer: 0
   m_Name: UL_ToBossRoom_Room#1
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -310,6 +311,8 @@ MonoBehaviour:
   distanceFromOrigin: 0
   leadsToBossRoom: 1
   hasKey: 0
+  box: {fileID: 0}
+  pressurePad: {fileID: 0}
 --- !u!1001 &19619140918822671
 PrefabInstance:
   m_ObjectHideFlags: 0

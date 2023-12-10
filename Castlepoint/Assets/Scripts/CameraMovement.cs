@@ -1,7 +1,18 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour, IDataPersistence
 {
+    public void LoadData(GameData data)
+	{
+		maxPosition = data.maxPos;
+        minPosition = data.minPos;
+	}
+	public void SaveData(GameData data)
+	{
+		data.maxPos = maxPosition;
+        data.minPos = minPosition;
+	}
+    public GameObject thisCamera;
     public Transform target; // The object you want the camera to follow
     public float smoothing; // How quickly the camera moves towards the target.
     public Vector2 maxPosition;

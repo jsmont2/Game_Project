@@ -8,7 +8,7 @@ public class pause : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-
+    public GameObject theData;
     // Update is called once per frame
     void Update()
     {
@@ -54,9 +54,13 @@ public class pause : MonoBehaviour
 
     public void SaveGame()
     {
-        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
-        SceneManager.LoadScene("MainMenu");
+        //PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
+        theData = GameObject.Find("DataPersistenceManager"); 
+        theData.GetComponent<DataPersistenceManager>().SaveGame();       
+        SceneManager.LoadSceneAsync(0);
+        
         Time.timeScale = 1f;
+        
     }
     public void MuteToggle(bool muted)
     {
