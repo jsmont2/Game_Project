@@ -6282,7 +6282,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 1
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &5162449440847122659
 GameObject:
   m_ObjectHideFlags: 0
@@ -6736,7 +6739,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6180772229481671357}
-  - {fileID: 7852552953547211210}
+  - {fileID: 8177229818304098263}
   - {fileID: 6338730897939857784}
   - {fileID: 6207579347705929858}
   - {fileID: 5414771131598576264}
@@ -6761,7 +6764,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 0
   hasRightConnection: 0
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &7902806007336343019
 GameObject:
   m_ObjectHideFlags: 0
@@ -10652,6 +10658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#3
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -10721,6 +10731,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
@@ -10882,6 +10896,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069383430092960937, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8250226209091361460, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_Name
       value: RoomTriggers
@@ -10912,9 +10934,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
---- !u!4 &7852552953547211210 stripped
+--- !u!4 &8177229818304098263 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5410561064305497533, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
   m_PrefabInstance: {fileID: 2877786768593998967}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2905683760976105382
@@ -11104,6 +11126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#4
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -11173,6 +11199,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer

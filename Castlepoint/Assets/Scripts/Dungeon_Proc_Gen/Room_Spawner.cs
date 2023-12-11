@@ -17,6 +17,8 @@ public class Room_Spawner : MonoBehaviour
 	[SerializeField]
 	private List<Room> roomCaps;
 	[SerializeField]
+	private List<Room> bossRoomsList;
+	[SerializeField]
 	Room tempRoom;
 	private bool bossRoomCreated;
 	[SerializeField]
@@ -38,9 +40,11 @@ public class Room_Spawner : MonoBehaviour
 	private bool needsConnectionRight;
 	private bool needsConnectionLeft;
 	private bool cappingRooms;
+	private bool spawnedKey;
 	private void Awake()
 	{
 		cappingRooms = false;
+		spawnedKey = false;
 		roomsCreated = new List<Room>();
 		tempRoom = new Room();
 		SpawnDungeon(rooms, originRooms, roomsCreated);
@@ -56,9 +60,31 @@ public class Room_Spawner : MonoBehaviour
 		currentSizeOfDungeon++;
 		FinishRoom(roomList, dungeonRooms, copy);//Begins recursion, spawns rooms to close all connections
 		cappingRooms = true;
-		checkRoomsForDistanceFromOrigin(dungeonRooms);
+		FindMaxDistanceFromOrigin(dungeonRooms);
 		CapRoomOpenings(roomList, dungeonRooms);
+		SpawnKeyForBoss(dungeonRooms);
 		SetAllRoomsActiveOff(dungeonRooms);
+	}
+	private void SpawnKeyForBoss(List<Room> dungeonRooms)
+	{
+		int rand = UnityEngine.Random.Range(1, dungeonRooms.Count);
+		while (!spawnedKey)
+		{
+			for (int i = 0; i < dungeonRooms[rand].chestList.transform.childCount; i++)
+			{
+				if (dungeonRooms[rand] != bossRoomsList[i])
+				{
+					if (dungeonRooms[rand].chestList.transform.GetChild(i).gameObject.active)
+					{
+						dungeonRooms[rand].chestList.transform.GetChild(i).GetComponent<Chest>().SetHasKey();
+						spawnedKey = true;
+						dungeonRooms[rand].hasKey = true;
+					}
+					else { rand = UnityEngine.Random.Range(1, dungeonRooms.Count); }
+				}
+			}
+		}
+
 	}
 	private void SetAllRoomsActiveOff(List<Room> dungeonRooms)
 	{
@@ -66,20 +92,6 @@ public class Room_Spawner : MonoBehaviour
 		{
 			dungeonRooms[i].gameObject.SetActive(false);
 		}
-	}
-	public Room checkRoomsForDistanceFromOrigin(List<Room> dungeonRooms)
-	{
-		int max = 0;
-		Room maxDistance = new Room();
-		for (int i = 1; i < dungeonRooms.Count; i++)
-		{
-			if (dungeonRooms[i].ReturnDistanceFromOrigin() > max)
-			{
-				max = dungeonRooms[i].ReturnDistanceFromOrigin();
-				maxDistance = dungeonRooms[i];
-			}	
-		}
-		return maxDistance;
 	}
 	public void FindMaxDistanceFromOrigin(List<Room> dungeonRooms)
 	{
@@ -896,7 +908,24 @@ public class Room_Spawner : MonoBehaviour
 
 	private void CapRoomOpenings(List<Room> roomList, List<Room> dungeonRoomList)
 	{
-		bool bossRoomMade = false;
+		Room temp = FindFurthestRoom(dungeonRoomList);
+
+		if (temp.HasTopCon() && temp.adjacentRooms.GetConnectionAbove() == null)
+		{
+			SpawnRoom(bossRoomsList, dungeonRoomList, temp, upOffset);
+		}
+		else if (temp.HasBottomCon() && temp.adjacentRooms.GetConnectionBelow() == null)
+		{
+			SpawnRoom(bossRoomsList, dungeonRoomList, temp, downOffset);
+		}
+		else if (temp.HasLeftCon() && temp.adjacentRooms.GetConnectionLeft() == null)
+		{
+			SpawnRoom(bossRoomsList, dungeonRoomList, temp, leftOffset);
+		}
+		else if (temp.HasRightCon() && temp.adjacentRooms.GetConnectionRight() == null)
+		{
+			SpawnRoom(bossRoomsList, dungeonRoomList, temp, rightOffset);
+		}
 		for (int i = 0; i < sizeOfDungeon; i++)
 		{
 			if (!dungeonRoomList[i].AllConnected())//if there is a room with open connections
@@ -941,5 +970,17 @@ public class Room_Spawner : MonoBehaviour
 				}
 			}
 		}
+	}
+	private Room FindFurthestRoom(List<Room> dungeonRoomList)
+	{
+		Room temp = new Room();
+		for (int i = 0; i < dungeonRoomList.Count; i++)
+		{
+			if (dungeonRoomList[i].ReturnDistanceFromOrigin() > temp.ReturnDistanceFromOrigin() && !dungeonRoomList[i].AllConnected())
+			{
+				temp = dungeonRoomList[i];
+			}
+		}
+		return temp;
 	}
 }

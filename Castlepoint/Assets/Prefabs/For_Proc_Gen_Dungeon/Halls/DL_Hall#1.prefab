@@ -4673,7 +4673,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 1
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &5903750424261708102
 GameObject:
   m_ObjectHideFlags: 0
@@ -4929,9 +4932,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7210940549081265092}
-  - {fileID: 6714080823056275635}
-  - {fileID: 3542009297740830072}
   - {fileID: 301777405699526342}
+  - {fileID: 3542009297740830072}
+  - {fileID: 4661138275985471150}
   - {fileID: 7489815097984449019}
   - {fileID: 2412944463086713669}
   - {fileID: 8233921422320456660}
@@ -4955,7 +4958,10 @@ MonoBehaviour:
   hasBottomConnection: 1
   hasLeftConnection: 1
   hasRightConnection: 0
+  chestList: {fileID: 0}
   distanceFromOrigin: 0
+  leadsToBossRoom: 0
+  hasKey: 0
 --- !u!1 &7196420852046523239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5004,7 +5010,7 @@ Transform:
   - {fileID: 6311706358004258014}
   - {fileID: 1432012351805427249}
   m_Father: {fileID: 2770971238066094698}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9125032950235347216
 GameObject:
@@ -11031,6 +11037,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8069383430092960937, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8250226209091361460, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
       propertyPath: m_Name
       value: RoomTriggers
@@ -11061,9 +11075,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
---- !u!4 &6714080823056275635 stripped
+--- !u!4 &4661138275985471150 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5410561064305497533, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6238797065047128992, guid: d41c02333ff2ead42a4f5383bc31f6d0, type: 3}
   m_PrefabInstance: {fileID: 1601900964778151182}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1839690061981046495
@@ -11467,6 +11481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#3
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -11750,6 +11768,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
@@ -12385,6 +12407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: lootchest#2
       objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -12602,6 +12628,10 @@ PrefabInstance:
     - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_Name
       value: lootchest#4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476540201967562303, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7440894647701750083, guid: 6e2582f4df3073b43a6cc42861226cde, type: 3}
       propertyPath: m_SortingLayer

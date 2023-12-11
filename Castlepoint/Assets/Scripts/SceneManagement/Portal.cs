@@ -16,6 +16,10 @@ public class Portal : MonoBehaviour
             PlayerPrefs.SetFloat("PlayerX", other.transform.position.x);
             PlayerPrefs.SetFloat("PlayerY", other.transform.position.y);
 
+            // Destroy the existing player instance
+            Destroy(other.gameObject);
+
+            // Load the new scene
             SceneManager.LoadScene(sceneToLoad);
         }
     }

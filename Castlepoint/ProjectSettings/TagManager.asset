@@ -11,21 +11,25 @@ TagManager:
   - TransitionUp
   - Elevation_Up
   - Elevation_Down
+  - heartUp
+  - Chest
+  - box
+  - HeartUI
   - hurtBox
   - sword
-  - heartUp
-  - arrow
-  - big_pinkslime
-  - magicUp
-  - collision
-  - webPellet
-  - box
+  - laser
   - pressure_pad
+  - arrow
+  - magicUp
+  - big_pinkslime
+  - collision
+  - Go_Out_Room
+  - Go_In_Room
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - player
   - Water
   - UI
   - miniMap
@@ -59,14 +63,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Ground
-    uniqueID: 227988865
+    uniqueID: 2266162009
     locked: 0
   - name: Decorations
-    uniqueID: 3291852765
+    uniqueID: 3527271165
     locked: 0
   - name: Player
-    uniqueID: 141163995
+    uniqueID: 2888007231
     locked: 0
   - name: water
-    uniqueID: 1672589427
+    uniqueID: 2184714167
     locked: 0

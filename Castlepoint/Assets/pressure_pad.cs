@@ -59,4 +59,8 @@ public class pressure_pad : MonoBehaviour
     {
         
     }
+    public PressurePadState GetPressurePadState()
+    {
+        return currentState;
+    }
 }

@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
-    //private Rigidbody2D myRigidbody; // moved the rigidbody to the character script
-    public Transform target;
-    public float chaseRadius;
-    public float attackRadius;
-    public Transform homePosition;
-    public Animator anim;
 
-    public int expAmount = 15;
-
-
+    public int expAmount = 15; // The amount of XP the pinkslime is worth
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +14,6 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;    //allows the enemy to find the player and chase him
-
     }
     void OnEnable() {
         isElevated = false;
@@ -38,38 +29,32 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
                 target = GameObject.FindWithTag("Player").transform;
             }
 
+
+
             CheckDistance();
         }
-
-
-
     }
 
     //Code of the enemy ai. triggers once the player is in range and then follows him, then stops if out of chase radius
     void CheckDistance()
     {
-        if (currentState != characterState.dead) //notes: left off at trying to get the enemies to stop chasing the player here
+        if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
         {
-            if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
+            if (currentState == characterState.idle || currentState == characterState.walk && currentState != characterState.stagger)
             {
-                if (currentState == characterState.idle || currentState == characterState.walk && currentState != characterState.stagger)
-                {
-                    Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
 
-                    changeAnim(temp - transform.position);
-                    rb.MovePosition(temp);
+                changeAnim(temp - transform.position);
+                rb.MovePosition(temp);
 
-                    ChangeState(characterState.walk);
-                    anim.SetBool("wakeUp", true);
-                }
-            }
-
-            else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
-            {
-                anim.SetBool("wakeUp", false);
+                ChangeState(characterState.walk);
+                anim.SetBool("wakeUp", true);
             }
         }
-      
+        else if (Vector3.Distance(target.position, transform.position) > chaseRadius)
+        {
+            anim.SetBool("wakeUp", false);
+        }
     }
 
     private void SetAnimFloat(Vector2 setVector)
@@ -109,11 +94,10 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     {
         if (currentState != newState)
         {
-            currentState = newState;    
+            currentState = newState;
 
         }
     }
-
     private void OnDestroy()
     {
         // Notify the XP controller that the pinkslime has been destroyed
@@ -129,6 +113,4 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
             target = GameObject.FindWithTag("Player").transform;
         }
     }
-
-
 }

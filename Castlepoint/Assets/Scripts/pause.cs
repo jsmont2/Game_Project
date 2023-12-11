@@ -9,8 +9,8 @@ public class pause : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
-    public GameObject pauseSound;  // Reference to the GameObject with the pause sound
-    public GameObject resumeSound; // Reference to the GameObject with the resume sound
+    public GameObject pauseSound;   // Reference to the GameObject with the pause sound
+    public GameObject resumeSound;  // Reference to the GameObject with the resume sound
 
     // Update is called once per frame
     void Update()
@@ -22,13 +22,11 @@ public class pause : MonoBehaviour
                 Debug.Log("Resume button clicked!");
                 Resume();
                 PlayResumeSound(); // Play the resume sound when unpausing
-
             }
             else
             {
                 Pause();
-                PlayPauseSound();  // Play the pause sound when pausing
-
+                PlayPauseSound(); // Play the pause sound when pausing
             }
         }
     }
@@ -95,4 +93,6 @@ public class pause : MonoBehaviour
             resumeSound.GetComponent<AudioSource>().Play();
         }
     }
+
+
 }

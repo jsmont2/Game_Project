@@ -7,51 +7,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 using Vector2 = UnityEngine.Vector2;
 using Quaternion = UnityEngine.Quaternion;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : character
 {
 
     private Vector3 change;
-    
+
     private Vector3 move;
-    private Animator playerAnimator;
-
-    //For heart system
-    public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
-
-    // For heart sound FX's
-    public AudioClip heartUpSound;
-    private AudioSource heartSound;
-
-    // For magic sound FX's
-    public AudioClip magicUpSound;
-    private AudioSource magicUp;
-
-    // For Arrows
+    private Animator animator;
     public GameObject projectile;
-    public Signal reduceMagic;
-    public Inventory playerInventory;
+    public List<string> sceneList;
+    private int sceneListSize;
+    [SerializeField] public bool hasKey;
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+        sceneList.Add(SceneManager.GetActiveScene().name);
+    }
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
-
-    // For Box
-    private Vector2 boxPushSpeed;
-
-    // Level Up System
-    [SerializeField] int currentExperience, maxExperience, currentLevel;
-
-
+    public Signal reduceMagic;
+    public Inventory playerInventory;
+    private bool touchingChest;
 
     // For GameManager
-    private GameManager gameManager;
+    //private GameManager gameManager;
 
     // For changing player skins when leveling up
     public XpController xpController;      // Reference to your XpController script
@@ -59,17 +43,23 @@ public class PlayerController : character
     public GameObject playerObjectLevel2;  // Reference to the player game object at level 2
     public GameObject playerObjectLevel3;  // Reference to the player game object at level 3
     public CameraMovement cameraMovement;
-
     private Vector3 initialPlayerPosition;
     private Vector3 initialPlayerPositionLevel2;
     private Vector3 initialPlayerPositionLevel3;
-
-
-
+    // For heart sound FX's
+    public AudioClip heartUpSound;
+    private AudioSource heartSound;
+    // For magic sound FX's
+    public AudioClip magicUpSound;
+    private AudioSource magicUp;
+    // For Box
+    private Vector2 boxPushSpeed;
+    // Level Up System
+    [SerializeField] int currentExperience, maxExperience, currentLevel;
     // Start is called before the first frame update
     void Start()
     {
-        currentState= characterState.idle;
+        currentState = characterState.idle;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         animator.SetFloat("moveX", 0);
@@ -86,80 +76,43 @@ public class PlayerController : character
         magicUp.clip = magicUpSound;
 
         // Find the GameManager in the scene
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        //gameManager = GameObject.FindObjectOfType<GameManager>();
 
         // Ensuring the archer and spell caster objects are not null
         if (xpController == null || playerObjectLevel1 == null || playerObjectLevel2 == null)
         {
             Debug.LogError("Missing references in the PlayerController script. Please assign them in the Unity Editor.");
         }
-
     }
     void Update()
     {
-        // Attack
-        if (Input.GetButtonDown("attack") && currentState != characterState.attack && currentState != characterState.stagger)
+        if (touchingChest == false && Input.GetButtonDown("attack") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))
         {
-             StartCoroutine(AttackCo());
+            StartCoroutine(AttackCo());
         }
-         else if(Input.GetButtonDown("Second Weapon") && currentState != characterState.attack && currentState != characterState.stagger && gameObject.name != "player") //press m to fire arrow
-         {
+        else if (Input.GetButtonDown("Second Weapon") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))//press m to fire arrow
+        {
             StartCoroutine(SecondAttackCo());
-            //play arrow sound here
-            Debug.Log("Playing Arrow Sound");
-         }
-        // Health
-        if (health > maxHealth)
-        {
-            health = maxHealth;
+            //arrowthrowSound.Play();
         }
-
-        for (int i = 0; i < hearts.Length; i++)
+        if (SceneManager.GetActiveScene().name != sceneList[sceneListSize])
         {
-            if (i < health)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-
-                hearts[i].sprite = emptyHeart;
-
-            }
-
-            if (i < maxHealth)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-
-            }
+            sceneList.Add(SceneManager.GetActiveScene().name);
+            sceneListSize++;
+            StartPos();
         }
-
-        if (health <= 0)
-        {
-            Debug.Log("playing death anim");
-            currentState = characterState.dead;
-            StartCoroutine(PlayDeathAnimationAndLoadGameOver());
-        }
-
         // Change skins when leveling up 
         if (xpController.level == 2)  // Change the level as needed
         {
             initialPlayerPositionLevel2 = playerObjectLevel1.transform.position;
             ChangeToPlayerObject2(playerObjectLevel2);
 
-        } else if (xpController.level == 3)
+        }
+        else if (xpController.level == 3)
         {
             initialPlayerPositionLevel3 = playerObjectLevel2.transform.position;
             ChangeToPlayerObject3(playerObjectLevel3);
         }
-
-        
-     
-
     }
 
     // Update is called once per frame
@@ -175,31 +128,52 @@ public class PlayerController : character
                 UpdateAnimationAndMove();
             }
 
-        }  
-
+        }
     }
-    void UpdateAnimationAndMove() 
+    private void StartPos()
+    {
+
+        if (sceneList.Count >= 2)
+        {
+            if (sceneList[sceneListSize - 1] == "dungeon_proc_gen_test")
+            { this.gameObject.transform.position = new Vector3(40.5f, 31f, 0); }
+            if (sceneList[sceneListSize - 1] == "overworld 2_COPY")
+            { this.gameObject.transform.position = new Vector3(0, 13, 0); }
+            Debug.Log(this.transform.position);
+        }
+    }
+    void UpdateAnimationAndMove()
     {
         if (move != Vector3.zero)
         {
-            MoveCharacter();    
+            MoveCharacter();
             animator.SetFloat("moveX", move.x);
             animator.SetFloat("moveY", move.y);
-            animator.SetBool("moving",true);
+            animator.SetBool("moving", true);
 
-        }else
+        }
+        else
         {
-            rb.velocity = Vector2.zero; // No input, stop moving
-            animator.SetBool("moving",false);
+            animator.SetBool("moving", false);
 
-        }        
+        }
     }
     void MoveCharacter() //function that moves player
     {
         //making change to change.normalized normalized the speed when moving the player diagonally
-        rb.MovePosition(transform.position + move.normalized * speed * Time.deltaTime); 
+        rb.MovePosition(transform.position + move.normalized * speed * Time.deltaTime);
     }
-   
+    public IEnumerator PlayDeathAnimationAndLoadGameOver()
+    {
+        this.GetComponent<Animator>().SetBool("isDead", true);
+        this.GetComponent<character>().currentState = characterState.death;
+        // Wait for the duration of the death animation
+        //yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        yield return new WaitForSeconds(1f);
+
+        // Load the game over scene
+        SceneManager.LoadScene("game_over");
+    }
 
     private IEnumerator AttackCo()
     {
@@ -210,8 +184,8 @@ public class PlayerController : character
         yield return new WaitForSeconds(.15f);
         currentState = characterState.walk;
     }
-   
-    
+
+
     private IEnumerator SecondAttackCo()
     {
         //animator.SetBool("attacking", true);
@@ -233,51 +207,13 @@ public class PlayerController : character
             playerInventory.ReduceMagic(arrow.magicCost);
             reduceMagic.Raise();
             arrowthrowSound.PlayOneShot(arrowThrowSound);
-
         }
     }
     Vector3 ChooseArrowDirection()
     {
-        float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX"))* Mathf.Rad2Deg;
+        float temp = Mathf.Atan2(animator.GetFloat("moveY"), animator.GetFloat("moveX")) * Mathf.Rad2Deg;
         return new Vector3(0, 0, temp);
     }
-
-    
-
-    IEnumerator PlayDeathAnimationAndLoadGameOver()
-    {
-        // Play the death animation
-        //Animator animator = thePlayer.GetComponent<Animator>();
-        Debug.Log("Playing Death Animation");
-        animator.SetTrigger("isDead");
-
-        // Wait for the duration of the death animation
-        //yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-        yield return new WaitForSeconds(0.8f);
-
-        // Load the game over scene
-        SceneManager.LoadScene("game_over");
-    }
-
-    public void RestartButton()
-    {
-        SceneManager.LoadScene("overworld");
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "enemy")
-        {
-            // lose 1 heart if colliding with enemy
-            Animator animator = GetComponent<Animator>();
-            animator.SetTrigger("isHurt");
-
-
-
-        }
-
-    }
-
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("box"))
@@ -296,38 +232,47 @@ public class PlayerController : character
             }
         }
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.collider.CompareTag("box"))
+        if (other.gameObject.tag == "Chest")//if player is touching a chest
+        {
+            touchingChest = true;
+            if (Input.GetButtonDown("attack"))//if player tries to open the chest
+            {
+                other.gameObject.GetComponent<Chest>().OpenChest();
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Chest")
+        {
+            touchingChest = false;
+        }
+        if (other.collider.CompareTag("box"))
         {
             // Stop applying force when not pushing
-            Rigidbody2D boxRB = collision.collider.GetComponent<Rigidbody2D>();
+            Rigidbody2D boxRB = other.collider.GetComponent<Rigidbody2D>();
             boxRB.velocity = Vector2.zero;
             animator.SetBool("isPushing", false);
 
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other) // moved the heartup to the oncollisionenter2d above
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("A trigger happened");
-        if (other.tag == "heartUp" && health != maxHealth)
+        if (other.gameObject.tag == "laser")
         {
-            Debug.Log("Picked up heart");
-            other.gameObject.SetActive(false);
-            health += 1;
-            heartSound.Play();
+            this.gameObject.GetComponent<character>().TakeDamage(1f);
         }
+
+       
+
         if (other.tag == "magicUp")
         {
             magicUp.PlayOneShot(magicUpSound);
         }
 
-       
-
     }
-
     private void LevelUp()
     {
         // Code to change the sprite skins goes here
@@ -338,7 +283,7 @@ public class PlayerController : character
         currentExperience = 0;
         maxExperience += 100;
     }
-  
+
     private void ChangeToPlayerObject2(GameObject newPlayerObject)
     {
         // Record the position of the current player
@@ -393,4 +338,7 @@ public class PlayerController : character
     {
         return initialPlayerPositionLevel3;
     }
+
+    
+
 }

@@ -13,8 +13,10 @@ public class CameraMovement : MonoBehaviour
         // Make sure to set the initial target (player) in the Unity Editor or dynamically in your script
         SetTarget(GameObject.FindGameObjectWithTag("Player").transform);
     }
-
-    // LateUpdate is called once per frame, after other updates
+    private void Update() {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+    // Update is called once per frame
     void LateUpdate()
     {
         if (target != null && transform.position != target.position)

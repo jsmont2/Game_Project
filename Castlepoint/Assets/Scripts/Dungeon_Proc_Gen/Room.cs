@@ -157,6 +157,10 @@ public class Room : MonoBehaviour
 	[SerializeField]
 	private bool hasRightConnection;
 	/// <summary>
+	/// List: Container for all chest in the room.
+	/// </summary>
+	[SerializeField] public GameObject chestList;
+	/// <summary>
 	/// BOOLEAN: Determines if all the connections in the room have been satisfied
 	/// </summary>
 	private bool allConnected;
@@ -176,8 +180,8 @@ public class Room : MonoBehaviour
 	private int distanceFromOrigin;
 	private Vector3 roomPosition;
 	public AdjacentRooms adjacentRooms = new AdjacentRooms();
-
-
+	public bool leadsToBossRoom;
+	public bool hasKey;
 
 
 
@@ -260,5 +264,20 @@ public class Room : MonoBehaviour
 			{ distanceFromOrigin = this.adjacentRooms.GetConnectionRight().returnDestination().ReturnDistanceFromOrigin(); }
 		}
 		distanceFromOrigin = distanceFromOrigin + 1;
+	}
+	private void Awake() {
+		for(int i = 0; i < this.transform.childCount; i++)
+		{
+			if(this.transform.GetChild(i).name == "Chests")
+			{chestList = this.transform.GetChild(i).gameObject;}
+		}
+		if(chestList.active)
+		{
+			int rand = UnityEngine.Random.Range(0,4);
+			for(int i = 0; i < chestList.transform.childCount; i++)
+			{
+				if(rand != i){chestList.transform.GetChild(i).gameObject.SetActive(false);}
+			}
+		}
 	}
 }

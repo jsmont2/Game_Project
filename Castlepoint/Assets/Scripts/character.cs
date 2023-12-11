@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class character : MonoBehaviour
 {
@@ -14,13 +13,15 @@ public class character : MonoBehaviour
         attack,
         stagger,
         interact,
-        dead
+        death,
+        invulnerable
     }
 
     public enum characterType
     {
         player,
-        enemy
+        enemy,
+        boss
     }
 
     public GameObject heartForEnemy;
@@ -43,16 +44,12 @@ public class character : MonoBehaviour
     [SerializeField]
     public bool isElevated;
     public GameObject smallerPinkSlimePrefab;
-
     // For enemy hit sound FX
     public AudioClip enemyHitSoundFX;
     private AudioSource enemyhitSoundFX;
 
     // Declaring pinkslime experience
     pinkslime pinkslimeExpAmount;
-
-  
-
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +70,8 @@ public class character : MonoBehaviour
         {
             StartCoroutine(KnockCo(hit, kt));
         }
+
+
     }
 
 
@@ -80,50 +79,48 @@ public class character : MonoBehaviour
     {
         if (rb != null)
         {
-            UnityEngine.Debug.Log(this);
             rb.GetComponent<character>().currentState = characterState.stagger;
             this.GetComponent<Animator>().SetBool("hit", true);
             yield return new WaitForSeconds(kt);
-            UnityEngine.Debug.Log("COLLISION");
             this.GetComponent<Animator>().SetBool("hit", false);
             rb.velocity = Vector2.zero;
             rb.GetComponent<character>().currentState = characterState.idle;
-            
         }
     }
 
     public void TakeDamage(float dmg)
     {
+        if (currentState != characterState.invulnerable)
+        { health -= dmg; }
+        if (charType == characterType.boss)
+        {
+            moveSpeed += (maxHealth - health) * .01f;
+        }
 
-        health -= dmg;
-       
         if (health <= 0)
         {
+            if (this.charType == characterType.player)
+            {
+                this.currentState = characterState.death;
+                StartCoroutine(this.gameObject.GetComponent<PlayerController>().PlayDeathAnimationAndLoadGameOver());
+            }
             if (this.charType == characterType.enemy)
             {
-                
-
-
                 int newRand = Random.Range(1, 11);
                 if (newRand == 2)
                 {
                     Instantiate(heartForEnemy, transform.position, Quaternion.identity);
                 }
-                //Joel: I moved "this.gameObject.SetActive(false);" here to make the player not dissapear and let the health code run through to make him lose a heart and play the death anim; though there may be a way to work around this 
 
                 StartCoroutine(EnemyDeathAnimAndDestroy());
-                //ExperienceManager.instance.AddExperience(pinkslimeExpAmount.expAmount);
 
-                currentState = characterState.dead;
-                
+                currentState = characterState.death;
             }
-            //"this.gameObject.SetActive(false);" was here previously 
-        } else
-        {
-            // Is this where we put the sound for enemy hits??
-            UnityEngine.Debug.Log("PLAYING ENEMY HIT SOUND");
-            enemyhitSoundFX.PlayOneShot(enemyHitSoundFX);
+
+
+            //this.gameObject.SetActive(false);
         }
+
 
         if (health <= 0 && gameObject.CompareTag("big_pinkslime"))
         {
@@ -139,11 +136,11 @@ public class character : MonoBehaviour
 
                 // Spawn the third smaller pink slime
                 Instantiate(smallerPinkSlimePrefab, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-                currentState = characterState.dead;
-
+                currentState = characterState.death;
             }
         }
     }
+
 
     private IEnumerator EnemyDeathAnimAndDestroy()
     {
@@ -159,9 +156,8 @@ public class character : MonoBehaviour
         // Gives experience to the player
         Destroy(this.gameObject);
         UnityEngine.Debug.Log("Playing Pink slime death anim");
-        
-    }
 
+    }
     public float getDmg()
     {
         return damage;
@@ -170,7 +166,7 @@ public class character : MonoBehaviour
     public float getThrust()
     {
         return thrust;
-    }    
+    }
 
     // Update is called once per frame
     void Update()
@@ -184,5 +180,11 @@ public class character : MonoBehaviour
     {
         return knockTime;
     }
-
+    public void ChangeState(characterState newState)
+    {
+        if (currentState != newState)
+        {
+            currentState = newState;
+        }
+    }
 }

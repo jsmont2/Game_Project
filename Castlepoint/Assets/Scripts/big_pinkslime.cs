@@ -5,11 +5,7 @@ using UnityEngine;
 public class big_pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
     //private Rigidbody2D myRigidbody;
-    public Transform target;
-    public float chaseRadius;
-    public float attackRadius;
-    public Transform homePosition;
-    public Animator anim;
+    
 
 
 
@@ -48,7 +44,7 @@ public class big_pinkslime : Enemy // inherits everything from enemy script incl
     //Code of the enemy ai. triggers once the player is in range and then follows him, then stops if out of chase radius
     void CheckDistance()
     {
-        if (currentState != characterState.dead) //notes: left off at trying to get the enemies to stop chasing the player here
+        if (currentState != characterState.death) //notes: left off at trying to get the enemies to stop chasing the player here
         {
             if (Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius) //this checks the distance between enemy and player to dictate what the enemy will do.
             {
