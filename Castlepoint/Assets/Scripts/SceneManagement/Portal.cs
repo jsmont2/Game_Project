@@ -13,9 +13,13 @@ public class Portal : MonoBehaviour
         if(other.CompareTag("Player") && !other.isTrigger)
         {
             // Save the player's position before loading the new scene
-            //PlayerPrefs.SetFloat("PlayerX", other.transform.position.x);
-            //PlayerPrefs.SetFloat("PlayerY", other.transform.position.y);
+            PlayerPrefs.SetFloat("PlayerX", other.transform.position.x);
+            PlayerPrefs.SetFloat("PlayerY", other.transform.position.y);
 
+            // Destroy the existing player instance
+            Destroy(other.gameObject);
+
+            // Load the new scene
             SceneManager.LoadScene(sceneToLoad);
         }
     }

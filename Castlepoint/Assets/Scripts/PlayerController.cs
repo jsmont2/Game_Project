@@ -51,8 +51,9 @@ public class PlayerController : character, IDataPersistence
     public Signal reduceMagic;
     public Inventory playerInventory;
     private bool touchingChest;
+
     // For GameManager
-    private GameManager gameManager;
+    //private GameManager gameManager;
 
     // For changing player skins when leveling up
     public XpController xpController;      // Reference to your XpController script
@@ -93,7 +94,7 @@ public class PlayerController : character, IDataPersistence
         magicUp.clip = magicUpSound;
 
         // Find the GameManager in the scene
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        //gameManager = GameObject.FindObjectOfType<GameManager>();
 
         // Ensuring the archer and spell caster objects are not null
         if (xpController == null || playerObjectLevel1 == null || playerObjectLevel2 == null)
@@ -110,7 +111,7 @@ public class PlayerController : character, IDataPersistence
         else if (Input.GetButtonDown("Second Weapon") && (currentState != characterState.death || currentState != characterState.attack || currentState != characterState.stagger))//press m to fire arrow
         {
             StartCoroutine(SecondAttackCo());
-            arrowthrowSound.Play();
+            //arrowthrowSound.Play();
         }
         if (SceneManager.GetActiveScene().name != sceneList[sceneListSize])
         {
@@ -222,6 +223,7 @@ public class PlayerController : character, IDataPersistence
             arrow.Setup(temp, ChooseArrowDirection());
             playerInventory.ReduceMagic(arrow.magicCost);
             reduceMagic.Raise();
+            arrowthrowSound.PlayOneShot(arrowThrowSound);
         }
     }
     Vector3 ChooseArrowDirection()
@@ -279,6 +281,14 @@ public class PlayerController : character, IDataPersistence
         {
             this.gameObject.GetComponent<character>().TakeDamage(1f);
         }
+
+       
+
+        if (other.tag == "magicUp")
+        {
+            magicUp.PlayOneShot(magicUpSound);
+        }
+
     }
     private void LevelUp()
     {
@@ -345,4 +355,7 @@ public class PlayerController : character, IDataPersistence
     {
         return initialPlayerPositionLevel3;
     }
+
+    
+
 }

@@ -191,9 +191,9 @@ GameObject:
   - component: {fileID: 4764689201361685466}
   - component: {fileID: 4764689201361685467}
   - component: {fileID: 4764689201361685468}
-  - component: {fileID: 4764689202895771626}
   - component: {fileID: 4764689201361685469}
   - component: {fileID: 4764689202895771627}
+  - component: {fileID: 132691278}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -349,46 +349,25 @@ MonoBehaviour:
   isElevated: 0
   smallerPinkSlimePrefab: {fileID: 0}
   enemyHitSoundFX: {fileID: 0}
-  thisPlayer: {fileID: 4764689201361685447}
-  projectile: {fileID: 7424196571582084430, guid: 768f0d818fdea484680e207ad161e2b0, type: 3}
-  sceneList: []
+  projectile: {fileID: 0}
+  sceneList:
+  - 
+  - 
+  - 
   hasKey: 0
   arrowThrowSound: {fileID: 0}
   reduceMagic: {fileID: 0}
   playerInventory: {fileID: 0}
   xpController: {fileID: 0}
-  playerObjectLevel1: {fileID: 0}
+  playerObjectLevel1: {fileID: 4764689201361685447}
   playerObjectLevel2: {fileID: 0}
   playerObjectLevel3: {fileID: 0}
   cameraMovement: {fileID: 0}
-  heartUpSound: {fileID: 0}
+  heartUpSound: {fileID: 8300000, guid: 8ab8d369b14104d469f216b0dea3afc5, type: 3}
   magicUpSound: {fileID: 0}
   currentExperience: 0
   maxExperience: 0
   currentLevel: 0
---- !u!114 &4764689202895771626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4764689201361685447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a78de70199d5d074d95c97f1c0ea855c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numOfHearts: 3
-  background: {fileID: 0}
-  go: {fileID: 0}
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  fullHeart: {fileID: 4606908045521496030, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
-  emptyHeart: {fileID: -4195582761621981391, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
-  thePlayer: {fileID: 4764689201361685447}
-  heartUpSound: {fileID: 0}
 --- !u!95 &4764689201361685469
 Animator:
   serializedVersion: 3
@@ -504,6 +483,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &132691278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764689201361685447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a78de70199d5d074d95c97f1c0ea855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfHearts: 3
+  background: {fileID: 0}
+  go: {fileID: 0}
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  fullHeart: {fileID: 4606908045521496030, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
+  emptyHeart: {fileID: -4195582761621981391, guid: c814d49b8835a9146b332cf08fe71056, type: 3}
+  thePlayer: {fileID: 4764689201361685447}
+  heartUpSound: {fileID: 0}
 --- !u!1 &4764689201614554591
 GameObject:
   m_ObjectHideFlags: 0

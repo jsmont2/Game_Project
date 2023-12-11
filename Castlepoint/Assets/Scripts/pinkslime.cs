@@ -5,17 +5,7 @@ using UnityEngine;
 public class pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
 
-    public int expAmount = 15;
-
-
-
-
-
-
-
-
-
-
+    public int expAmount = 15; // The amount of XP the pinkslime is worth
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +23,14 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     {
         if (isElevated == target.gameObject.GetComponent<character>().isElevated)
         {
+            // Update the target if the current target is not the player
+            if (target.gameObject.CompareTag("Player"))
+            {
+                target = GameObject.FindWithTag("Player").transform;
+            }
+
+
+
             CheckDistance();
         }
     }
