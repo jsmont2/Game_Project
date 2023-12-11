@@ -5,7 +5,7 @@ using UnityEngine;
 public class pinkslime : Enemy // inherits everything from enemy script including mono behavior
 {
 
-    public int expAmount = 15;
+    public int expAmount = 10;
 
 
 

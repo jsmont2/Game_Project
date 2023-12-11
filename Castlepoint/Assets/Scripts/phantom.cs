@@ -90,4 +90,21 @@ public class phantom : Enemy // inherits everything from enemy script including 
 
         }
     }
+
+    private void OnDisable()
+    {
+        // Notify the XP controller that the pinkslime has been destroyed
+        XpController xpController = FindObjectOfType<XpController>();
+        if (xpController != null)
+        {
+            xpController.PhantomDestroyed();
+        }
+
+        // Check if the current target is the player and update it to the new player
+        if (target.gameObject.CompareTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+    }
+
 }

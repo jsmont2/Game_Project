@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
         {
             //hearts[i] = hearts[i + 1];
         }    
-        //System.Array.Resize(ref hearts, hearts.Length - 1);
+        System.Array.Resize(ref hearts, hearts.Length - 1);
     }
     void Update()
     {
@@ -47,7 +47,7 @@ public class Health : MonoBehaviour
         heartsUI = GameObject.FindGameObjectsWithTag("HeartUI");
         for (int i = 0; i < heartsUI.Length; i++)
         {
-            //hearts[i] = heartsUI[i].GetComponent<Image>();
+            hearts[i] = heartsUI[i].GetComponent<Image>();
         }
         for (int i = 0; i < hearts.Length - 1; i++)
         {
@@ -72,13 +72,33 @@ public class Health : MonoBehaviour
             }
         }
 
-        if (thePlayer.GetComponent<character>().health != 0)
+        if (thePlayer.GetComponent<character>().health <= 0)
         {
             // background.SetActive(false);
+            StartCoroutine(PlayDeathAnimationAndLoadGameOver());
         }
     }
 
+    IEnumerator PlayDeathAnimationAndLoadGameOver()
+    {
+        //Play the player death animation
+        animator.SetTrigger("isDead");
 
+        // Wait for the duration of the death animation
+        yield return new WaitForSeconds(.8f);
+
+        SceneManager.LoadScene("game_over");
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "enemy")
+        {
+            // lose 1 heart if colliding with enemy
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger("isHurt");
+        }
+    }
 
     public void RestartButton()
     {

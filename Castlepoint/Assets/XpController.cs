@@ -89,7 +89,17 @@ public class XpController : MonoBehaviour, IDataPersistence
 
     public void PinkSlimeDestroyed()
     {
+        AddExperience(10); // or any other XP amount you want to grant
+    }
+
+    public void PhantomDestroyed()
+    {
         AddExperience(20); // or any other XP amount you want to grant
+    }
+
+    public void SpiderDestroyed()
+    {
+        AddExperience(15); // or any other XP amount you want to grant
     }
 
     IEnumerator FlickerLevelUpText()
