@@ -14,6 +14,8 @@ public class GameData
     public Vector3 currentPosition;
     public float currentMagic;
     public float currentXp;
+    public float targetXp;
+    public int level;
     public int currentScene;
     public Vector2 maxPos;
     public Vector2 minPos;
@@ -33,6 +35,8 @@ public class GameData
         currentPosition = new Vector3(0, 0, 0);
         currentMagic = 0;
         currentXp = 0;
+        targetXp = 0;
+        level = 0;
         this.currentScene = 1;//This is where the name of the current scene will be kept
         maxPos = new Vector2(67f, 59f);
         minPos = new Vector2(.5f, .2f);

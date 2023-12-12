@@ -8,10 +8,14 @@ public class XpController : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         currentXp = data.currentXp;
+        TargetXp = data.targetXp;
+        level = data.level;
     }
     public void SaveData(GameData data)
     {
         data.currentXp = currentXp;
+        data.targetXp = TargetXp;
+        data.level = level;
     }
     public TextMeshProUGUI LevelText;
     public TextMeshProUGUI ExpText;
