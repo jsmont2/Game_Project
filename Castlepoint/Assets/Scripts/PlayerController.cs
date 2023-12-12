@@ -168,13 +168,13 @@ public class PlayerController : character, IDataPersistence
         }
 
         // Change skins when leveling up 
-        if (xpController.level == 2)  // Change the level as needed
+        if (xpController.level >= 2)  // Change the level as needed
         {
             initialPlayerPositionLevel2 = playerObjectLevel1.transform.position;
             ChangeToPlayerObject2(playerObjectLevel2);
 
         }
-        else if (xpController.level == 3)
+        else if (xpController.level >= 5)
         {
             initialPlayerPositionLevel3 = playerObjectLevel2.transform.position;
             ChangeToPlayerObject3(playerObjectLevel3);
