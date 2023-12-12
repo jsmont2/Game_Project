@@ -7,16 +7,6 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
 
     public int expAmount = 10;
 
-
-
-
-
-
-
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +23,13 @@ public class pinkslime : Enemy // inherits everything from enemy script includin
     {
         if (isElevated == target.gameObject.GetComponent<character>().isElevated)
         {
+
+            // Update the target if the current target is not the player
+            if (target.gameObject.CompareTag("Player"))
+            {
+                target = GameObject.FindWithTag("Player").transform;
+            }
+
             CheckDistance();
         }
     }

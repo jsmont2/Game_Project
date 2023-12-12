@@ -10,9 +10,6 @@ public class Health : MonoBehaviour
     // thePlayer.health already in character script
     public int numOfHearts; //sets the max number of hearts the player should have
 
-    public GameObject background;
-    public Text go;
-
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -32,11 +29,11 @@ public class Health : MonoBehaviour
         heartSound = GetComponent<AudioSource>();
         heartSound.clip = heartUpSound;
         animator = GetComponent<Animator>();    
-        for (int i = 0; i < 2; i++)
-        {
-            //hearts[i] = hearts[i + 1];
-        }    
-        System.Array.Resize(ref hearts, hearts.Length - 1);
+        //for (int i = 0; i < 2; i++)
+        //{
+        //    hearts[i] = hearts[i + 1];
+        //}    
+        //System.Array.Resize(ref hearts, hearts.Length - 1);
     }
     void Update()
     {

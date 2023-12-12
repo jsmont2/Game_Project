@@ -9,6 +9,10 @@ public class pause : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject theData;
+
+    public GameObject pauseSound; 
+    public GameObject resumeSound;
+
     // Update is called once per frame
     void Update()
     {
@@ -18,10 +22,12 @@ public class pause : MonoBehaviour
             {
                 Debug.Log("Resume button clicked!");
                 Resume();
+                PlayResumeSound();
             }
             else
             {
                 Pause();
+                PlayPauseSound();
             }
         }
     }
@@ -31,6 +37,7 @@ public class pause : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        PlayResumeSound();
     }
 
     void Pause()
@@ -73,4 +80,21 @@ public class pause : MonoBehaviour
             AudioListener.volume = 1;
         }
     }
+
+    void PlayPauseSound()
+    {
+        if (pauseSound != null)
+        {
+            pauseSound.GetComponent<AudioSource>().Play();
+        }
+    }
+
+    void PlayResumeSound()
+    {
+        if (resumeSound != null)
+        {
+            resumeSound.GetComponent<AudioSource>().Play();
+        }
+    }
+
 }

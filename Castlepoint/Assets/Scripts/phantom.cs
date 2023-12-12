@@ -24,6 +24,13 @@ public class phantom : Enemy // inherits everything from enemy script including 
     {
        if (isElevated == target.gameObject.GetComponent<character>().isElevated)
         {
+
+            // Update the target if the current target is not the player
+            if (target.gameObject.CompareTag("Player"))
+            {
+                target = GameObject.FindWithTag("Player").transform;
+            }
+
             CheckDistance();
         }
     }

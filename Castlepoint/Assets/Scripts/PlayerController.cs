@@ -38,6 +38,13 @@ public class PlayerController : character, IDataPersistence
 
     private Vector3 move;
     private Animator animator;
+
+    // For heart system
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+    public GameObject thePlayer;
+
     public GameObject projectile;
     public List<string> sceneList;
     private int sceneListSize;
@@ -100,6 +107,10 @@ public class PlayerController : character, IDataPersistence
         {
             Debug.LogError("Missing references in the PlayerController script. Please assign them in the Unity Editor.");
         }
+
+        
+
+
     }
     void Update()
     {
@@ -118,6 +129,43 @@ public class PlayerController : character, IDataPersistence
             sceneListSize++;
             StartPos();
         }
+
+        // For Health
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        for (int i = 0; i < hearts.Length; i++) 
+        { 
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            } 
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            if (i < maxHealth)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+
+        }
+
+        if (health <= 0)
+        {
+            Debug.Log("Player is dead");
+            currentState = characterState.death;
+            StartCoroutine(PlayDeathAnimationAndLoadGameOver());
+        }
+
         // Change skins when leveling up 
         if (xpController.level == 2)  // Change the level as needed
         {
@@ -181,11 +229,9 @@ public class PlayerController : character, IDataPersistence
     }
     public IEnumerator PlayDeathAnimationAndLoadGameOver()
     {
-        this.GetComponent<Animator>().SetBool("isDead", true);
-        this.GetComponent<character>().currentState = characterState.death;
-        // Wait for the duration of the death animation
-        //yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-        yield return new WaitForSeconds(1f);
+        animator.SetTrigger("isDead");
+        // Wait for the duration of the death 
+        yield return new WaitForSeconds(.8f);
 
         // Load the game over scene
         SceneManager.LoadScene("game_over");
@@ -272,6 +318,14 @@ public class PlayerController : character, IDataPersistence
             animator.SetBool("isPushing", false);
 
         }
+
+        if (other.collider.tag == "enemy")
+        {
+            // lose 1 heart if colliding with enemy
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger("isHurt");
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -279,6 +333,16 @@ public class PlayerController : character, IDataPersistence
         {
             this.gameObject.GetComponent<character>().TakeDamage(1f);
         }
+
+        // For picking up hearts
+        if (other.tag == "heartUp" && health != maxHealth)
+        {
+            Debug.Log("Picked up heart");
+            other.gameObject.SetActive(false);
+            health += 1;
+            heartSound.Play();
+        }
+
     }
     private void LevelUp()
     {

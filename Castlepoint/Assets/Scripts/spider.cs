@@ -21,6 +21,13 @@ public class spider : Enemy // inherits everything from enemy script including m
     // Update is called once per frame
     void FixedUpdate()
     {
+
+        // Update the target if the current target is not the player
+        if (target.gameObject.CompareTag("Player"))
+        {
+            target = GameObject.FindWithTag("Player").transform;
+        }
+
         CheckDistance();
     }
 
