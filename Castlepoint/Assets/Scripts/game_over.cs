@@ -23,9 +23,9 @@ public class game_over : MonoBehaviour
     {
         DataManager.GetComponent<DataPersistenceManager>().NewGame();
         SceneManager.LoadSceneAsync(1);
+        Debug.Log("YUP");
     }
-
-    public void LoadGame()
+    public void LoadGamefromgameover()
     {        
         //SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
         DataManager.GetComponent<DataPersistenceManager>().LoadGame();

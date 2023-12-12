@@ -51,8 +51,7 @@ public class PlayerController : character, IDataPersistence
     [SerializeField] public bool hasKey;
     private void Awake()
     {   
-        sceneList.Add(SceneManager.GetActiveScene().name); 
-        DontDestroyOnLoad(this.gameObject);
+        sceneList.Add(SceneManager.GetActiveScene().name);
     }
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;
@@ -160,7 +159,7 @@ public class PlayerController : character, IDataPersistence
 
         }
 
-        if (health <= 0)
+        if (health <= 0 && currentState != characterState.death)
         {
             Debug.Log("Player is dead");
             currentState = characterState.death;
@@ -168,13 +167,13 @@ public class PlayerController : character, IDataPersistence
         }
 
         // Change skins when leveling up 
-        if (xpController.level >= 2)  // Change the level as needed
+        if (xpController.level == 2)  // Change the level as needed
         {
             initialPlayerPositionLevel2 = playerObjectLevel1.transform.position;
             ChangeToPlayerObject2(playerObjectLevel2);
 
         }
-        else if (xpController.level >= 5)
+        else if (xpController.level == 3)
         {
             initialPlayerPositionLevel3 = playerObjectLevel2.transform.position;
             ChangeToPlayerObject3(playerObjectLevel3);

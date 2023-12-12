@@ -17,6 +17,7 @@ public class GameData
     public float targetXp;
     public int level;
     public int currentScene;
+    public int previousScene;
     public Vector2 maxPos;
     public Vector2 minPos;
     public Vector2 maxPosDung;
@@ -38,6 +39,7 @@ public class GameData
         targetXp = 0;
         level = 0;
         this.currentScene = 1;//This is where the name of the current scene will be kept
+        previousScene = 0;
         maxPos = new Vector2(67f, 59f);
         minPos = new Vector2(.5f, .2f);
         maxPosDung = new Vector2(19f, 31.5f);
