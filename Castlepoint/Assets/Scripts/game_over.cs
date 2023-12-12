@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class game_over : MonoBehaviour
 {
+    public GameObject DataManager;
+    public GameObject sceneHandle;
+    private void Start() 
+    {
+        DataManager = GameObject.Find("DataPersistenceManager");
+        sceneHandle = GameObject.Find("Scene Data");
+    }
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -14,11 +21,14 @@ public class game_over : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("overworld");
+        DataManager.GetComponent<DataPersistenceManager>().NewGame();
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void LoadGame()
-    {
-        SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+    {        
+        //SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+        DataManager.GetComponent<DataPersistenceManager>().LoadGame();
+        SceneManager.LoadSceneAsync(sceneHandle.GetComponent<SceneScript>().currentScene);
     }
 }

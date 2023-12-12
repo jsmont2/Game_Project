@@ -21,7 +21,7 @@ public class MainMenu1 : MonoBehaviour
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         DataManager.GetComponent<DataPersistenceManager>().NewGame();
-        SceneManager.LoadSceneAsync(7);
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void LoadGame()
