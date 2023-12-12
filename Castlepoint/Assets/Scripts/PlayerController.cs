@@ -51,7 +51,8 @@ public class PlayerController : character, IDataPersistence
     [SerializeField] public bool hasKey;
     private void Awake()
     {   
-        sceneList.Add(SceneManager.GetActiveScene().name);
+        sceneList.Add(SceneManager.GetActiveScene().name); 
+        DontDestroyOnLoad(this.gameObject);
     }
     public AudioClip arrowThrowSound;
     private AudioSource arrowthrowSound;

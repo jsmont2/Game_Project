@@ -102,7 +102,7 @@ public class Room_Spawner : MonoBehaviour, IDataPersistence
 		tempRoom = RandomizeRoom(originList);//Randomize which room is selected from origin list
 		tempRoom.roomNum = roomsMade;
 		roomsMade++;
-		originRoomPos = new Vector3(0, -12.5f, 0);//This is the position of the origin room
+		originRoomPos = new Vector3(0, 0, 0);//This is the position of the origin room
 		Room copy = Instantiate(tempRoom, originRoomPos, Quaternion.identity);//create the room in game
 		copy.SetRoomPosition(originRoomPos);
 		copy.SetOrigin();
