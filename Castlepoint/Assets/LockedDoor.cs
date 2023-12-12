@@ -13,7 +13,7 @@ public class LockedDoor : MonoBehaviour
     {
         animator.SetBool("isLocked", true);
         isLocked = true;
-        thisDoor = GameObject.Find("LockedDoor");
+        abovePlayer = GameObject.Find("abovePlayer");
     }
     private void FixedUpdate() {
         if(pressurePad != null && (int) pressurePad.GetComponent<pressure_pad>().GetPressurePadState() == 1)
@@ -37,7 +37,7 @@ public class LockedDoor : MonoBehaviour
         yield return new WaitForSeconds(.8f);
         Debug.Log("yup");
         abovePlayer.SetActive(true);
-        Destroy(thisDoor);      
+        this.gameObject.SetActive(false);     
     }
     private void OnCollisionEnter2D(Collision2D other)
     {        

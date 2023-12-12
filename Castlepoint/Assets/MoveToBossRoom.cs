@@ -16,8 +16,8 @@ public class MoveToBossRoom : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         other.transform.position = new Vector3(2500,2500,0);
-        getCamera.GetComponent<CameraMovement>().maxPosition = new Vector2(2517f,2551f);
-        getCamera.GetComponent<CameraMovement>().minPosition = new Vector2(2482f,2504f);
+        getCamera.GetComponent<CameraMovementDungeon>().maxPosition = new Vector2(2517f,2551f);
+        getCamera.GetComponent<CameraMovementDungeon>().minPosition = new Vector2(2482f,2504f);
         getBossRoom.SetActive(true);
         previousRoom.SetActive(false);
     }

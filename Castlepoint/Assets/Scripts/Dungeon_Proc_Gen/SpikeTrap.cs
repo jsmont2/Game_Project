@@ -42,7 +42,7 @@ public class SpikeTrap : MonoBehaviour
             yield return new WaitForSeconds(.3f);
             anim.SetBool("Spikes_Lowering", false);
             anim.SetBool("Spikes_Down", true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(8f);
         }
 
     }

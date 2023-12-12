@@ -27,7 +27,7 @@ public class Room_Spawner : MonoBehaviour, IDataPersistence
 				{
 					roomsCreated[i].box.transform.position = data.boxPos[i];
 				}*/
-				
+
 				roomsCreated[i].roomActive = data.roomsActive[i];
 				if (roomsCreated[i].roomActive) { roomsCreated[i].gameObject.SetActive(true); }
 				else { roomsCreated[i].gameObject.SetActive(false); }
@@ -88,7 +88,8 @@ public class Room_Spawner : MonoBehaviour, IDataPersistence
 	{
 		if (randSeed == 0)
 		{
-			randSeed = UnityEngine.Random.Range(0, 10000);
+			//randSeed = UnityEngine.Random.Range(0, 10000);
+			randSeed = 2484;
 			UnityEngine.Random.seed = randSeed;
 			cappingRooms = false;
 			spawnedKey = false;
@@ -525,15 +526,15 @@ public class Room_Spawner : MonoBehaviour, IDataPersistence
 	}
 	private void FinishRoom(List<Room> roomList, List<Room> dungeonRooms, Room thisRoom)
 	{
-		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
+		if (currentSizeOfDungeon > sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasTopCon() && (thisRoom.adjacentRooms.GetConnectionAbove() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, upOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
+		if (currentSizeOfDungeon > sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasBottomCon() && (thisRoom.adjacentRooms.GetConnectionBelow() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, downOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
+		if (currentSizeOfDungeon > sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasLeftCon() && (thisRoom.adjacentRooms.GetConnectionLeft() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, leftOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
+		if (currentSizeOfDungeon > sizeOfDungeon && cappingRooms == false) { return; }
 		if (thisRoom.HasRightCon() && (thisRoom.adjacentRooms.GetConnectionRight() == null)) { SpawnRoom(roomList, dungeonRooms, thisRoom, rightOffset); }
-		if (currentSizeOfDungeon >= sizeOfDungeon && cappingRooms == false) { return; }
+		if (currentSizeOfDungeon > sizeOfDungeon && cappingRooms == false) { return; }
 		else { thisRoom.SetAllConnected(); }
 	}
 	private void CheckForRooms(List<Room> dungeonRooms, Room tempRoom)
@@ -647,23 +648,45 @@ public class Room_Spawner : MonoBehaviour, IDataPersistence
 	private void CapRoomOpenings(List<Room> roomList, List<Room> dungeonRoomList)
 	{
 		Room temp = FindFurthestRoom(dungeonRoomList);
+		while (!bossRoomCreated)
+		{
+			
+			for (int i = dungeonRoomList.Count; i > 0; i++)
+			{
+				Debug.Log("Making BossROom");
+				if (temp.HasTopCon() && temp.adjacentRooms.GetConnectionAbove() == null)
+				{
+					Debug.Log("found BossROom1");
+					SpawnRoom(bossRoomsList, dungeonRoomList, temp, upOffset);
+					bossRoomCreated = true;
+					break;
+				}
+				else if (temp.HasBottomCon() && temp.adjacentRooms.GetConnectionBelow() == null)
+				{
+					Debug.Log("found BossROom2");
+					SpawnRoom(bossRoomsList, dungeonRoomList, temp, downOffset);
+					bossRoomCreated = true;
+					break;
+				}
+				else if (temp.HasLeftCon() && temp.adjacentRooms.GetConnectionLeft() == null)
+				{
+					Debug.Log("found BossROom3");
+					SpawnRoom(bossRoomsList, dungeonRoomList, temp, leftOffset);
+					bossRoomCreated = true;
+					break;
+				}
+				else if (temp.HasRightCon() && temp.adjacentRooms.GetConnectionRight() == null)
+				{
+					Debug.Log("found BossROom4");
+					SpawnRoom(bossRoomsList, dungeonRoomList, temp, rightOffset);
+					bossRoomCreated = true;
+					break;
+				}
+				temp = dungeonRoomList[i];
+			}
 
-		if (temp.HasTopCon() && temp.adjacentRooms.GetConnectionAbove() == null)
-		{
-			SpawnRoom(bossRoomsList, dungeonRoomList, temp, upOffset);
 		}
-		else if (temp.HasBottomCon() && temp.adjacentRooms.GetConnectionBelow() == null)
-		{
-			SpawnRoom(bossRoomsList, dungeonRoomList, temp, downOffset);
-		}
-		else if (temp.HasLeftCon() && temp.adjacentRooms.GetConnectionLeft() == null)
-		{
-			SpawnRoom(bossRoomsList, dungeonRoomList, temp, leftOffset);
-		}
-		else if (temp.HasRightCon() && temp.adjacentRooms.GetConnectionRight() == null)
-		{
-			SpawnRoom(bossRoomsList, dungeonRoomList, temp, rightOffset);
-		}
+
 		for (int i = 0; i < sizeOfDungeon; i++)
 		{
 			if (!dungeonRoomList[i].AllConnected())//if there is a room with open connections

@@ -123,7 +123,7 @@ public class golem_2 : Enemy // inherits everything from enemy script including 
     private void FireLaserAtt()
     {
         if (!anim.GetBool("laserAtt"))//if the golem is not using the laser attack already
-        { laserAttTimer += Time.deltaTime * .1f; }//increment laser attack timer
+        { laserAttTimer += Time.deltaTime * .2f; }//increment laser attack timer
         if (laserAttTimer >= 2f && !anim.GetBool("laserAtt"))//if the golem has charged up laser attack
         {
             laserAttTimer = 0f;//reset the laser beam attack counter
